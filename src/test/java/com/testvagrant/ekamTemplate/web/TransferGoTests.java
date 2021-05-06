@@ -1,7 +1,5 @@
 package com.testvagrant.ekamTemplate.web;
 
-import com.testvagrant.ekam.commons.annotations.Step;
-import com.testvagrant.ekamTemplate.web.WebTest;
 import com.testvagrant.ekamTemplate.web.pages.TransferGoPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,35 +9,36 @@ import static com.testvagrant.ekam.commons.PageInitiator.WebPage;
 @Test(groups = "transferGoWeb")
 public class TransferGoTests extends WebTest {
 
-    public void shouldCheckRatesAreInRange() {
-        TransferGoPage transferGoPage = WebPage(TransferGoPage.class);
+  public void shouldCheckRatesAreInRange() {
+    TransferGoPage transferGoPage = WebPage(TransferGoPage.class);
 
-        Double receivingAmount =
-                transferGoPage
-                        //
-                        .acceptCookies()
-                        .selectSendingFromCountry("France")
-                        .setSendingFromAmount("100")
-                        .selectReceivingInCountry("India")
-                        .getReceivingInAmount();
-        assertAmount(receivingAmount, 8800);
-    }
+    Double receivingAmount =
+        transferGoPage
+            //
+            .acceptCookies()
+            .selectSendingFromCountry("France")
+            .setSendingFromAmount("100")
+            .selectReceivingInCountry("India")
+            .getReceivingInAmount();
 
-    private void assertAmount(Double receivingAmount, int i) {
-        Assert.assertEquals(receivingAmount, i, 100);
-    }
+    assertAmount(receivingAmount, 8800);
+  }
 
-    public void shouldCheckRatesAreInRangeCopy() {
-        TransferGoPage transferGoPage = WebPage(TransferGoPage.class);
-        Double receivingAmount =
-                transferGoPage
-                        //
-                        .acceptCookies()
-                        .selectSendingFromCountry("France")
-                        .setSendingFromAmount("100")
-                        .selectReceivingInCountry("India")
-                        .getReceivingInAmount();
-        assertAmount(receivingAmount, 788800);
-    }
+  private void assertAmount(Double receivingAmount, int i) {
+    Assert.assertEquals(receivingAmount, i, 100);
+  }
+
+  public void shouldCheckRatesAreInRangeCopy() {
+    TransferGoPage transferGoPage = WebPage(TransferGoPage.class);
+    Double receivingAmount =
+        transferGoPage
+            //
+            .acceptCookies()
+            .selectSendingFromCountry("France")
+            .setSendingFromAmount("100")
+            .selectReceivingInCountry("India")
+            .getReceivingInAmount();
+
+    assertAmount(receivingAmount, 788800);
+  }
 }
-

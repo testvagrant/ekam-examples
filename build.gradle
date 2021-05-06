@@ -44,44 +44,11 @@ dependencies {
     testImplementation('org.projectlombok:lombok:1.18.12')
     testAnnotationProcessor('org.projectlombok:lombok:1.18.12')
 
-    //jboss
-    implementation('org.jboss.aerogear:aerogear-otp-java:1.0.0')
-
-    //allure
-    implementation('io.qameta.allure:allure-gradle:2.8.1')
-    implementation('io.qameta.allure:allure-java-commons:2.13.2')
-    implementation('io.qameta.allure:allure-testng:2.13.2')
-    implementation('io.qameta.allure:allure-okhttp3:2.10.0')
-    implementation('io.qameta.allure:allure-rest-assured:2.10.0')
-
-    //logger
-    implementation('org.apache.logging.log4j:log4j-api:2.8')
-    implementation('org.apache.logging.log4j:log4j-core:2.8')
-    implementation('org.apache.logging.log4j:log4j-slf4j-impl:2.13.3')
-
-    //palantir
-    implementation('com.palantir.roboslack:roboslack-webhook-api:1.3.0')
-    implementation('com.palantir.roboslack:roboslack-api:1.3.0')
-    implementation('com.palantir.roboslack:roboslack-webhook:1.3.0')
-
-    //github
-    implementation('com.github.javafaker:javafaker:1.0.2')
-
     //appium
     implementation('io.appium:java-client:7.5.1')
 
     //selenium
     implementation('org.seleniumhq.selenium:selenium-java:3.141.59')
-    implementation('io.github.bonigarcia:webdrivermanager:4.0.0')
-
-    implementation('org.postgresql:postgresql:42.2.1')
-    implementation('commons-dbutils:commons-dbutils:1.7')
-    implementation('org.jeasy:easy-random:4.2.0')
-    implementation('org.jdbi:jdbi:2.78')
-    implementation("javax.annotation:javax.annotation-api:1.3.2")
-
-    // generic wait
-    implementation('org.awaitility:awaitility:4.0.3')
 }
 
 
@@ -96,11 +63,11 @@ tasks.withType(Test) {
             timeline              : System.getProperty('timeline', 'true'),
 
             browser               : System.getProperty('browser', 'chrome'),
-            headless              : System.getProperty('headless', 'false'),
+            headless              : System.getProperty('headless', 'true'),
             webFeed               : System.getProperty('webFeed', 'transferGoWeb'),
 
             //mobile
-            mobileFeed            : System.getProperty('mobileFeed', 'calculator'),
+            mobileFeed            : System.getProperty('mobileFeed', 'sampleAppTestFeed'),
             hub                   : System.getProperty('hub', 'browserstack'),
             target                : System.getProperty('target', 'android'),
             runMode               : System.getProperty('runMode', 'local'),
@@ -115,7 +82,7 @@ task runTransferGoWebTests(type: Test) {
     outputs.upToDateWhen { false }
     useTestNG {
         parallel = "methods"
-        threadCount = 2
+        threadCount = 1
         includeGroups System.getProperty("tags", "transferGoWeb")
         testLogging.showStandardStreams = true
         useDefaultListeners true
@@ -138,7 +105,7 @@ task runMobileTests(type: Test) {
         listeners << 'com.testvagrant.ekam.mobile.listeners.MobileDriverListener'
         listeners << 'com.testvagrant.ekam.commons.listeners.ReportListener'
         listeners << 'com.testvagrant.ekam.integrations.slack.SlackListener'
-        listeners << 'com.testvagrant.ekam.commons.listeners.OptimusDashboardListener'
+//        listeners << 'com.testvagrant.ekam.commons.listeners.OptimusDashboardListener'
         outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
     }
 }
@@ -182,7 +149,6 @@ task saveHistory(type: Copy) {
 }
 
 
-
 clean {
     if (!System.getenv('CI')) {
         delete "$projectDir/allure-report"
@@ -195,5 +161,5 @@ tasks.runMobileTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runApiTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.build.mustRunAfter 'clean'
 tasks.runTransferGoWebTests.finalizedBy('allureReport')
-tasks.runMobileTests.finalizedBy('allureReport')
-tasks.runApiTests.finalizedBy('allureReport')
+//tasks.runMobileTests.finalizedBy('allureReport')
+//tasks.runApiTests.finalizedBy('allureReport')

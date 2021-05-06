@@ -1,0 +1,53 @@
+{
+  "targets": [
+    {
+      "app": "sample_app.apk",
+      "platform": "android",
+      "desiredCapabilities": {
+        "automationName": "UiAutomator2",
+        "newCommandTimeout": 300,
+        "autoGrantPermissions": true,
+        "appWaitActivity": "com.swaglabsmobileapp.MainActivity",
+        "noReset": true,
+        "avdLaunchTimeout": 300,
+        "autoAcceptAlerts": true,
+        "useKeystore": false
+      }
+    },
+    {
+      "app": "<appname.ipa>/<appname.app>",
+      "platform": "iOS",
+      "desiredCapabilities": {
+        "newCommandTimeout": 300,
+        "autoGrantPermissions": true,
+        "noReset": true,
+        "avdLaunchTimeout": 300,
+        "autoAcceptAlerts": true,
+        "useKeystore": false
+      }
+    }
+  ],
+  "serverArguments": [
+    "--log-level info"
+  ],
+  "executables": {
+    "appiumJSPath": "",
+    "nodePath": ""
+  },
+  "deviceFilters": {
+    "platformVersion": {
+      "include": [
+      ],
+      "operator": "",
+      "exclude": []
+    },
+    "model": {
+      "include": [],
+      "exclude": []
+    },
+    "udid": {
+      "include": [],
+      "exclude": []
+    }
+  }
+}

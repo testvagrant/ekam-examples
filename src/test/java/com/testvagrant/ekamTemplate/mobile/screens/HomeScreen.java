@@ -5,10 +5,10 @@ import org.openqa.selenium.By;
 
 public class HomeScreen extends MobileScreen {
 
-    private final By homeMenu = queryByContentDesc("test-Menu");
+//    private final By homeMenu = queryByContentDesc("test-Menu");
 
     public HomeScreen menuDisplayed() {
-        element(homeMenu).waitUntilDisplayed();
+//        element(homeMenu).waitUntilDisplayed();
         return this;
     }
 

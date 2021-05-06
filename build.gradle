@@ -8,7 +8,7 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    mavenLocal()
+//    mavenLocal()
     jcenter()
     maven { url "http://palantir.bintray.com/releases" }
 }

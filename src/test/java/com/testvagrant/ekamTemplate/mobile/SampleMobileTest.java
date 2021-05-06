@@ -10,7 +10,7 @@ public class SampleMobileTest extends EkamTest {
 
   @Test(groups = "mobile")
   public void login() {
-    LoginScreen loginScreen = Activity().getInstance(LoginScreen.class);
-    loginScreen.login("standard_user", "secret_sauce").menuDisplayed();
+//    LoginScreen loginScreen = Activity().getInstance(LoginScreen.class);
+//    loginScreen.login("standard_user", "secret_sauce").menuDisplayed();
   }
 }

@@ -5,14 +5,14 @@ import org.openqa.selenium.By;
 
 public class LoginScreen extends MobileScreen {
 
-  private final By usernameTextBox = queryByContentDesc("test-Username");
-  private final By passwordTextBox = queryByContentDesc("test-Password");
-  private final By loginButton = queryByContentDesc("test-LOGIN");
+//  private final By usernameTextBox = queryByContentDesc("test-Username");
+//  private final By passwordTextBox = queryByContentDesc("test-Password");
+//  private final By loginButton = queryByContentDesc("test-LOGIN");
 
   public HomeScreen login(String username, String password) {
-    textbox(usernameTextBox).setText(username);
-    textbox(passwordTextBox).setText(password);
-    element(loginButton).click();
+//    textbox(usernameTextBox).setText(username);
+//    textbox(passwordTextBox).setText(password);
+//    element(loginButton).click();
     return createInstance(HomeScreen.class);
   }
 }

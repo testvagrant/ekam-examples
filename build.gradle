@@ -43,7 +43,7 @@ tasks.withType(Test) {
             timeline              : System.getProperty('timeline', 'true'),
 
             browser               : System.getProperty('browser', 'chrome'),
-            headless              : System.getProperty('headless', 'true'),
+            headless              : System.getProperty('headless', 'false'),
             webFeed               : System.getProperty('webFeed', 'webTestFeed'),
 
             //mobile
@@ -51,7 +51,7 @@ tasks.withType(Test) {
             hub                   : System.getProperty('hub', 'browserstack'),
             target                : System.getProperty('target', 'android'),
             runMode               : System.getProperty('runMode', 'local'),
-            switchView            : System.getProperty("switchView", "true"),
+            switchView            : System.getProperty("switchView", "false"),
 
             //Report
             slackNotif            : System.getProperty('slackNotif', 'false'), //Global => On Failures
@@ -59,17 +59,16 @@ tasks.withType(Test) {
     ]
 }
 
-task runTransferGoWebTests(type: Test) {
+task runWebTests(type: Test) {
     outputs.upToDateWhen { false }
     useTestNG {
         parallel = "methods"
-        threadCount = 1
+        threadCount = 2
         includeGroups System.getProperty("tags", "web")
         testLogging.showStandardStreams = true
         useDefaultListeners true
         listeners << 'com.testvagrant.ekam.web.listeners.WebDriverListener'
         listeners << 'com.testvagrant.ekam.integrations.slack.SlackListener'
-        listeners << 'com.testvagrant.ekam.commons.listeners.ReportListener'
         listeners << 'com.testvagrant.ekam.commons.listeners.OptimusDashboardListener'
         outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
     }
@@ -84,7 +83,6 @@ task runMobileTests(type: Test) {
         testLogging.showStandardStreams = true
         useDefaultListeners true
         listeners << 'com.testvagrant.ekam.mobile.listeners.MobileDriverListener'
-        listeners << 'com.testvagrant.ekam.commons.listeners.ReportListener'
         listeners << 'com.testvagrant.ekam.integrations.slack.SlackListener'
         listeners << 'com.testvagrant.ekam.commons.listeners.OptimusDashboardListener'
         outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
@@ -137,10 +135,10 @@ clean {
 }
 
 // Execution Rules
-tasks.runTransferGoWebTests.dependsOn 'clean', 'build', 'createReportDir'
+tasks.runWebTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runMobileTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runApiTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.build.mustRunAfter 'clean'
-tasks.runTransferGoWebTests.finalizedBy('allureReport')
+tasks.runWebTests.finalizedBy('allureReport')
 tasks.runMobileTests.finalizedBy('allureReport')
 tasks.runApiTests.finalizedBy('allureReport')

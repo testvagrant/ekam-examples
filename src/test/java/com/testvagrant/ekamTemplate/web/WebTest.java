@@ -2,14 +2,15 @@ package com.testvagrant.ekamTemplate.web;
 
 import com.testvagrant.ekamTemplate.EkamTest;
 import com.testvagrant.ekamTemplate.web.pages.TransferGoPage;
+import com.testvagrant.ekamTemplate.web.pages.TransferGoPageNormal;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.testvagrant.ekam.commons.LayoutInitiator.Page;
 
-@Test(groups = "web")
 public class WebTest extends EkamTest {
 
+  @Test(groups = {"web", "ekam"})
   public void shouldCheckRatesAreInRange() {
     TransferGoPage transferGoPage = Page(TransferGoPage.class);
 
@@ -30,7 +31,7 @@ public class WebTest extends EkamTest {
   }
 
   public void shouldCheckRatesAreInRangeCopy() {
-    TransferGoPage transferGoPage = Page(TransferGoPage.class);
+    TransferGoPageNormal transferGoPage = Page(TransferGoPageNormal.class);
     Double receivingAmount =
         transferGoPage
             //

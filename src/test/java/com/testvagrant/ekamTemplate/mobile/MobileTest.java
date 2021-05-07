@@ -7,9 +7,9 @@ import org.testng.annotations.Test;
 
 import static com.testvagrant.ekam.commons.ActivityInitiator.Screen;
 
+@Test(groups = {"mobile", "ekam"}, enabled = true)
 public class MobileTest extends EkamTest {
 
-  @Test(groups = "mobile", enabled = true)
   public void loginWithValidCredentials() {
     LoginScreen loginScreen = Screen(LoginScreen.class);
     boolean loginSuccessful =
@@ -21,7 +21,6 @@ public class MobileTest extends EkamTest {
     Assert.assertTrue(loginSuccessful);
   }
 
-  @Test(groups = "mobile", enabled = true)
   public void usernameRequiredErrorMessageShouldBeDisplayed() {
     LoginScreen loginScreen = Screen(LoginScreen.class);
     String errorMessage =
@@ -33,7 +32,6 @@ public class MobileTest extends EkamTest {
     Assert.assertEquals(errorMessage, "Username is required");
   }
 
-  @Test(groups = "mobile", enabled = true)
   public void passwordRequiredErrorMessageShouldBeDisplayed() {
     LoginScreen loginScreen = Screen(LoginScreen.class);
     String errorMessage =
@@ -46,7 +44,6 @@ public class MobileTest extends EkamTest {
     Assert.assertEquals(errorMessage, "Password is required");
   }
 
-  @Test(groups = "mobile", enabled = true)
   public void loginWithInvalidCredentials() {
     LoginScreen loginScreen = Screen(LoginScreen.class);
     String errorMessage =

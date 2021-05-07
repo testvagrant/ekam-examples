@@ -76,7 +76,7 @@ task runTransferGoWebTests(type: Test) {
 task runMobileTests(type: Test) {
     outputs.upToDateWhen { false }
     useTestNG {
-        parallel = "methods"
+        parallel = "classes"
         threadCount = 1
         includeGroups System.getProperty("tags", "mobile")
         testLogging.showStandardStreams = true

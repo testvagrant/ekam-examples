@@ -5,13 +5,13 @@ import com.testvagrant.ekamTemplate.mobile.screens.LoginScreen;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.testvagrant.ekam.commons.ActivityInitiator.Activity;
+import static com.testvagrant.ekam.commons.ActivityInitiator.Screen;
 
-@Test(groups = "mobile")
 public class MobileTest extends EkamTest {
 
+  @Test(groups = "mobile", enabled = true)
   public void loginWithValidCredentials() {
-    LoginScreen loginScreen = Activity(LoginScreen.class);
+    LoginScreen loginScreen = Screen(LoginScreen.class);
     boolean loginSuccessful =
         loginScreen
             //
@@ -21,8 +21,9 @@ public class MobileTest extends EkamTest {
     Assert.assertTrue(loginSuccessful);
   }
 
+  @Test(groups = "mobile", enabled = true)
   public void usernameRequiredErrorMessageShouldBeDisplayed() {
-    LoginScreen loginScreen = Activity(LoginScreen.class);
+    LoginScreen loginScreen = Screen(LoginScreen.class);
     String errorMessage =
         loginScreen
             //
@@ -32,8 +33,9 @@ public class MobileTest extends EkamTest {
     Assert.assertEquals(errorMessage, "Username is required");
   }
 
+  @Test(groups = "mobile", enabled = true)
   public void passwordRequiredErrorMessageShouldBeDisplayed() {
-    LoginScreen loginScreen = Activity(LoginScreen.class);
+    LoginScreen loginScreen = Screen(LoginScreen.class);
     String errorMessage =
         loginScreen
             //
@@ -44,8 +46,9 @@ public class MobileTest extends EkamTest {
     Assert.assertEquals(errorMessage, "Password is required");
   }
 
+  @Test(groups = "mobile", enabled = true)
   public void loginWithInvalidCredentials() {
-    LoginScreen loginScreen = Activity(LoginScreen.class);
+    LoginScreen loginScreen = Screen(LoginScreen.class);
     String errorMessage =
         loginScreen
             //

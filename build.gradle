@@ -15,7 +15,8 @@ repositories {
 
 dependencies {
     // ekam
-    implementation('com.testvagrant.ekam:ekam:0.0.2-alpha')
+    implementation('com.testvagrant.ekam:ekam:0.0.3-alpha')
+    implementation('io.appium:java-client:7.5.1')
 
     // selenium
     implementation('org.seleniumhq.selenium:selenium-java:3.141.59')
@@ -50,6 +51,7 @@ tasks.withType(Test) {
             hub                   : System.getProperty('hub', 'browserstack'),
             target                : System.getProperty('target', 'android'),
             runMode               : System.getProperty('runMode', 'local'),
+            switchView            : System.getProperty("switchView", "true"),
 
             //Report
             slackNotif            : System.getProperty('slackNotif', 'false'), //Global => On Failures
@@ -76,8 +78,8 @@ task runTransferGoWebTests(type: Test) {
 task runMobileTests(type: Test) {
     outputs.upToDateWhen { false }
     useTestNG {
-        parallel = "classes"
-        threadCount = 1
+        parallel = "methods"
+        threadCount = 2
         includeGroups System.getProperty("tags", "mobile")
         testLogging.showStandardStreams = true
         useDefaultListeners true

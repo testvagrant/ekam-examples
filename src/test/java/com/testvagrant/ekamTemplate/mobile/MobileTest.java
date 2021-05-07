@@ -1,7 +1,7 @@
 package com.testvagrant.ekamTemplate.mobile;
 
 import com.testvagrant.ekamTemplate.EkamTest;
-import com.testvagrant.ekamTemplate.mobile.screens.LoginScreen;
+import com.testvagrant.ekamTemplate.mobile.screens.android.LoginScreen;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

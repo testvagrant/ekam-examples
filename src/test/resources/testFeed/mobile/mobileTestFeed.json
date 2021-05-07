@@ -10,20 +10,17 @@
         "appWaitActivity": "com.swaglabsmobileapp.MainActivity",
         "noReset": true,
         "avdLaunchTimeout": 300,
-        "autoAcceptAlerts": true,
         "useKeystore": false
       }
     },
     {
-      "app": "<appname.ipa>/<appname.app>",
+      "app": "sample_app.app",
       "platform": "iOS",
       "desiredCapabilities": {
-        "newCommandTimeout": 300,
-        "autoGrantPermissions": true,
         "noReset": true,
-        "avdLaunchTimeout": 300,
         "autoAcceptAlerts": true,
-        "useKeystore": false
+        "newCommandTimeout": 300,
+        "maxInstances": 1
       }
     }
   ],
@@ -46,7 +43,8 @@
       "exclude": []
     },
     "udid": {
-      "include": [],
+      "include": [
+      ],
       "exclude": []
     }
   }

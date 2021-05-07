@@ -8,47 +8,26 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-//    mavenLocal()
+    mavenLocal()
     jcenter()
     maven { url "http://palantir.bintray.com/releases" }
 }
 
 dependencies {
-    implementation('com.testvagrant.ekam:ekam:0.0.1-alpha')
+    // ekam
+    implementation('com.testvagrant.ekam:ekam:0.0.2-alpha')
 
-    // Use TestNG framework, also requires calling test.useTestNG() below
-    implementation('org.testng:testng:6.14.3')
+    // selenium
+    implementation('org.seleniumhq.selenium:selenium-java:3.141.59')
 
-    // cucumber
-    implementation('io.cucumber:cucumber-java:4.8.1')
-    implementation('io.cucumber:cucumber-testng:4.8.1')
-
-    //google
+    // google
     implementation('com.google.guava:guava:28.0-jre')
     implementation('com.google.inject:guice:4.2.3')
-    implementation("com.google.protobuf:protobuf-java:3.9.1")
 
-    // retrofit
-    implementation('com.squareup.retrofit2:retrofit:2.9.0')
-    implementation('com.squareup.retrofit2:converter-gson:2.9.0')
-
-    //okhttp3
-    implementation('com.squareup.okhttp3:logging-interceptor:3.8.0')
-
-    //grpc
-    implementation('io.grpc:grpc-all:1.19.0')
-
-    //lombok
-    implementation('org.projectlombok:lombok:1.18.12')
-    annotationProcessor('org.projectlombok:lombok:1.18.12')
-    testImplementation('org.projectlombok:lombok:1.18.12')
-    testAnnotationProcessor('org.projectlombok:lombok:1.18.12')
-
-    //appium
-    implementation('io.appium:java-client:7.5.1')
-
-    //selenium
-    implementation('org.seleniumhq.selenium:selenium-java:3.141.59')
+    // Test frameworks
+    testImplementation('org.testng:testng:6.14.3')
+    testImplementation('io.cucumber:cucumber-java:4.8.1')
+    testImplementation('io.cucumber:cucumber-testng:4.8.1')
 }
 
 
@@ -64,10 +43,10 @@ tasks.withType(Test) {
 
             browser               : System.getProperty('browser', 'chrome'),
             headless              : System.getProperty('headless', 'true'),
-            webFeed               : System.getProperty('webFeed', 'transferGoWeb'),
+            webFeed               : System.getProperty('webFeed', 'webTestFeed'),
 
             //mobile
-            mobileFeed            : System.getProperty('mobileFeed', 'sampleAppTestFeed'),
+            mobileFeed            : System.getProperty('mobileFeed', 'mobileTestFeed'),
             hub                   : System.getProperty('hub', 'browserstack'),
             target                : System.getProperty('target', 'android'),
             runMode               : System.getProperty('runMode', 'local'),
@@ -83,7 +62,7 @@ task runTransferGoWebTests(type: Test) {
     useTestNG {
         parallel = "methods"
         threadCount = 1
-        includeGroups System.getProperty("tags", "transferGoWeb")
+        includeGroups System.getProperty("tags", "web")
         testLogging.showStandardStreams = true
         useDefaultListeners true
         listeners << 'com.testvagrant.ekam.web.listeners.WebDriverListener'
@@ -105,7 +84,7 @@ task runMobileTests(type: Test) {
         listeners << 'com.testvagrant.ekam.mobile.listeners.MobileDriverListener'
         listeners << 'com.testvagrant.ekam.commons.listeners.ReportListener'
         listeners << 'com.testvagrant.ekam.integrations.slack.SlackListener'
-//        listeners << 'com.testvagrant.ekam.commons.listeners.OptimusDashboardListener'
+        listeners << 'com.testvagrant.ekam.commons.listeners.OptimusDashboardListener'
         outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
     }
 }
@@ -161,5 +140,5 @@ tasks.runMobileTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runApiTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.build.mustRunAfter 'clean'
 tasks.runTransferGoWebTests.finalizedBy('allureReport')
-//tasks.runMobileTests.finalizedBy('allureReport')
-//tasks.runApiTests.finalizedBy('allureReport')
+tasks.runMobileTests.finalizedBy('allureReport')
+tasks.runApiTests.finalizedBy('allureReport')

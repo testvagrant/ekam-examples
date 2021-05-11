@@ -2,6 +2,7 @@ package com.testvagrant.ekamTemplate.web.pages;
 
 import com.testvagrant.ekam.atoms.web.WebPage;
 import com.testvagrant.ekam.commons.annotations.Step;
+import com.testvagrant.ekam.commons.annotations.WebStep;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -15,14 +16,14 @@ public class TransferGoPage extends WebPage {
   private final By receivingInTextboxSelector = query("(//input[@autocomplete='amount-input'])[2]");
   private final By acceptCookiesSelector = query("//a[contains(text(), 'Accept')]");
 
-  @Step(description = "Accept Cookies")
+  @WebStep(description = "Accept Cookies")
   public TransferGoPage acceptCookies() {
     element(acceptCookiesSelector).waitUntilDisplayed();
     element(acceptCookiesSelector).click();
     return this;
   }
 
-  @Step(keyword = "And", description = "selects sending from country")
+  @WebStep(keyword = "And", description = "selects sending from country")
   public TransferGoPage selectSendingFromCountry(String country) {
     String initialSendingFromValue = getSendingFromValue();
     textbox(sendingFromCountrySelector).setText(country);
@@ -32,14 +33,14 @@ public class TransferGoPage extends WebPage {
     return this;
   }
 
-  @Step(keyword = "And", description = "select sending from amount")
+  @WebStep(keyword = "And", description = "select sending from amount")
   public TransferGoPage setSendingFromAmount(String amount) {
     textbox(sendingFromTextboxSelector).setText(Keys.COMMAND + "A");
     textbox(sendingFromTextboxSelector).setText(amount);
     return this;
   }
 
-  @Step(keyword = "And", description = "enters receiving amount")
+  @WebStep(keyword = "And", description = "enters receiving amount")
   public Double getReceivingInAmount() {
     String rate = textbox(receivingInTextboxSelector).getAttributeValue("value");
     if (!rate.isEmpty()) {
@@ -50,7 +51,7 @@ public class TransferGoPage extends WebPage {
     return 0.00;
   }
 
-  @Step(keyword = "When", description = "selects receiving country")
+  @WebStep(keyword = "When", description = "selects receiving country")
   public TransferGoPage selectReceivingInCountry(String country) {
     String initialReceivingInValue = getReceivingInValue();
     textbox(receivingInCountrySelector).setText(country);

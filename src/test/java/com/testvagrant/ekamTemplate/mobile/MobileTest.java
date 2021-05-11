@@ -5,7 +5,8 @@ import com.testvagrant.ekamTemplate.mobile.screens.android.LoginScreen;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.testvagrant.ekam.commons.ActivityInitiator.Screen;
+import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
+
 
 @Test(groups = {"mobile", "ekam"}, enabled = true)
 public class MobileTest extends EkamTest {

@@ -1,6 +1,8 @@
 package com.testvagrant.ekamTemplate.mobile.screens.android;
 
 import com.testvagrant.ekam.atoms.mobile.MobileScreen;
+import com.testvagrant.ekam.commons.annotations.MobileStep;
+import com.testvagrant.ekam.commons.annotations.Step;
 import com.testvagrant.ekam.commons.annotations.SwitchView;
 import com.testvagrant.ekamTemplate.mobile.screens.ios.LoginView;
 import org.openqa.selenium.By;
@@ -12,6 +14,7 @@ public class LoginScreen extends MobileScreen {
   private final By loginButton = queryByContentDesc("test-LOGIN");
   private final By errorMessageContainer = query("//*[@content-desc = 'test-Error message']/*");
 
+  @MobileStep(description = "Login")
   public HomeScreen login(String username, String password) {
     setUsername(username);
     setPassword(password);
@@ -20,6 +23,7 @@ public class LoginScreen extends MobileScreen {
   }
 
   @SwitchView(view = LoginView.class)
+  @MobileStep(description = "Click Login")
   public LoginScreen clickLogin() {
     element(loginButton).click();
     return this;

@@ -43,7 +43,7 @@ tasks.withType(Test) {
             timeline              : System.getProperty('timeline', 'true'),
 
             browser               : System.getProperty('browser', 'chrome'),
-            headless              : System.getProperty('headless', 'false'),
+            headless              : System.getProperty('headless', 'true'),
             webFeed               : System.getProperty('webFeed', 'webTestFeed'),
 
             //mobile

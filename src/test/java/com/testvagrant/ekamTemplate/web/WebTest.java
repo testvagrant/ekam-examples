@@ -8,9 +8,9 @@ import org.testng.annotations.Test;
 
 import static com.testvagrant.ekam.commons.LayoutInitiator.Page;
 
+@Test(groups = {"web", "ekam"})
 public class WebTest extends EkamTest {
 
-  @Test(groups = {"web", "ekam"})
   public void shouldCheckRatesAreInRange() {
     TransferGoPage transferGoPage = Page(TransferGoPage.class);
 
@@ -31,7 +31,7 @@ public class WebTest extends EkamTest {
   }
 
   public void shouldCheckRatesAreInRangeCopy() {
-    TransferGoPageNormal transferGoPage = Page(TransferGoPageNormal.class);
+    TransferGoPage transferGoPage = Page(TransferGoPage.class);
     Double receivingAmount =
         transferGoPage
             //

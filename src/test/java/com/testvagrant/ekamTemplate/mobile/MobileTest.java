@@ -1,44 +1,64 @@
 package com.testvagrant.ekamTemplate.mobile;
 
+import com.google.inject.Inject;
 import com.testvagrant.ekamTemplate.EkamTest;
-import com.testvagrant.ekamTemplate.mobile.screens.android.LoginScreen;
+import com.testvagrant.ekamTemplate.data.clients.UseCaseGenerator;
+import com.testvagrant.ekamTemplate.data.models.ConfirmationDetails;
+import com.testvagrant.ekamTemplate.data.models.Credentials;
+import com.testvagrant.ekamTemplate.data.models.UseCase;
+import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowNavigator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
-
-
-@Test(groups = {"mobile", "ekam"}, enabled = true)
+@Test(groups = "mobile")
 public class MobileTest extends EkamTest {
 
-  public void loginWithValidCredentials() {
-    LoginScreen loginScreen = Screen(LoginScreen.class);
-    boolean loginSuccessful =
-        loginScreen
-            //
-            .login("standard_user", "secret_sauce")
-            .menuDisplayed();
+  @Inject UseCaseGenerator useCaseGenerator;
 
+  @Inject WorkflowNavigator workflowNavigator;
+
+  public void buyAProduct() {
+    UseCase happyPathCase = useCaseGenerator.happyPathCase();
+    ConfirmationDetails confirmationDetails =
+        workflowNavigator
+            .forUseCase(happyPathCase)
+            .proceedTo()
+            .confirmation()
+            .getConfirmationDetails();
+    confirmationDetails.assertThatOrderIsConfirmed();
+  }
+
+  public void loginWithValidCredentials() {
+    UseCase happyPathCase = useCaseGenerator.happyPathCase();
+    boolean loginSuccessful =
+        workflowNavigator
+                .forUseCase(happyPathCase)
+                .proceedTo()
+                .products()
+                .isMenuDisplayed();
     Assert.assertTrue(loginSuccessful);
   }
 
   public void usernameRequiredErrorMessageShouldBeDisplayed() {
-    LoginScreen loginScreen = Screen(LoginScreen.class);
+    UseCase emptyLoginCredentialsCase = useCaseGenerator.invalidLoginCredentialsCase();
     String errorMessage =
-        loginScreen
-            //
+        workflowNavigator
+            .forUseCase(emptyLoginCredentialsCase)
+            .proceedTo()
+            .login()
+            .setPassword(emptyLoginCredentialsCase.getData(Credentials.class).getPassword())
             .clickLogin()
             .getErrorMessage();
-
     Assert.assertEquals(errorMessage, "Username is required");
   }
 
   public void passwordRequiredErrorMessageShouldBeDisplayed() {
-    LoginScreen loginScreen = Screen(LoginScreen.class);
+    UseCase emptyLoginCredentialsCase = useCaseGenerator.invalidLoginCredentialsCase();
     String errorMessage =
-        loginScreen
-            //
-            .setUsername("standard_user")
+        workflowNavigator
+            .proceedTo()
+            .login()
+            .setUsername(emptyLoginCredentialsCase.getData(Credentials.class).getUsername())
             .clickLogin()
             .getErrorMessage();
 
@@ -46,13 +66,13 @@ public class MobileTest extends EkamTest {
   }
 
   public void loginWithInvalidCredentials() {
-    LoginScreen loginScreen = Screen(LoginScreen.class);
+    UseCase invalidLoginCredentialsCase = useCaseGenerator.invalidLoginCredentialsCase();
     String errorMessage =
-        loginScreen
-            //
-            .setUsername("standard_user")
-            .setPassword("password")
-            .clickLogin()
+        workflowNavigator
+            .forUseCase(invalidLoginCredentialsCase)
+            .proceedTo()
+            .login()
+            .login(invalidLoginCredentialsCase.getData(Credentials.class))
             .getErrorMessage();
 
     Assert.assertEquals(

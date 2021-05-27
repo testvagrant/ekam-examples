@@ -1,0 +1,12 @@
+{
+  "authorizedUser": [
+    {
+      "username": "standard_user_1_qa",
+      "password": "P@ssword"
+    },
+    {
+      "username": "standard_user_2_qa",
+      "password": "P@$$word"
+    }
+  ]
+}

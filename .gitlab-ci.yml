@@ -4,9 +4,6 @@ stages:
   - test
   - deploy
 
-before_script:
-  - chmod +x ./gradlew
-
 .download_history: &download_history
   after_script:
     - mkdir backup && cd backup

@@ -1,20 +1,22 @@
-package com.testvagrant.ekamTemplate.mobile.workflows;
+package com.testvagrant.ekamTemplate.mobile.workflows.definitions;
 
 import com.testvagrant.ekamTemplate.data.models.Address;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.screens.android.CheckoutScreen;
+import com.testvagrant.ekamTemplate.mobile.workflows.FulfillCondition;
+import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowDefinition;
 
 import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
 
-public class CheckoutWorkflow extends WorkflowDefinition {
+public class CheckoutDefinition extends WorkflowDefinition {
 
-  public CheckoutWorkflow(UseCase useCase) {
+  public CheckoutDefinition(UseCase useCase) {
     super(useCase);
   }
 
   @Override
-  public ConfirmationWorkflow next() {
-    return proceedToNext(fulfillCondition(), new ConfirmationWorkflow(useCase));
+  public ConfirmationDefinition next() {
+    return proceedToNext(fulfillCondition(), new ConfirmationDefinition(useCase));
   }
 
   @Override
@@ -22,7 +24,7 @@ public class CheckoutWorkflow extends WorkflowDefinition {
     return Screen(CheckoutScreen.class);
   }
 
-  protected FulfillCondition<CheckoutWorkflow> fulfillCondition() {
+  protected FulfillCondition<CheckoutDefinition> fulfillCondition() {
     return () -> {
       Screen(CheckoutScreen.class).checkout(useCase.getData(Address.class));
       return this;

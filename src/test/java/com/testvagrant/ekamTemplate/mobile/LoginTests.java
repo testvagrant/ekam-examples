@@ -5,7 +5,8 @@ import com.testvagrant.ekamTemplate.EkamTest;
 import com.testvagrant.ekamTemplate.data.clients.UseCaseGenerator;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
-import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowNavigator;
+import com.testvagrant.ekamTemplate.mobile.workflows.definitions.LoginDefinition;
+import com.testvagrant.ekamTemplate.mobile.workflows.docs.BuyAProductDoc;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,22 +15,18 @@ public class LoginTests extends EkamTest {
 
   @Inject private UseCaseGenerator useCaseGenerator;
 
-  @Inject private WorkflowNavigator workflowNavigator;
-
   public void loginWithValidCredentials() {
     UseCase happyPathCase = useCaseGenerator.happyPathCase();
-        boolean loginSuccessful =
-            workflowNavigator.forUseCase(happyPathCase).proceedTo().products().create().isMenuDisplayed();
+        boolean loginSuccessful = new BuyAProductDoc(happyPathCase)
+                .products()
+                .create()
+                .isMenuDisplayed();
         Assert.assertTrue(loginSuccessful);
   }
 
   public void usernameRequiredErrorMessageShouldBeDisplayed() {
     UseCase emptyLoginCredentialsCase = useCaseGenerator.invalidLoginCredentialsCase();
-    String errorMessage =
-        workflowNavigator
-            .forUseCase(emptyLoginCredentialsCase)
-            .proceedTo()
-            .login()
+    String errorMessage = new LoginDefinition(emptyLoginCredentialsCase)
             .create()
             .setPassword(emptyLoginCredentialsCase.getData(Credentials.class).getPassword())
             .clickLogin()
@@ -39,10 +36,7 @@ public class LoginTests extends EkamTest {
 
   public void passwordRequiredErrorMessageShouldBeDisplayed() {
     UseCase emptyLoginCredentialsCase = useCaseGenerator.invalidLoginCredentialsCase();
-    String errorMessage =
-        workflowNavigator
-            .proceedTo()
-            .login()
+    String errorMessage = new LoginDefinition(emptyLoginCredentialsCase)
                 .create()
             .setUsername(emptyLoginCredentialsCase.getData(Credentials.class).getUsername())
             .clickLogin()
@@ -53,11 +47,7 @@ public class LoginTests extends EkamTest {
 
   public void loginWithInvalidCredentials() {
     UseCase invalidLoginCredentialsCase = useCaseGenerator.invalidLoginCredentialsCase();
-    String errorMessage =
-        workflowNavigator
-            .forUseCase(invalidLoginCredentialsCase)
-            .proceedTo()
-            .login()
+    String errorMessage = new LoginDefinition(invalidLoginCredentialsCase)
                 .create()
             .login(invalidLoginCredentialsCase.getData(Credentials.class))
             .getErrorMessage();

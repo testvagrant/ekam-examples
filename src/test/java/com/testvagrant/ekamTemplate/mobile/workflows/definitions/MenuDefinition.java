@@ -1,18 +1,18 @@
-package com.testvagrant.ekamTemplate.mobile.workflows;
+package com.testvagrant.ekamTemplate.mobile.workflows.definitions;
 
 import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.screens.android.MenuScreen;
-import com.testvagrant.ekamTemplate.mobile.screens.android.ProductsScreen;
+import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowDefinition;
 
-public class MenuWorkflow extends WorkflowDefinition {
+public class MenuDefinition extends WorkflowDefinition {
 
-  public MenuWorkflow(UseCase useCase) {
+  public MenuDefinition(UseCase useCase) {
     super(useCase);
   }
 
   @Override
-  public MenuWorkflow next() {
+  public MenuDefinition next() {
     return this;
   }
 

@@ -1,21 +1,23 @@
-package com.testvagrant.ekamTemplate.mobile.workflows;
+package com.testvagrant.ekamTemplate.mobile.workflows.definitions;
 
 import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekamTemplate.data.models.Product;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.screens.android.ProductsScreen;
+import com.testvagrant.ekamTemplate.mobile.workflows.FulfillCondition;
+import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowDefinition;
 
-public class ProductsWorkFlow extends WorkflowDefinition {
+public class ProductsDefinition extends WorkflowDefinition {
 
   private final Product product;
 
-  public ProductsWorkFlow(UseCase useCase) {
+  public ProductsDefinition(UseCase useCase) {
     super(useCase);
     this.product = useCase.getData(Product.class);
   }
 
   @Override
-  public ProductsWorkFlow next() {
+  public ProductsDefinition next() {
     return  this;
   }
 
@@ -24,24 +26,24 @@ public class ProductsWorkFlow extends WorkflowDefinition {
     return LayoutInitiator.Screen(ProductsScreen.class);
   }
 
-  FulfillCondition<ProductsWorkFlow> navToCartFulfillCondition = () -> {
+  FulfillCondition<ProductsDefinition> navToCartFulfillCondition = () -> {
     Product product = LayoutInitiator.Screen(ProductsScreen.class).selectProduct(useCase.getData(Product.class));
     useCase.addToUseCase(product);
     LayoutInitiator.Screen(ProductsScreen.class).navToCart();
     return this;
   };
 
-  FulfillCondition<ProductsWorkFlow> navToMenuFulfillCondition =  () -> {
+  FulfillCondition<ProductsDefinition> navToMenuFulfillCondition =  () -> {
     LayoutInitiator.Screen(ProductsScreen.class).navToMenu();
     return this;
   };
 
-  public CartWorkflow cart() {
-    return proceedToNext(navToCartFulfillCondition, new CartWorkflow(useCase));
+  public CartDefinition cart() {
+    return proceedToNext(navToCartFulfillCondition, new CartDefinition(useCase));
   }
 
-  public MenuWorkflow menu() {
-    return proceedToNext(navToMenuFulfillCondition,  new MenuWorkflow(useCase));
+  public MenuDefinition menu() {
+    return proceedToNext(navToMenuFulfillCondition,  new MenuDefinition(useCase));
   }
 
 }

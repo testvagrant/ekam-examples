@@ -1,17 +1,18 @@
-package com.testvagrant.ekamTemplate.mobile.workflows;
+package com.testvagrant.ekamTemplate.mobile.workflows.definitions;
 
 import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.screens.android.ConfirmationScreen;
+import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowDefinition;
 
-public class ConfirmationWorkflow extends WorkflowDefinition {
+public class ConfirmationDefinition extends WorkflowDefinition {
 
-  public ConfirmationWorkflow(UseCase useCase) {
+  public ConfirmationDefinition(UseCase useCase) {
     super(useCase);
   }
 
   @Override
-  public ConfirmationWorkflow next() {
+  public ConfirmationDefinition next() {
     return this;
   }
 

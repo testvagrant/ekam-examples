@@ -9,7 +9,7 @@ import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowNavigator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@Test(groups = "mobile")
+@Test(groups = {"mobile"})
 public class LoginTests extends EkamTest {
 
   @Inject private UseCaseGenerator useCaseGenerator;

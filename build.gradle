@@ -56,8 +56,8 @@ dependencies {
 
 tasks.withType(Test) {
     systemProperties = [
-            apiConfig             : System.getProperty('apiConfig', 'apiConfig'),
-            dbConfig              : System.getProperty('dbConfig', 'dbConfig'),
+            apiConfig             : System.getProperty('apiConfig', 'qaConfig'),
+            dbConfig              : System.getProperty('dbConfig', 'qaDbConfig'),
             env                   : System.getProperty('env'),
 
             tags                  : System.getProperty('tags', 'smoke'),
@@ -103,6 +103,9 @@ task runWebTests(type: Test) {
 task runMobileEmulationTests(type: Test) {
     outputs.upToDateWhen { false }
     systemProperties = [
+            apiConfig             : System.getProperty('apiConfig', 'qaConfig'),
+            dbConfig              : System.getProperty('dbConfig', 'qaDbConfig'),
+            env                   : System.getProperty('env'),
             tags                  : System.getProperty('tags', 'smoke'),
             logs                  : System.getProperty('logs', 'false'),
             timeline              : System.getProperty('timeline', 'true'),
@@ -149,6 +152,8 @@ task runMobileTests(type: Test) {
 
 task runMobileTestsOnCloud(type: Test) {
     systemProperties = [
+            apiConfig             : System.getProperty('apiConfig', 'qaConfig'),
+            dbConfig              : System.getProperty('dbConfig', 'qaDbConfig'),
             env                   : System.getProperty('env'),
 
             tags                  : System.getProperty('tags', 'smoke'),

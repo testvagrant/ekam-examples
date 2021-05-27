@@ -8,9 +8,5 @@ import com.testvagrant.ekam.commons.modules.SwitchViewModule;
 import org.testng.annotations.Guice;
 
 /** A single testbase to cover web/mobile/api tests for an application */
-@Guice(modules =
-        {
-                CacheModule.class,
-                LocaleModule.class
-        })
+@Guice(modules = {CacheModule.class, LocaleModule.class})
 public class EkamTest {}

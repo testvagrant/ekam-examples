@@ -3,7 +3,6 @@ package com.testvagrant.ekamTemplate.mobile;
 import com.google.inject.Inject;
 import com.testvagrant.ekamTemplate.EkamTest;
 import com.testvagrant.ekamTemplate.data.clients.UseCaseGenerator;
-import com.testvagrant.ekamTemplate.data.models.ConfirmationDetails;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowNavigator;
@@ -19,32 +18,20 @@ public class MobileTest extends EkamTest {
 
   public void buyAProduct() {
     UseCase happyPathCase = useCaseGenerator.happyPathCase();
-    ConfirmationDetails confirmationDetails =
-        workflowNavigator
-            .forUseCase(happyPathCase)
-            .proceedTo()
-            .confirmation()
-            .getConfirmationDetails();
-    confirmationDetails.assertThatOrderIsConfirmed();
+    workflowNavigator
+        .forUseCase(happyPathCase)
+        .proceedTo()
+        .confirmation()
+        .getConfirmationDetails()
+        .orderConfirmed()
+        .isTrue();
   }
 
   public void loginWithValidCredentials() {
     UseCase happyPathCase = useCaseGenerator.happyPathCase();
     boolean loginSuccessful =
-        workflowNavigator
-                .forUseCase(happyPathCase)
-                .proceedTo()
-                .products()
-                .isMenuDisplayed();
+        workflowNavigator.forUseCase(happyPathCase).proceedTo().products().isMenuDisplayed();
     Assert.assertTrue(loginSuccessful);
-  }
-
-  public void navToMenu() {
-    UseCase happyPathCase = useCaseGenerator.happyPathCase();
-            workflowNavigator
-                    .forUseCase(happyPathCase)
-                    .proceedTo()
-                    .menu();
   }
 
   public void usernameRequiredErrorMessageShouldBeDisplayed() {

@@ -21,7 +21,6 @@ public class ConfirmationWorkflow extends SwagWorkflow {
         return () -> this;
     }
 
-
     @Override
     public ConfirmationScreen confirmation() {
         return LayoutInitiator.Screen(ConfirmationScreen.class);

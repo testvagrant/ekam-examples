@@ -18,6 +18,10 @@ dependencies {
     implementation('io.appium:java-client:7.5.1')
     implementation('com.testvagrant.ekam:ekam-api:0.0.2-alpha')
 
+
+    //AssertJ
+    implementation 'org.assertj:assertj-core:3.19.0'
+
     // selenium
     implementation('org.seleniumhq.selenium:selenium-java:3.141.59')
 

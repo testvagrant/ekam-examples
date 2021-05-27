@@ -6,7 +6,7 @@ public abstract class WorkflowDefinition<T> {
 
     protected abstract T next();
 
-    public T splash() { return proceedTo(); }
+    public T current() { return proceedTo(); }
 
     protected T proceedTo() {
         return (T) ((WorkflowDefinition) fulfillCondition().apply()).next();

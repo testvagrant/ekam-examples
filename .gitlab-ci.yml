@@ -2,6 +2,7 @@ image: "gradle:5.1-jdk8"
 stages:
   - build
   - test
+  - deploy
 
 .download_history: &download_history
   after_script:
@@ -63,10 +64,10 @@ build:
 web_tests:
   stage: test
   variables:
-    TASK: runWebTests
-    EKAM_SERVER_URL: http://34.66.233.63/
-    WEB_FEED: webTestFeed
-    SESSIONS: 2
+    TASK: "runWebTests"
+    EKAM_SERVER_URL: "http://34.66.233.63/"
+    WEB_FEED: "webTestFeed"
+    SESSIONS: "2"
   image: krishnanandb/chromeheadless
   <<: *web_test_template
   <<: *download_history
@@ -74,25 +75,25 @@ web_tests:
 mobile:android:tests:
   stage: test
   variables:
-    TASK: runMobileTests
-    EKAM_SERVER_URL: http://34.66.233.63/
-    MOBILE_FEED: mobileTestFeedRemote
-    RUN_MODE: remote
-    SWITCH_VIEW: false
-    TARGET: android
-    SESSIONS: 2
+    TASK: "runMobileTests"
+    EKAM_SERVER_URL: "http://34.66.233.63/"
+    MOBILE_FEED: "mobileTestFeedRemote"
+    RUN_MODE: "remote"
+    SWITCH_VIEW: "false"
+    TARGET: "android"
+    SESSIONS: "2"
   <<: *mobile_test_template
   <<: *download_history
 
 mobile:ios:tests:
   stage: test
   variables:
-    TASK: runMobileTests
-    EKAM_SERVER_URL: http://34.66.233.63/
-    MOBILE_FEED: mobileTestFeedRemote
-    RUN_MODE: remote
-    SWITCH_VIEW: true
-    TARGET: iOS
+    TASK: "runMobileTests"
+    EKAM_SERVER_URL: "http://34.66.233.63/"
+    MOBILE_FEED: "mobileTestFeedRemote"
+    RUN_MODE: "remote"
+    SWITCH_VIEW: "true"
+    TARGET: "iOS"
   <<: *mobile_test_template
   <<: *download_history
 

@@ -13,7 +13,6 @@ public class ProductsScreen extends MobileScreen {
   private final By menu = queryByContentDesc("test-Menu");
   private final By cart = queryByContentDesc("test-Cart");
 
-
   @SwitchView(view = ProductsView.class)
   @MobileStep(description = "Menu is displayed")
   public boolean isMenuDisplayed() {
@@ -25,7 +24,7 @@ public class ProductsScreen extends MobileScreen {
   public Product selectProduct(Product product) {
     Item item = new Item();
     String textValue = element(item.itemTitle).getTextValue();
-    if(textValue.equals(product.getName())) {
+    if (textValue.equals(product.getName())) {
       element(item.addToCart).click();
     }
     return product;
@@ -43,9 +42,8 @@ public class ProductsScreen extends MobileScreen {
     return LayoutInitiator.Screen(MenuScreen.class);
   }
 
-
   private class Item {
-    public  final By addToCart = queryByContentDesc("test-ADD TO CART");
+    public final By addToCart = queryByContentDesc("test-ADD TO CART");
     private final By itemTitle = queryByContentDesc("test-Item title");
     private final By itemPrice = queryByContentDesc("test-Price");
   }

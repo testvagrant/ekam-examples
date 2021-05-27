@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    private String name;
-    private String description;
-    private String price;
+  private String name;
+  private String description;
+  private String price;
 }

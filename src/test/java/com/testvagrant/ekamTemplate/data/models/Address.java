@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Address {
-    private String firstName;
-    private String lastName;
-    private String zipCode;
+  private String firstName;
+  private String lastName;
+  private String zipCode;
 }

@@ -10,6 +10,7 @@ repositories {
     mavenCentral()
     mavenLocal()
     jcenter()
+    mavenLocal()
     maven { url "http://palantir.bintray.com/releases" }
 }
 
@@ -48,6 +49,8 @@ dependencies {
 
     // jdbi
     implementation('org.jdbi:jdbi:2.78')
+
+    implementation('org.awaitility:awaitility:4.0.3')
 }
 
 

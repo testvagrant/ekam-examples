@@ -27,6 +27,7 @@ public class ScrollFunctions {
     try {
       driver.hideKeyboard();
     } catch (WebDriverException e) {
+      e.printStackTrace();
     }
   }
 

@@ -81,7 +81,7 @@ web:responsive:tests:
   variables:
     TASK: "runWebTests"
     EKAM_SERVER_URL: "http://34.66.233.63/"
-    WEB_FEED: "webTestFeed"
+    WEB_FEED: "mobileEmulationTestFeed"
     SESSIONS: "2"
   image: krishnanandb/chromeheadless
   <<: *web_test_template

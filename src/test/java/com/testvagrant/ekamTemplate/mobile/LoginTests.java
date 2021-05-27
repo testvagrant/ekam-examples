@@ -1,7 +1,6 @@
 package com.testvagrant.ekamTemplate.mobile;
 
 import com.google.inject.Inject;
-import com.testvagrant.ekamTemplate.EkamTest;
 import com.testvagrant.ekamTemplate.data.clients.UseCaseGenerator;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
@@ -10,22 +9,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @Test(groups = "mobile")
-public class MobileTest extends EkamTest {
+public class LoginTests {
 
-  @Inject UseCaseGenerator useCaseGenerator;
+  @Inject private UseCaseGenerator useCaseGenerator;
 
-  @Inject WorkflowNavigator workflowNavigator;
-
-  public void buyAProduct() {
-    UseCase happyPathCase = useCaseGenerator.happyPathCase();
-    workflowNavigator
-        .forUseCase(happyPathCase)
-        .proceedTo()
-        .confirmation()
-        .getConfirmationDetails()
-        .orderConfirmed()
-        .isTrue();
-  }
+  @Inject private WorkflowNavigator workflowNavigator;
 
   public void loginWithValidCredentials() {
     UseCase happyPathCase = useCaseGenerator.happyPathCase();

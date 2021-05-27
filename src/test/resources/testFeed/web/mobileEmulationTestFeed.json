@@ -18,8 +18,10 @@
       "extensions": [
       ],
       "experimentalOptions": {
+        "mobileEmulation": {
+          "deviceName": "Pixel 2 XL"
+        }
       }
-
     },
     {
       "target": "<browser2>",

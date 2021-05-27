@@ -18,7 +18,7 @@ public class PostsServiceTest {
   @Inject private PostsClient postsClient;
 
   public void getPostsShouldReturnAValue() {
-    List<Posts> posts = postsClient.getToDos();
+    List<Posts> posts = postsClient.getPosts();
     Assert.assertTrue(posts.size() > 1);
   }
 }

@@ -3,6 +3,7 @@ package com.testvagrant.ekamTemplate.mobile.screens.android;
 import com.google.inject.Inject;
 import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.LayoutInitiator;
+import com.testvagrant.ekam.commons.annotations.MobileStep;
 import com.testvagrant.ekamTemplate.data.models.Product;
 import com.testvagrant.ekamTemplate.mobile.functions.ScrollFunctions;
 import com.testvagrant.ekamTemplate.mobile.screens.android.locators.ProductLocators;
@@ -14,6 +15,7 @@ public class CartScreen extends MobileScreen {
     By checkout = queryByContentDesc("test-CHECKOUT");
     By continueShopping = queryByContentDesc("test-CONTINUE SHOPPING");
 
+    @MobileStep(description = "Get Cart Details")
     public Product getCartDetails() {
         ProductLocators cart = new ProductLocators();
         return Product
@@ -24,6 +26,7 @@ public class CartScreen extends MobileScreen {
                 .build();
     }
 
+    @MobileStep(description = "Get Cart Overview")
     public Product getCartOverview() {
         ProductLocators cart = new ProductLocators();
         return Product
@@ -34,11 +37,13 @@ public class CartScreen extends MobileScreen {
                 .build();
     }
 
+    @MobileStep(description = "Navigate to checkout")
     public CheckoutScreen navToCheckout() {
         element(checkout).click();
         return LayoutInitiator.Screen(CheckoutScreen.class);
     }
 
+    @MobileStep(description = "Continue Shopping")
     public ProductsScreen continueShopping() {
         element(continueShopping).click();
         return LayoutInitiator.Screen(ProductsScreen.class);

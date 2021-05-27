@@ -30,12 +30,14 @@ public class LoginScreen extends MobileScreen {
   }
 
   @SwitchView(view = LoginView.class)
+  @MobileStep(keyword = "And", description = "Enter Username")
   public LoginScreen setUsername(String username) {
     textbox(usernameTextBox).setText(username);
     return this;
   }
 
   @SwitchView(view = LoginView.class)
+  @MobileStep(keyword = "And", description = "Enter password")
   public LoginScreen setPassword(String password) {
     textbox(passwordTextBox).setText(password);
     return this;

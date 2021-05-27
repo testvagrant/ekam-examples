@@ -1,0 +1,121 @@
+image: "gradle:5.1-jdk8"
+stages:
+  - build
+  - test
+  - deploy
+
+.download_history: &download_history
+  after_script:
+    - mkdir backup && cd backup
+    - "curl --location --output report.zip --request GET \"https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/jobs/artifacts/master/download?job=pages\" --header \"Authorization: Bearer ${CI_DEPLOY_TOKEN}\" || true"
+    - ls
+    - cd ../
+    - ls
+    - (cp -r backup/report/results/ allure-report/results) || true
+    - ./gradlew allureReport
+
+.web_test_template: &web_test_template
+  allow_failure: true
+  stage: test
+  script:
+    - echo $CI_JOB_URL
+    - ./gradlew $TASK -DpublishToDashboard=true -Dsessions=$SESSIONS -DekamServerUrl=$EKAM_SERVER_URL -DwebFeed=$WEB_FEED -DslackNotif=$SLACK_NOTIF
+  artifacts:
+    when: always
+    name: "$CI_COMMIT_REF_NAME"
+    paths:
+      - ./allure-report/ui/*
+      - logs/
+    expire_in: 14 days
+
+.mobile_test_template: &mobile_test_template
+  allow_failure: true
+  stage: test
+  script:
+    - echo $CI_JOB_URL
+    - ./gradlew $TASK -DpublishToDashboard=true -Dsessions=$SESSIONS -DekamServerUrl=$EKAM_SERVER_URL -DmobileFeed=$MOBILE_FEED -DrunMode=$RUN_MODE -DswitchView=$SWITCH_VIEW -Dtarget=$TARGET -DslackNotif=false
+  artifacts:
+    when: always
+    name: "$CI_COMMIT_REF_NAME"
+    paths:
+      - ./allure-report/ui/*
+      - logs/
+    expire_in: 14 days
+
+.api_test_template: &api_test_template
+  allow_failure: true
+  stage: test
+  script:
+    - echo $CI_JOB_URL
+    - ./gradlew $TASK -Dsessions=2 -DslackNotif=false
+  artifacts:
+    when: always
+    name: "$CI_COMMIT_REF_NAME"
+    paths:
+      - ./allure-report/ui/*
+      - logs/
+    expire_in: 14 days
+
+build:
+  stage: build
+  script:
+    - ./gradlew clean build
+
+web_tests:
+  stage: test
+  variables:
+    TASK: "runWebTests"
+    EKAM_SERVER_URL: "http://34.66.233.63/"
+    WEB_FEED: "webTestFeed"
+    SESSIONS: "2"
+  image: krishnanandb/chromeheadless
+  <<: *web_test_template
+  <<: *download_history
+
+mobile:android:tests:
+  stage: test
+  variables:
+    TASK: "runMobileTests"
+    EKAM_SERVER_URL: "http://34.66.233.63/"
+    MOBILE_FEED: "mobileTestFeedRemote"
+    RUN_MODE: "remote"
+    SWITCH_VIEW: "false"
+    TARGET: "android"
+    SESSIONS: "2"
+  <<: *mobile_test_template
+  <<: *download_history
+
+mobile:ios:tests:
+  stage: test
+  variables:
+    TASK: "runMobileTests"
+    EKAM_SERVER_URL: "http://34.66.233.63/"
+    MOBILE_FEED: "mobileTestFeedRemote"
+    RUN_MODE: "remote"
+    SWITCH_VIEW: "true"
+    TARGET: "iOS"
+  <<: *mobile_test_template
+  <<: *download_history
+
+api_tests:
+  stage: test
+  variables:
+    TASK: runApiTests
+  <<: *api_test_template
+  <<: *download_history
+
+
+pages:
+  stage: deploy
+  when: always
+  dependencies:
+    - web_tests
+  script:
+    - mv allure-report/ui/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - master
+

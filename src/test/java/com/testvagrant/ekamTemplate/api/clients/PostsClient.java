@@ -3,6 +3,7 @@ package com.testvagrant.ekamTemplate.api.clients;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.testvagrant.ekam.api.retrofit.RetrofitBaseClient;
+import com.testvagrant.ekam.commons.annotations.APIStep;
 import com.testvagrant.ekamTemplate.api.clients.services.PostsService;
 import com.testvagrant.ekamTemplate.api.models.response.Posts;
 import retrofit2.Call;
@@ -18,7 +19,7 @@ public class PostsClient extends RetrofitBaseClient {
     service = httpClient.getService(PostsService.class);
   }
 
-  public List<Posts> getToDos() {
+  public List<Posts> getPosts() {
     Call<List<Posts>> call = service.getPosts();
     return httpClient.execute(call);
   }

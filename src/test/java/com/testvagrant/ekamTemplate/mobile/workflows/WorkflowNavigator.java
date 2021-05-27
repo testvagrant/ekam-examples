@@ -12,6 +12,6 @@ public class WorkflowNavigator implements Navigator<SwagWorkflow> {
   }
 
   public SwagWorkflow proceedTo() {
-    return new SplashWorkflow(useCase);
+    return new SwagWorkflow(useCase);
   }
 }

@@ -1,5 +1,6 @@
 package com.testvagrant.ekamTemplate.data.models;
 
+import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowDefinition;
 import lombok.*;
 
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @SuppressWarnings("unchecked")
 public class UseCase {
   @Builder.Default private Map<Class<?>, Object> useCases = new ConcurrentHashMap<>();
+  private WorkflowDefinition currentState;
 
   public UseCase addToUseCase(Object data) {
     useCases.put(data.getClass(), data);
@@ -21,5 +23,10 @@ public class UseCase {
 
   public <Q> Q getData(Class<Q> tClass) {
     return (Q) useCases.get(tClass);
+  }
+
+  public WorkflowDefinition persist(WorkflowDefinition currentState) {
+      this.currentState = currentState;
+      return currentState;
   }
 }

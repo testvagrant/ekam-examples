@@ -2,7 +2,7 @@ package com.testvagrant.ekamTemplate.mobile.workflows;
 
 import com.testvagrant.ekamTemplate.data.models.UseCase;
 
-public class SplashWorkflow extends SwagWorkflow {
+public class SplashWorkflow extends WorkflowDefinition {
 
   private UseCase useCase;
 
@@ -11,12 +11,13 @@ public class SplashWorkflow extends SwagWorkflow {
   }
 
   @Override
-  protected FulfillCondition<SwagWorkflow> fulfillCondition() {
-    return () -> this;
+  public LoginWorkflow next() {
+    return proceedToNext(() -> this, new LoginWorkflow(useCase));
   }
 
   @Override
-  protected SwagWorkflow next() {
-    return new LoginWorkflow(useCase);
+  public Object create() {
+    return this;
   }
+
 }

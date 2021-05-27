@@ -6,27 +6,26 @@ import com.testvagrant.ekamTemplate.mobile.screens.android.CheckoutScreen;
 
 import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
 
-public class CheckoutWorkflow extends SwagWorkflow {
+public class CheckoutWorkflow extends WorkflowDefinition {
 
   public CheckoutWorkflow(UseCase useCase) {
     super(useCase);
   }
 
   @Override
-  protected SwagWorkflow next() {
-    return new ConfirmationWorkflow(useCase);
+  public ConfirmationWorkflow next() {
+    return proceedToNext(fulfillCondition(), new ConfirmationWorkflow(useCase));
   }
 
   @Override
-  protected FulfillCondition<SwagWorkflow> fulfillCondition() {
+  public CheckoutScreen create() {
+    return Screen(CheckoutScreen.class);
+  }
+
+  protected FulfillCondition<CheckoutWorkflow> fulfillCondition() {
     return () -> {
       Screen(CheckoutScreen.class).checkout(useCase.getData(Address.class));
       return this;
     };
-  }
-
-  @Override
-  public CheckoutScreen checkout() {
-    return Screen(CheckoutScreen.class);
   }
 }

@@ -9,6 +9,7 @@ import com.testvagrant.ekamTemplate.api.models.response.Posts;
 import org.testng.Assert;
 import org.testng.annotations.Guice;
 import org.testng.annotations.Test;
+import retrofit2.Response;
 
 import java.util.List;
 
@@ -19,7 +20,14 @@ import static com.testvagrant.ekam.commons.LayoutInitiator.*;
 public class PostsServiceTest {
 
   public void getPostsShouldReturnAValue() {
-    List<Posts> posts = Client(PostsClient.class).getPosts();
+    PostsClient postsClient = Client(PostsClient.class);
+    List<Posts> posts = postsClient.getPosts(); //REST API
     Assert.assertTrue(posts.size() > 1);
+
+    Response<List<Posts>> postResponse = postsClient.getPost("1");
+    Assert.assertEquals(postResponse.code(), 200);
+    Assert.assertEquals(postResponse.body().size(), 1);
+    Posts body = postResponse.body().get(0);
+    System.out.println(body);
   }
 }

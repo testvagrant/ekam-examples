@@ -5,27 +5,19 @@ import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.screens.android.MenuScreen;
 import com.testvagrant.ekamTemplate.mobile.screens.android.ProductsScreen;
 
-public class MenuWorkflow extends SwagWorkflow {
+public class MenuWorkflow extends WorkflowDefinition {
 
   public MenuWorkflow(UseCase useCase) {
     super(useCase);
   }
 
   @Override
-  protected SwagWorkflow next() {
+  public MenuWorkflow next() {
     return this;
   }
 
   @Override
-  protected FulfillCondition<SwagWorkflow> fulfillCondition() {
-    return () -> {
-      LayoutInitiator.Screen(ProductsScreen.class).navToMenu();
-      return this;
-    };
-  }
-
-  @Override
-  public MenuScreen menu() {
+  public MenuScreen create() {
     return LayoutInitiator.Screen(MenuScreen.class);
   }
 }

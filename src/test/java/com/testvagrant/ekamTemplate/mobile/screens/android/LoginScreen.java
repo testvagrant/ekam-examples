@@ -3,6 +3,7 @@ package com.testvagrant.ekamTemplate.mobile.screens.android;
 import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.annotations.MobileStep;
 import com.testvagrant.ekam.commons.annotations.SwitchView;
+import com.testvagrant.ekam.commons.injectors.Injectors;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
 import com.testvagrant.ekamTemplate.mobile.screens.ios.LoginView;
 import org.openqa.selenium.By;

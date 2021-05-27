@@ -1,17 +1,22 @@
 package com.testvagrant.ekamTemplate.mobile.workflows;
 
-@SuppressWarnings({"unchecked", "rawtypes"})
-public abstract class WorkflowDefinition<T> {
+import com.testvagrant.ekamTemplate.data.models.UseCase;
 
-  protected abstract FulfillCondition<T> fulfillCondition();
+public abstract class WorkflowDefinition implements Workflow {
 
-  protected abstract T next();
+  protected UseCase useCase;
 
-  public T current() {
-    return proceedTo();
+  public WorkflowDefinition() {
+    this.useCase = UseCase.builder().build();
   }
 
-  protected T proceedTo() {
-    return (T) ((WorkflowDefinition) fulfillCondition().apply()).next();
+  public WorkflowDefinition(UseCase useCase) {
+    this.useCase = useCase;
+  }
+
+  protected <Current, Next> Next proceedToNext(FulfillCondition<Current> fulfillCondition, Next whereTo) {
+    fulfillCondition.apply();
+    useCase.persist((WorkflowDefinition) whereTo);
+    return whereTo;
   }
 }

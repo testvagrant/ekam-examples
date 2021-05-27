@@ -18,9 +18,9 @@ public class LoginTests extends EkamTest {
 
   public void loginWithValidCredentials() {
     UseCase happyPathCase = useCaseGenerator.happyPathCase();
-    boolean loginSuccessful =
-        workflowNavigator.forUseCase(happyPathCase).proceedTo().products().isMenuDisplayed();
-    Assert.assertTrue(loginSuccessful);
+        boolean loginSuccessful =
+            workflowNavigator.forUseCase(happyPathCase).proceedTo().products().create().isMenuDisplayed();
+        Assert.assertTrue(loginSuccessful);
   }
 
   public void usernameRequiredErrorMessageShouldBeDisplayed() {
@@ -30,6 +30,7 @@ public class LoginTests extends EkamTest {
             .forUseCase(emptyLoginCredentialsCase)
             .proceedTo()
             .login()
+            .create()
             .setPassword(emptyLoginCredentialsCase.getData(Credentials.class).getPassword())
             .clickLogin()
             .getErrorMessage();
@@ -42,6 +43,7 @@ public class LoginTests extends EkamTest {
         workflowNavigator
             .proceedTo()
             .login()
+                .create()
             .setUsername(emptyLoginCredentialsCase.getData(Credentials.class).getUsername())
             .clickLogin()
             .getErrorMessage();
@@ -56,6 +58,7 @@ public class LoginTests extends EkamTest {
             .forUseCase(invalidLoginCredentialsCase)
             .proceedTo()
             .login()
+                .create()
             .login(invalidLoginCredentialsCase.getData(Credentials.class))
             .getErrorMessage();
 

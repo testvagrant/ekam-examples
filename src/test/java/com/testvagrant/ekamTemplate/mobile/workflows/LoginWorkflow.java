@@ -6,27 +6,25 @@ import com.testvagrant.ekamTemplate.mobile.screens.android.LoginScreen;
 
 import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
 
-public class LoginWorkflow extends SwagWorkflow {
+public class LoginWorkflow extends WorkflowDefinition {
 
   public LoginWorkflow(UseCase useCase) {
     super(useCase);
   }
 
-  @Override
-  protected SwagWorkflow next() {
-    return new ProductsWorkFlow(useCase);
-  }
-
-  @Override
-  protected FulfillCondition<SwagWorkflow> fulfillCondition() {
-    return () -> {
-      login().login(useCase.getData(Credentials.class));
+  protected FulfillCondition<LoginWorkflow> loginCondition = () -> {
+      create().login(useCase.getData(Credentials.class));
       return this;
-    };
+  };
+
+
+  @Override
+  public ProductsWorkFlow next() {
+    return proceedToNext(loginCondition, new ProductsWorkFlow(useCase));
   }
 
   @Override
-  public LoginScreen login() {
+  public LoginScreen create() {
     return Screen(LoginScreen.class);
   }
 }

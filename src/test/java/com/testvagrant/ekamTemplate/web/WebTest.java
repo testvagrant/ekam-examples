@@ -2,13 +2,12 @@ package com.testvagrant.ekamTemplate.web;
 
 import com.testvagrant.ekamTemplate.EkamTest;
 import com.testvagrant.ekamTemplate.web.pages.TransferGoPage;
-import com.testvagrant.ekamTemplate.web.pages.TransferGoPageNormal;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.testvagrant.ekam.commons.LayoutInitiator.Page;
 
-@Test(groups = {"web", "ekam"})
+@Test(groups = {"web"})
 public class WebTest extends EkamTest {
 
   public void shouldCheckRatesAreInRange() {

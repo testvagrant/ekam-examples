@@ -20,6 +20,8 @@ public abstract class SwagWorkflow extends WorkflowDefinition<SwagWorkflow> {
 
     public CartScreen cart(){ return proceedTo().cart(); }
 
+    public MenuScreen menu(){ return proceedTo().menu(); }
+
     public CheckoutScreen checkout(){ return proceedTo().checkout(); }
 
     public ConfirmationScreen confirmation(){ return proceedTo().confirmation(); }

@@ -39,6 +39,14 @@ public class MobileTest extends EkamTest {
     Assert.assertTrue(loginSuccessful);
   }
 
+  public void navToMenu() {
+    UseCase happyPathCase = useCaseGenerator.happyPathCase();
+            workflowNavigator
+                    .forUseCase(happyPathCase)
+                    .proceedTo()
+                    .menu();
+  }
+
   public void usernameRequiredErrorMessageShouldBeDisplayed() {
     UseCase emptyLoginCredentialsCase = useCaseGenerator.invalidLoginCredentialsCase();
     String errorMessage =

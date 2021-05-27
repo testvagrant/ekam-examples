@@ -10,14 +10,14 @@ import org.openqa.selenium.By;
 
 public class ProductsScreen extends MobileScreen {
 
-  private final By homeMenu = queryByContentDesc("test-Menu");
+  private final By menu = queryByContentDesc("test-Menu");
   private final By cart = queryByContentDesc("test-Cart");
 
 
   @SwitchView(view = ProductsView.class)
   @MobileStep(description = "Menu is displayed")
   public boolean isMenuDisplayed() {
-    return element(homeMenu).isDisplayed();
+    return element(menu).isDisplayed();
   }
 
   @SwitchView(view = ProductsView.class)
@@ -34,6 +34,11 @@ public class ProductsScreen extends MobileScreen {
   public CartScreen navToCart() {
     element(cart).click();
     return LayoutInitiator.Screen(CartScreen.class);
+  }
+
+  public MenuScreen navToMenu() {
+    element(menu).click();
+    return LayoutInitiator.Screen(MenuScreen.class);
   }
 
 

@@ -21,7 +21,7 @@ public class ProductsScreen extends MobileScreen {
   }
 
   @SwitchView(view = ProductsView.class)
-  @MobileStep(description = "Selecting product")
+  @MobileStep(description = "Selects product")
   public Product selectProduct(Product product) {
     Item item = new Item();
     String textValue = element(item.itemTitle).getTextValue();
@@ -31,11 +31,13 @@ public class ProductsScreen extends MobileScreen {
     return product;
   }
 
+  @MobileStep(description = "Navigate to cart")
   public CartScreen navToCart() {
     element(cart).click();
     return LayoutInitiator.Screen(CartScreen.class);
   }
 
+  @MobileStep(description = "Navigate to menu")
   public MenuScreen navToMenu() {
     element(menu).click();
     return LayoutInitiator.Screen(MenuScreen.class);

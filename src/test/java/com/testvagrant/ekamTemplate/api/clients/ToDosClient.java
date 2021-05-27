@@ -20,6 +20,7 @@ public class ToDosClient extends RetrofitBaseClient {
     service = httpClient.getService(ToDosService.class);
   }
 
+  @APIStep(description = "Get TODOS")
   public List<ToDos> getToDos() {
     Call<List<ToDos>> call = service.getToDos();
     return httpClient.execute(call);

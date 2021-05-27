@@ -19,7 +19,11 @@ stages:
   stage: test
   script:
     - echo $CI_JOB_URL
-    - ./gradlew $TASK -DpublishToDashboard=true -Dsessions=$SESSIONS -DekamServerUrl=$EKAM_SERVER_URL -DwebFeed=$WEB_FEED -DslackNotif=$SLACK_NOTIF
+    - echo $TASK
+    - echo $SESSIONS
+    - echo $WEB_FEED
+    - echo $EKAM_SERVER_URL
+    - ./gradlew $TASK -DpublishToDashboard=true -Dsessions=$SESSIONS -DekamServerUrl=$EKAM_SERVER_URL -DwebFeed=$WEB_FEED -DslackNotif=false
   artifacts:
     when: always
     name: "$CI_COMMIT_REF_NAME"
@@ -72,6 +76,17 @@ web_tests:
   <<: *web_test_template
   <<: *download_history
 
+web:responsive:tests:
+  stage: test
+  variables:
+    TASK: "runWebTests"
+    EKAM_SERVER_URL: "http://34.66.233.63/"
+    WEB_FEED: "webTestFeed"
+    SESSIONS: "2"
+  image: krishnanandb/chromeheadless
+  <<: *web_test_template
+  <<: *download_history
+
 mobile:android:tests:
   stage: test
   variables:
@@ -81,7 +96,7 @@ mobile:android:tests:
     RUN_MODE: "remote"
     SWITCH_VIEW: "false"
     TARGET: "android"
-    SESSIONS: "2"
+    SESSIONS: "3"
   <<: *mobile_test_template
   <<: *download_history
 
@@ -109,7 +124,7 @@ pages:
   stage: deploy
   when: always
   dependencies:
-    - web_tests
+    - mobile:android:tests
   script:
     - mv allure-report/ui/ public/
   artifacts:

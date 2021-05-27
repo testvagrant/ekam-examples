@@ -2,6 +2,7 @@ package com.testvagrant.ekamTemplate.api;
 
 import com.google.inject.Inject;
 import com.testvagrant.ekam.api.modules.PropertyModule;
+import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekam.commons.modules.InterceptorModule;
 import com.testvagrant.ekamTemplate.api.clients.PostsClient;
 import com.testvagrant.ekamTemplate.api.models.response.Posts;
@@ -11,14 +12,14 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static com.testvagrant.ekam.commons.LayoutInitiator.*;
+
 @Test(groups = "api")
 @Guice(modules = {PropertyModule.class, InterceptorModule.class})
 public class PostsServiceTest {
 
-  @Inject private PostsClient postsClient;
-
   public void getPostsShouldReturnAValue() {
-    List<Posts> posts = postsClient.getPosts();
+    List<Posts> posts = Client(PostsClient.class).getPosts();
     Assert.assertTrue(posts.size() > 1);
   }
 }

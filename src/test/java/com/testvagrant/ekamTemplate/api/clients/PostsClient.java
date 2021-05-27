@@ -19,6 +19,7 @@ public class PostsClient extends RetrofitBaseClient {
     service = httpClient.getService(PostsService.class);
   }
 
+  @APIStep(description = "Get Posts")
   public List<Posts> getPosts() {
     Call<List<Posts>> call = service.getPosts();
     return httpClient.execute(call);

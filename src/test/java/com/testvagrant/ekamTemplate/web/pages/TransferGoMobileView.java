@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import java.time.Duration;
-import java.util.regex.Pattern;
 
 public class TransferGoMobileView extends TransferGoPage {
   private final By sendingFromCountrySelector =
@@ -22,7 +21,9 @@ public class TransferGoMobileView extends TransferGoPage {
   @WebStep(keyword = "And", description = "selects sending from country")
   public TransferGoMobileView selectSendingFromCountry(String country) {
     String sendingFromValue = getSendingFromValue();
-    textbox(sendingFromCountrySelector).click();
+    Textbox sendingIn = textbox(sendingFromCountrySelector);
+    sendingIn.waitUntilDisplayed();
+    sendingIn.click();
     selectCountry(country);
     waitUntilSendingFromInValueNotToBe(sendingFromValue);
     return this;

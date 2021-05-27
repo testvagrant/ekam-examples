@@ -38,7 +38,9 @@ public class LockUserExampleDataClient extends DataSetsClient {
   }
 
   public void release(Credentials credentials) {
-    super.release(credentialsPredicate(credentials));
+    if (Objects.nonNull(credentials) && Objects.nonNull(credentials.getUsername())) {
+      super.release(credentialsPredicate(credentials));
+    }
   }
 
   private <T> Predicate<Map.Entry<String, LinkedTreeMap>> credentialsPredicate(

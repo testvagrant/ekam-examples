@@ -42,7 +42,7 @@ public class LockExampleTests {
     try {
       standardUser = dataClient.getAuthorizedUser(true);
       anotherStandardUser = dataClient.getAuthorizedUser(true);
-      Credentials oneMoreStandardUser = dataClient.getAuthorizedUser(true);
+      dataClient.getAuthorizedUser(true);
     } catch (Exception ex) {
       dataClient.release(standardUser);
       dataClient.release(anotherStandardUser);

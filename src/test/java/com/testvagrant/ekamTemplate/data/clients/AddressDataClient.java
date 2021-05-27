@@ -8,20 +8,20 @@ import com.testvagrant.ekamTemplate.data.models.Address;
 
 public class AddressDataClient extends DataSetsClient {
 
-    @Inject
-    public AddressDataClient(DataSetsCache dataSetsCache) {
-        super(dataSetsCache);
-    }
+  @Inject
+  public AddressDataClient(DataSetsCache dataSetsCache) {
+    super(dataSetsCache);
+  }
 
-    public Address getDeliveryAddress() {
-        return getAddress("deliveryAddress");
-    }
+  public Address getDeliveryAddress() {
+    return getAddress("deliveryAddress");
+  }
 
-    public Address getAddress(String addressKey) {
-        try {
-            return getValue(addressKey, Address.class);
-        } catch (NoSuchKeyException e) {
-            return Address.builder().build();
-        }
+  public Address getAddress(String addressKey) {
+    try {
+      return getValue(addressKey, Address.class);
+    } catch (NoSuchKeyException e) {
+      return Address.builder().build();
     }
+  }
 }

@@ -1,18 +1,14 @@
 package com.testvagrant.ekamTemplate.mobile.workflows;
 
-import com.testvagrant.ekam.commons.LayoutInitiator;
-import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.data.models.Product;
-import com.testvagrant.ekamTemplate.mobile.screens.android.CartScreen;
-import com.testvagrant.ekamTemplate.mobile.screens.android.ConfirmationScreen;
-import com.testvagrant.ekamTemplate.mobile.screens.android.MenuScreen;
+import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.screens.android.ProductsScreen;
 
-import static com.testvagrant.ekam.commons.LayoutInitiator.*;
+import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
 
 public class ProductsWorkFlow extends SwagWorkflow {
 
-  private Product product;
+  private final Product product;
 
   public ProductsWorkFlow(UseCase useCase) {
     super(useCase);
@@ -34,10 +30,8 @@ public class ProductsWorkFlow extends SwagWorkflow {
     };
   }
 
-
   @Override
   public ProductsScreen products() {
     return Screen(ProductsScreen.class);
   }
-
 }

@@ -1,29 +1,41 @@
 package com.testvagrant.ekamTemplate.mobile.workflows;
 
-
 import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.screens.android.*;
 
 public abstract class SwagWorkflow extends WorkflowDefinition<SwagWorkflow> {
 
-    protected UseCase useCase;
+  protected UseCase useCase;
 
-    public SwagWorkflow() { this.useCase = UseCase.builder().build(); }
+  public SwagWorkflow() {
+    this.useCase = UseCase.builder().build();
+  }
 
-    public SwagWorkflow(UseCase useCase) {
-        this.useCase = useCase;
-    }
+  public SwagWorkflow(UseCase useCase) {
+    this.useCase = useCase;
+  }
 
-    public LoginScreen login() { return proceedTo().login(); }
+  public LoginScreen login() {
+    return proceedTo().login();
+  }
 
-    public ProductsScreen products() {return proceedTo().products(); }
+  public ProductsScreen products() {
+    return proceedTo().products();
+  }
 
-    public CartScreen cart(){ return proceedTo().cart(); }
+  public CartScreen cart() {
+    return proceedTo().cart();
+  }
 
-    public MenuScreen menu(){ return proceedTo().menu(); }
+  public MenuScreen menu() {
+    return proceedTo().menu();
+  }
 
-    public CheckoutScreen checkout(){ return proceedTo().checkout(); }
+  public CheckoutScreen checkout() {
+    return proceedTo().checkout();
+  }
 
-    public ConfirmationScreen confirmation(){ return proceedTo().confirmation(); }
-
+  public ConfirmationScreen confirmation() {
+    return proceedTo().confirmation();
+  }
 }

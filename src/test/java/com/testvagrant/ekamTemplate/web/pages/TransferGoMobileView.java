@@ -89,12 +89,6 @@ public class TransferGoMobileView extends TransferGoPage {
     return textbox(sendingFromTextboxSelector).getAttributeValue("value");
   }
 
-  private String getAmount(String value) {
-    Pattern pattern = Pattern.compile("\\d+(\\.\\d{2})?|\\.\\d{2}");
-    String currency = pattern.matcher(value).replaceAll("");
-    return value.replaceAll(currency, "").trim();
-  }
-
   private void waitUntilReceivingInValueNotToBe(String value) {
     Awaitility.waitAtMost(Duration.ofSeconds(10))
         .until(() -> !getReceivingInValue().contains(value));

@@ -18,8 +18,9 @@ public class ConfirmationDetails {
   public AbstractBooleanAssert<?> orderConfirmed() {
     ConfirmationDetails confirmation_messages =
         LocaleFinder.findLocale("confirmation_messages", ConfirmationDetails.class);
-      boolean equals = confirmation_messages.message.equals(this.message)
-        && confirmation_messages.description.equals(this.description);
-       return assertThat(equals);
+    boolean equals =
+        confirmation_messages.message.equals(this.message)
+            && confirmation_messages.description.equals(this.description);
+    return assertThat(equals);
   }
 }

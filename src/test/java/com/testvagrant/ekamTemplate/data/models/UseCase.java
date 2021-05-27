@@ -10,16 +10,16 @@ import java.util.concurrent.ConcurrentHashMap;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@SuppressWarnings("unchecked")
 public class UseCase {
-    @Builder.Default
-    private Map<Class<?>,Object> useCases = new ConcurrentHashMap<>();
+  @Builder.Default private Map<Class<?>, Object> useCases = new ConcurrentHashMap<>();
 
-    public UseCase addToUseCase(Object data) {
-        useCases.put(data.getClass(), data);
-        return this;
-    }
+  public UseCase addToUseCase(Object data) {
+    useCases.put(data.getClass(), data);
+    return this;
+  }
 
-    public <Q> Q getData(Class<Q> tClass) {
-        return (Q) useCases.get(tClass);
-    }
+  public <Q> Q getData(Class<Q> tClass) {
+    return (Q) useCases.get(tClass);
+  }
 }

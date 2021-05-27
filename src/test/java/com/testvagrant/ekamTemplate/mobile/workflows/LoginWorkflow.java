@@ -1,12 +1,8 @@
 package com.testvagrant.ekamTemplate.mobile.workflows;
 
-import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
-import com.testvagrant.ekamTemplate.data.models.Product;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
-import com.testvagrant.ekamTemplate.mobile.screens.android.ConfirmationScreen;
 import com.testvagrant.ekamTemplate.mobile.screens.android.LoginScreen;
-import com.testvagrant.ekamTemplate.mobile.screens.android.ProductsScreen;
 
 import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
 

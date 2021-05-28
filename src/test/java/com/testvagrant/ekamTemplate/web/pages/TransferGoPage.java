@@ -2,9 +2,8 @@ package com.testvagrant.ekamTemplate.web.pages;
 
 import com.google.common.base.CharMatcher;
 import com.testvagrant.ekam.atoms.web.WebPage;
-import com.testvagrant.ekam.commons.annotations.SwitchView;
 import com.testvagrant.ekam.commons.annotations.WebStep;
-import com.testvagrant.ekam.commons.injectors.Injectors;
+import com.testvagrant.ekam.commons.annotations.WebSwitchView;
 import org.awaitility.Awaitility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -14,8 +13,10 @@ import java.util.regex.Pattern;
 
 public class TransferGoPage extends WebPage {
 
-  private final By sendingFromCountrySelector = query("(//*[contains(@class, 'country-input')])[1]");
-  private final By receivingInCountrySelector = query("(//*[contains(@class, 'country-input')])[2]");
+  private final By sendingFromCountrySelector =
+      query("(//*[contains(@class, 'country-input')])[1]");
+  private final By receivingInCountrySelector =
+      query("(//*[contains(@class, 'country-input')])[2]");
   private final By sendingFromTextboxSelector = query("(//input[@autocomplete='amount-input'])[1]");
   private final By receivingInTextboxSelector = query("(//input[@autocomplete='amount-input'])[2]");
   private final By acceptCookiesSelector = query("//a[contains(text(), 'Accept')]");
@@ -27,7 +28,7 @@ public class TransferGoPage extends WebPage {
     return this;
   }
 
-  @SwitchView(view = TransferGoMobileView.class, useInjector = Injectors.WEB_PAGE_INJECTOR)
+  @WebSwitchView(view = TransferGoMobileView.class)
   @WebStep(keyword = "And", description = "selects sending from country")
   public TransferGoPage selectSendingFromCountry(String country) {
     String initialSendingFromValue = getSendingFromValue();
@@ -38,7 +39,7 @@ public class TransferGoPage extends WebPage {
     return this;
   }
 
-  @SwitchView(view = TransferGoMobileView.class, useInjector = Injectors.WEB_PAGE_INJECTOR)
+  @WebSwitchView(view = TransferGoMobileView.class)
   @WebStep(keyword = "And", description = "select sending from amount")
   public TransferGoPage setSendingFromAmount(String amount) {
     textbox(sendingFromTextboxSelector).setText(Keys.COMMAND + "A");
@@ -46,7 +47,7 @@ public class TransferGoPage extends WebPage {
     return this;
   }
 
-  @SwitchView(view = TransferGoMobileView.class, useInjector = Injectors.WEB_PAGE_INJECTOR)
+  @WebSwitchView(view = TransferGoMobileView.class)
   @WebStep(keyword = "And", description = "enters receiving amount")
   public Double getReceivingInAmount() {
     String rate = textbox(receivingInTextboxSelector).getAttributeValue("value");
@@ -58,7 +59,7 @@ public class TransferGoPage extends WebPage {
     return 0.00;
   }
 
-  @SwitchView(view = TransferGoMobileView.class, useInjector = Injectors.WEB_PAGE_INJECTOR)
+  @WebSwitchView(view = TransferGoMobileView.class)
   @WebStep(keyword = "When", description = "selects receiving country")
   public TransferGoPage selectReceivingInCountry(String country) {
     String initialReceivingInValue = getReceivingInValue();

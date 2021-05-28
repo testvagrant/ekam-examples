@@ -44,6 +44,7 @@
     },
     "udid": {
       "include": [
+        "CBBDD2AD-AAD1-4BC9-B0AC-E11460CE227D", "emulator-5554"
       ],
       "exclude": []
     }

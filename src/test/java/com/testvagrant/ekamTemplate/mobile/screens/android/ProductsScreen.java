@@ -2,8 +2,8 @@ package com.testvagrant.ekamTemplate.mobile.screens.android;
 
 import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.LayoutInitiator;
+import com.testvagrant.ekam.commons.annotations.IOSSwitchView;
 import com.testvagrant.ekam.commons.annotations.MobileStep;
-import com.testvagrant.ekam.commons.annotations.SwitchView;
 import com.testvagrant.ekamTemplate.data.models.Product;
 import com.testvagrant.ekamTemplate.mobile.screens.ios.ProductsView;
 import org.openqa.selenium.By;
@@ -13,13 +13,12 @@ public class ProductsScreen extends MobileScreen {
   private final By menu = queryByContentDesc("test-Menu");
   private final By cart = queryByContentDesc("test-Cart");
 
-  @SwitchView(view = ProductsView.class)
+  @IOSSwitchView( view = ProductsView.class)
   @MobileStep(description = "Menu is displayed")
   public boolean isMenuDisplayed() {
     return element(menu).isDisplayed();
   }
 
-  @SwitchView(view = ProductsView.class)
   @MobileStep(description = "Selects product")
   public Product selectProduct(Product product) {
     Item item = new Item();

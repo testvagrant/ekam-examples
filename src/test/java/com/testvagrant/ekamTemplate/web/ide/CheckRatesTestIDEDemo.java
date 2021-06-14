@@ -1,15 +1,13 @@
-package com.testvagrant.ekamTemplate.web;
+package com.testvagrant.ekamTemplate.web.ide;
 
-import com.testvagrant.ekam.testBases.testng.WebTest;
-import com.testvagrant.ekamTemplate.EkamTest;
 import com.testvagrant.ekamTemplate.web.pages.TransferGoPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.testvagrant.ekam.commons.LayoutInitiator.Page;
 
-@Test(groups = "web")
-public class CheckRatesTest extends WebTest {
+@Test(groups = "ide")
+public class CheckRatesTestIDEDemo extends DemoWebTest {
 
   public void shouldCheckRatesAreInRange() {
     TransferGoPage transferGoPage = Page(TransferGoPage.class);

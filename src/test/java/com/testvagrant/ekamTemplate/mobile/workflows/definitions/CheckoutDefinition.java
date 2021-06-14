@@ -26,7 +26,11 @@ public class CheckoutDefinition extends WorkflowDefinition {
 
   protected FulfillCondition<CheckoutDefinition> fulfillCondition() {
     return () -> {
-      Screen(CheckoutScreen.class).checkout(useCase.getData(Address.class));
+      try {
+        Screen(CheckoutScreen.class).checkout(useCase.getData(Address.class));
+      } catch (Exception e) {
+        //e.printStackTrace();
+      }
       return this;
     };
   }

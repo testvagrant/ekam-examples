@@ -6,7 +6,7 @@ import com.testvagrant.ekam.commons.annotations.MobileStep;
 import com.testvagrant.ekamTemplate.data.models.Product;
 import com.testvagrant.ekamTemplate.mobile.screens.android.CheckoutScreen;
 import com.testvagrant.ekamTemplate.mobile.screens.android.ProductsScreen;
-import com.testvagrant.ekamTemplate.mobile.screens.android.locators.ProductLocators;
+import com.testvagrant.ekamTemplate.mobile.screens.locators.ProductLocators;
 import org.openqa.selenium.By;
 
 public class CartView extends MobileScreen {

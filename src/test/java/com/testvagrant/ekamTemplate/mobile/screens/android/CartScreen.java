@@ -5,7 +5,7 @@ import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekam.commons.annotations.IOSSwitchView;
 import com.testvagrant.ekam.commons.annotations.MobileStep;
 import com.testvagrant.ekamTemplate.data.models.Product;
-import com.testvagrant.ekamTemplate.mobile.screens.android.locators.ProductLocators;
+import com.testvagrant.ekamTemplate.mobile.screens.locators.ProductLocators;
 import com.testvagrant.ekamTemplate.mobile.screens.ios.CartView;
 import org.openqa.selenium.By;
 

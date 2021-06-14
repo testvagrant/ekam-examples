@@ -16,7 +16,6 @@ public class LoginScreen extends MobileScreen {
   private final By errorMessageContainer = query("//*[@content-desc = 'test-Error message']/*");
 
   @MobileStep(description = "Login")
-  @IOSSwitchView(view = LoginView.class)
   public LoginScreen login(Credentials credentials) {
     setUsername(credentials.getUsername());
     setPassword(credentials.getPassword());

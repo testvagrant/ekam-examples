@@ -1,4 +1,4 @@
-package com.testvagrant.ekamTemplate.mobile.screens.android.locators;
+package com.testvagrant.ekamTemplate.mobile.screens.locators;
 
 import com.testvagrant.ekam.atoms.web.QueryFunctions;
 import org.openqa.selenium.By;

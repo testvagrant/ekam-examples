@@ -1,6 +1,7 @@
 package com.testvagrant.ekamTemplate.mobile;
 
 import com.google.inject.Inject;
+import com.testvagrant.ekam.testBases.testng.MobileTest;
 import com.testvagrant.ekamTemplate.EkamTest;
 import com.testvagrant.ekamTemplate.data.clients.UseCaseGenerator;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
@@ -11,7 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @Test(groups = {"mobile"})
-public class LoginTests extends EkamTest {
+public class LoginTests extends MobileTest {
 
   @Inject private UseCaseGenerator useCaseGenerator;
 

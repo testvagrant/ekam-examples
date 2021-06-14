@@ -1,6 +1,7 @@
 package com.testvagrant.ekamTemplate.mobile;
 
 import com.google.inject.Inject;
+import com.testvagrant.ekam.testBases.testng.MobileTest;
 import com.testvagrant.ekamTemplate.EkamTest;
 import com.testvagrant.ekamTemplate.data.clients.UseCaseGenerator;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
@@ -10,7 +11,7 @@ import com.testvagrant.ekamTemplate.mobile.workflows.docs.MenuDoc;
 import org.testng.annotations.Test;
 
 @Test(groups = "mobile")
-public class PurchaseTests extends EkamTest {
+public class PurchaseTests extends MobileTest {
 
   @Inject private UseCaseGenerator useCaseGenerator;
 

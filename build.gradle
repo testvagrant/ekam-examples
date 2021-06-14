@@ -8,7 +8,7 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    mavenLocal()
+//    mavenLocal()
     jcenter()
     mavenLocal()
     maven { url "http://palantir.bintray.com/releases" }
@@ -151,7 +151,7 @@ task runMobileTestsOnCloud(type: Test) {
     systemProperties = [
             apiConfig             : System.getProperty('apiConfig', 'qaConfig'),
             dbConfig              : System.getProperty('dbConfig', 'qaDbConfig'),
-            env                   : System.getProperty('env'),
+            env                   : System.getProperty('env', "qa"),
 
             tags                  : System.getProperty('tags', 'smoke'),
             logs                  : System.getProperty('logs', 'false'),
@@ -163,6 +163,45 @@ task runMobileTestsOnCloud(type: Test) {
             target                : System.getProperty('target', 'android'),
             runMode               : System.getProperty('runMode', 'remote'),
             switchView            : System.getProperty("switchView", "false"),
+
+            //Report
+            ekamServerUrl         : System.getProperty('ekamServerUrl', 'http://34.66.233.63/'),
+            publishToDashboard    : System.getProperty('publishToDashboard', 'false'), // Enable only when Dashboard is up and running
+            slackNotif            : System.getProperty('slackNotif', 'false'), //Global => On Failures
+            slackNotifyMeEverytime: System.getProperty('slackNotifyMeEverytime', 'false'),
+
+            //execution
+            sessions              : System.getProperty("sessions", "1")
+    ]
+    outputs.upToDateWhen { false }
+    useTestNG {
+        parallel = "methods"
+        threadCount Integer.parseInt(System.getProperty("sessions", "1"))
+        includeGroups System.getProperty("tags", "mobile")
+        testLogging.showStandardStreams = true
+        useDefaultListeners true
+        listeners << 'com.testvagrant.ekam.mobile.listeners.MobileDriverListener'
+        listeners << 'com.testvagrant.ekam.integrations.slack.SlackListener'
+        outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
+    }
+}
+
+task runIOSTestsOnCloud(type: Test) {
+    systemProperties = [
+            apiConfig             : System.getProperty('apiConfig', 'qaConfig'),
+            dbConfig              : System.getProperty('dbConfig', 'qaDbConfig'),
+            env                   : System.getProperty('env', "qa"),
+
+            tags                  : System.getProperty('tags', 'smoke'),
+            logs                  : System.getProperty('logs', 'false'),
+            timeline              : System.getProperty('timeline', 'true'),
+
+            //mobile
+            mobileFeed            : System.getProperty('mobileFeed', 'mobileTestFeedRemote'),
+            hub                   : System.getProperty('hub', 'browserstack'),
+            target                : System.getProperty('target', 'iOS'),
+            runMode               : System.getProperty('runMode', 'remote'),
+            switchView            : System.getProperty("switchView", "true"),
 
             //Report
             ekamServerUrl         : System.getProperty('ekamServerUrl', 'http://34.66.233.63/'),
@@ -236,11 +275,13 @@ clean {
 tasks.runWebTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runMobileTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runMobileTestsOnCloud.dependsOn 'clean', 'build', 'createReportDir'
+tasks.runIOSTestsOnCloud.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runMobileEmulationTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runApiTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.build.mustRunAfter 'clean'
 tasks.runWebTests.finalizedBy('allureReport')
 tasks.runMobileTests.finalizedBy('allureReport')
 tasks.runMobileTestsOnCloud.finalizedBy('allureReport')
+tasks.runIOSTestsOnCloud.finalizedBy('allureReport')
 tasks.runMobileEmulationTests.finalizedBy('allureReport')
 tasks.runApiTests.finalizedBy('allureReport')

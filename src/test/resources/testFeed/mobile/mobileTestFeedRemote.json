@@ -1,7 +1,7 @@
 {
   "targets": [
     {
-      "app": "bs://6b297cd072f1b896fd7808f52e0ee95c4e99595a",
+      "app": "bs://76364f2e3457d2fce5647c73987cddf6b91af0e8",
       "platform": "android",
       "desiredCapabilities": {
         "automationName": "UiAutomator2",
@@ -15,9 +15,10 @@
       }
     },
     {
-      "app": "bs://4fc32b8b32753b77e3fbb2d4a19162404400002f",
+      "app": "bs://90a64893834deb67bd912d4c567de5137ec05161",
       "platform": "iOS",
       "desiredCapabilities": {
+        "automationName": "XCUITest",
         "newCommandTimeout": 300,
         "autoGrantPermissions": true,
         "noReset": true,

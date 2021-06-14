@@ -4,6 +4,7 @@ import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.annotations.IOSSwitchView;
 import com.testvagrant.ekam.commons.annotations.MobileStep;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
+import com.testvagrant.ekamTemplate.mobile.screens.ios.ConfirmationView;
 import com.testvagrant.ekamTemplate.mobile.screens.ios.LoginView;
 import org.openqa.selenium.By;
 
@@ -15,6 +16,7 @@ public class LoginScreen extends MobileScreen {
   private final By errorMessageContainer = query("//*[@content-desc = 'test-Error message']/*");
 
   @MobileStep(description = "Login")
+  @IOSSwitchView(view = LoginView.class)
   public LoginScreen login(Credentials credentials) {
     setUsername(credentials.getUsername());
     setPassword(credentials.getPassword());

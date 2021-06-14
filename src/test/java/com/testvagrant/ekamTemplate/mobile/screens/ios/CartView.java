@@ -1,21 +1,20 @@
-package com.testvagrant.ekamTemplate.mobile.screens.android;
+package com.testvagrant.ekamTemplate.mobile.screens.ios;
 
 import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.LayoutInitiator;
-import com.testvagrant.ekam.commons.annotations.IOSSwitchView;
 import com.testvagrant.ekam.commons.annotations.MobileStep;
 import com.testvagrant.ekamTemplate.data.models.Product;
+import com.testvagrant.ekamTemplate.mobile.screens.android.CheckoutScreen;
+import com.testvagrant.ekamTemplate.mobile.screens.android.ProductsScreen;
 import com.testvagrant.ekamTemplate.mobile.screens.android.locators.ProductLocators;
-import com.testvagrant.ekamTemplate.mobile.screens.ios.CartView;
 import org.openqa.selenium.By;
 
-public class CartScreen extends MobileScreen {
+public class CartView extends MobileScreen {
 
-  By checkout = queryByContentDesc("test-CHECKOUT");
-  By continueShopping = queryByContentDesc("test-CONTINUE SHOPPING");
+  By checkout = queryByName("test-CHECKOUT");
+  By continueShopping = queryByName("test-CONTINUE SHOPPING");
 
   @MobileStep(description = "Get Cart Details")
-  @IOSSwitchView(view = CartView.class)
   public Product getCartDetails() {
     ProductLocators cart = new ProductLocators();
     return Product.builder()
@@ -26,7 +25,6 @@ public class CartScreen extends MobileScreen {
   }
 
   @MobileStep(description = "Get Cart Overview")
-  @IOSSwitchView(view = CartView.class)
   public Product getCartOverview() {
     ProductLocators cart = new ProductLocators();
     return Product.builder()
@@ -37,14 +35,12 @@ public class CartScreen extends MobileScreen {
   }
 
   @MobileStep(description = "Navigate to checkout")
-  @IOSSwitchView(view = CartView.class)
   public CheckoutScreen navToCheckout() {
     element(checkout).click();
     return LayoutInitiator.Screen(CheckoutScreen.class);
   }
 
   @MobileStep(description = "Continue Shopping")
-  @IOSSwitchView(view = CartView.class)
   public ProductsScreen continueShopping() {
     element(continueShopping).click();
     return LayoutInitiator.Screen(ProductsScreen.class);

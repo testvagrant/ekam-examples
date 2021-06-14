@@ -2,8 +2,8 @@ package com.testvagrant.ekamTemplate.data.clients;
 
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.inject.Inject;
-import com.testvagrant.ekam.commons.DataSetsClient;
 import com.testvagrant.ekam.commons.cache.DataSetsCache;
+import com.testvagrant.ekam.commons.data.DataSetsClient;
 import com.testvagrant.ekam.commons.exceptions.NoSuchKeyException;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
 

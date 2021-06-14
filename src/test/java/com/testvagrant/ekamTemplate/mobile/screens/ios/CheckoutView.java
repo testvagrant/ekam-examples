@@ -1,34 +1,30 @@
-package com.testvagrant.ekamTemplate.mobile.screens.android;
+package com.testvagrant.ekamTemplate.mobile.screens.ios;
 
 import com.google.inject.Inject;
 import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.LayoutInitiator;
-import com.testvagrant.ekam.commons.annotations.IOSSwitchView;
 import com.testvagrant.ekam.commons.annotations.MobileStep;
 import com.testvagrant.ekamTemplate.data.models.Address;
 import com.testvagrant.ekamTemplate.mobile.functions.ScrollFunctions;
-import com.testvagrant.ekamTemplate.mobile.screens.ios.CartView;
-import com.testvagrant.ekamTemplate.mobile.screens.ios.CheckoutView;
+import com.testvagrant.ekamTemplate.mobile.screens.android.ConfirmationScreen;
 import org.openqa.selenium.By;
 
-public class CheckoutScreen extends MobileScreen {
+public class CheckoutView extends MobileScreen {
 
-  By continueCheckout = queryByContentDesc("test-CONTINUE");
-  By cancel = queryByContentDesc("test-CANCEL");
-  By finish = queryByContentDesc("test-FINISH");
+  By continueCheckout = queryByName("test-CONTINUE");
+  By cancel = queryByName("test-CANCEL");
+  By finish = queryByName("test-FINISH");
 
   @Inject ScrollFunctions scrollFunctions;
 
   @MobileStep(description = "Checkout")
-  @IOSSwitchView(view = CheckoutView.class)
-  public CheckoutScreen checkout(Address address) {
+  public CheckoutView checkout(Address address) {
     enterAddress(address).continueCheckout().finish();
     return this;
   }
 
   @MobileStep(description = "Enter Address")
-  @IOSSwitchView(view = CheckoutView.class)
-  public CheckoutScreen enterAddress(Address address) {
+  public CheckoutView enterAddress(Address address) {
     Information information = new Information();
     textbox(information.firstName).setText(address.getFirstName());
     textbox(information.lastName).setText(address.getLastName());
@@ -37,30 +33,27 @@ public class CheckoutScreen extends MobileScreen {
   }
 
   @MobileStep(description = "Continue Checkout")
-  @IOSSwitchView(view = CheckoutView.class)
-  public CheckoutScreen continueCheckout() {
+  public CheckoutView continueCheckout() {
     element(continueCheckout).click();
     return this;
   }
 
   @MobileStep(description = "clikc cancel")
-  @IOSSwitchView(view = CheckoutView.class)
   public ConfirmationScreen cancel() {
     element(cancel).click();
     return LayoutInitiator.Screen(ConfirmationScreen.class);
   }
 
   @MobileStep(description = "Click finish")
-  @IOSSwitchView(view = CheckoutView.class)
-  public CheckoutScreen finish() {
+  public CheckoutView finish() {
     scrollFunctions.scrollDownTo("FINISH");
     element(finish).click();
-    return LayoutInitiator.Screen(CheckoutScreen.class);
+    return LayoutInitiator.Screen(CheckoutView.class);
   }
 
   private class Information {
-    By firstName = queryByContentDesc("test-First Name");
-    By lastName = queryByContentDesc("test-Last Name");
-    By zipcode = queryByContentDesc("test-Zip/Postal Code");
+    By firstName = queryByName("test-First Name");
+    By lastName = queryByName("test-Last Name");
+    By zipcode = queryByName("test-Zip/Postal Code");
   }
 }

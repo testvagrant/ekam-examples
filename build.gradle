@@ -71,7 +71,7 @@ tasks.withType(Test) {
             runMode               : System.getProperty('runMode', 'local'),
 
             //web
-            webFeed               : System.getProperty('webFeed','webTestFeed'),
+            webFeed               : System.getProperty('webFeed', 'webTestFeed'),
 
             //Report
             ekamServerUrl         : System.getProperty('ekamServerUrl', 'http://35.154.106.80:8090/'),

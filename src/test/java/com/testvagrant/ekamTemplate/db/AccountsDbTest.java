@@ -12,10 +12,11 @@ import org.testng.annotations.Test;
 @Guice(modules = {GrpcModule.class})
 public class AccountsDbTest extends EkamTest {
 
-  @Inject AccountsClient accountsDBClient;
+    @Inject
+    AccountsClient accountsDBClient;
 
-  public void accountsTest() {
-    String userName = accountsDBClient.getUserName(1001);
-    Assert.assertEquals(userName, "ekam_user");
-  }
+    public void accountsTest() {
+        String userName = accountsDBClient.getUserName(1001);
+        Assert.assertEquals(userName, "ekam_user");
+    }
 }

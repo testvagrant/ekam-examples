@@ -8,24 +8,24 @@ import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowDefinition;
 
 public class CartDefinition extends WorkflowDefinition {
 
-  public CartDefinition(UseCase useCase) {
-    super(useCase);
-  }
+    public CartDefinition(UseCase useCase) {
+        super(useCase);
+    }
 
-  @Override
-  public CheckoutDefinition next() {
-    return proceedToNext(fulfillCondition(), new CheckoutDefinition(useCase));
-  }
+    @Override
+    public CheckoutDefinition next() {
+        return proceedToNext(fulfillCondition(), new CheckoutDefinition(useCase));
+    }
 
-  @Override
-  public CartScreen create() {
-    return LayoutInitiator.Screen(CartScreen.class);
-  }
+    @Override
+    public CartScreen create() {
+        return LayoutInitiator.Screen(CartScreen.class);
+    }
 
-  protected FulfillCondition<CartDefinition> fulfillCondition() {
-    return () -> {
-      create().navToCheckout();
-      return this;
-    };
-  }
+    protected FulfillCondition<CartDefinition> fulfillCondition() {
+        return () -> {
+            create().navToCheckout();
+            return this;
+        };
+    }
 }

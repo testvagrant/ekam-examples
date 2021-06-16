@@ -12,17 +12,17 @@ import java.util.List;
 
 public class ToDosClient extends RetrofitBaseClient {
 
-  private final ToDosService service;
+    private final ToDosService service;
 
-  @Inject
-  public ToDosClient(@Named("baseUrl") String baseUrl) {
-    super(baseUrl);
-    service = httpClient.getService(ToDosService.class);
-  }
+    @Inject
+    public ToDosClient(@Named("baseUrl") String baseUrl) {
+        super(baseUrl);
+        service = httpClient.getService(ToDosService.class);
+    }
 
-  @APIStep(description = "Get TODOS")
-  public List<ToDos> getToDos() {
-    Call<List<ToDos>> call = service.getToDos();
-    return httpClient.execute(call);
-  }
+    @APIStep(description = "Get TODOS")
+    public List<ToDos> getToDos() {
+        Call<List<ToDos>> call = service.getToDos();
+        return httpClient.execute(call);
+    }
 }

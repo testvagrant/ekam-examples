@@ -4,6 +4,9 @@ import com.testvagrant.ekam.commons.modules.CacheModule;
 import com.testvagrant.ekam.commons.modules.LocaleModule;
 import org.testng.annotations.Guice;
 
-/** A single testbase to cover web/mobile/api tests for an application */
+/**
+ * A single testbase to cover web/mobile/api tests for an application
+ */
 @Guice(modules = {CacheModule.class, LocaleModule.class})
-public class EkamTest {}
+public class EkamTest {
+}

@@ -11,44 +11,44 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import static com.testvagrant.ekamTemplate.data.clients.LockUserExampleDataClient.DataKeys.*;
+import static com.testvagrant.ekamTemplate.data.clients.LockUserExampleDataClient.DataKeys.AUTHORIZED_USER;
 
 public class LockUserExampleDataClient extends DataSetsClient {
 
-  @Inject
-  public LockUserExampleDataClient(DataSetsCache dataSetsCache) {
-    super(dataSetsCache);
-  }
-
-  public Credentials getAuthorizedUser(boolean lockUser) {
-    Credentials credentials = getUser(AUTHORIZED_USER, lockUser);
-    if (Objects.isNull(credentials.getUsername())) {
-      throw new RuntimeException("No credentials available/Credentials locked at the moment");
+    @Inject
+    public LockUserExampleDataClient(DataSetsCache dataSetsCache) {
+        super(dataSetsCache);
     }
 
-    return credentials;
-  }
+    public Credentials getAuthorizedUser(boolean lockUser) {
+        Credentials credentials = getUser(AUTHORIZED_USER, lockUser);
+        if (Objects.isNull(credentials.getUsername())) {
+            throw new RuntimeException("No credentials available/Credentials locked at the moment");
+        }
 
-  public Credentials getUser(String key, boolean lockUser) {
-    try {
-      return getValue(key, Credentials.class, lockUser);
-    } catch (NoSuchKeyException e) {
-      return Credentials.builder().build();
+        return credentials;
     }
-  }
 
-  public void release(Credentials credentials) {
-    if (Objects.nonNull(credentials) && Objects.nonNull(credentials.getUsername())) {
-      super.release(credentialsPredicate(credentials));
+    public Credentials getUser(String key, boolean lockUser) {
+        try {
+            return getValue(key, Credentials.class, lockUser);
+        } catch (NoSuchKeyException e) {
+            return Credentials.builder().build();
+        }
     }
-  }
 
-  private <T> Predicate<Map.Entry<String, LinkedTreeMap>> credentialsPredicate(
-      Credentials credentials) {
-    return entry -> entry.getValue().get("username").equals(credentials.getUsername());
-  }
+    public void release(Credentials credentials) {
+        if (Objects.nonNull(credentials) && Objects.nonNull(credentials.getUsername())) {
+            super.release(credentialsPredicate(credentials));
+        }
+    }
 
-  public static final class DataKeys {
-    public static final String AUTHORIZED_USER = "authorizedUser";
-  }
+    private <T> Predicate<Map.Entry<String, LinkedTreeMap>> credentialsPredicate(
+            Credentials credentials) {
+        return entry -> entry.getValue().get("username").equals(credentials.getUsername());
+    }
+
+    public static final class DataKeys {
+        public static final String AUTHORIZED_USER = "authorizedUser";
+    }
 }

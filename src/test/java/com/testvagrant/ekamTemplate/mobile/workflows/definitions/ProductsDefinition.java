@@ -9,41 +9,39 @@ import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowDefinition;
 
 public class ProductsDefinition extends WorkflowDefinition {
 
-  private final Product product;
+    private final Product product;
+    FulfillCondition<ProductsDefinition> navToCartFulfillCondition = () -> {
+        Product product = LayoutInitiator.Screen(ProductsScreen.class).selectProduct(useCase.getData(Product.class));
+        useCase.addToUseCase(product);
+        LayoutInitiator.Screen(ProductsScreen.class).navToCart();
+        return this;
+    };
+    FulfillCondition<ProductsDefinition> navToMenuFulfillCondition = () -> {
+        LayoutInitiator.Screen(ProductsScreen.class).navToMenu();
+        return this;
+    };
 
-  public ProductsDefinition(UseCase useCase) {
-    super(useCase);
-    this.product = useCase.getData(Product.class);
-  }
+    public ProductsDefinition(UseCase useCase) {
+        super(useCase);
+        this.product = useCase.getData(Product.class);
+    }
 
-  @Override
-  public ProductsDefinition next() {
-    return  this;
-  }
+    @Override
+    public ProductsDefinition next() {
+        return this;
+    }
 
-  @Override
-  public ProductsScreen create() {
-    return LayoutInitiator.Screen(ProductsScreen.class);
-  }
+    @Override
+    public ProductsScreen create() {
+        return LayoutInitiator.Screen(ProductsScreen.class);
+    }
 
-  FulfillCondition<ProductsDefinition> navToCartFulfillCondition = () -> {
-    Product product = LayoutInitiator.Screen(ProductsScreen.class).selectProduct(useCase.getData(Product.class));
-    useCase.addToUseCase(product);
-    LayoutInitiator.Screen(ProductsScreen.class).navToCart();
-    return this;
-  };
+    public CartDefinition cart() {
+        return proceedToNext(navToCartFulfillCondition, new CartDefinition(useCase));
+    }
 
-  FulfillCondition<ProductsDefinition> navToMenuFulfillCondition =  () -> {
-    LayoutInitiator.Screen(ProductsScreen.class).navToMenu();
-    return this;
-  };
-
-  public CartDefinition cart() {
-    return proceedToNext(navToCartFulfillCondition, new CartDefinition(useCase));
-  }
-
-  public MenuDefinition menu() {
-    return proceedToNext(navToMenuFulfillCondition,  new MenuDefinition(useCase));
-  }
+    public MenuDefinition menu() {
+        return proceedToNext(navToMenuFulfillCondition, new MenuDefinition(useCase));
+    }
 
 }

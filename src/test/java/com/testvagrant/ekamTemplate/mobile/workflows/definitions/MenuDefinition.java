@@ -7,17 +7,17 @@ import com.testvagrant.ekamTemplate.mobile.workflows.WorkflowDefinition;
 
 public class MenuDefinition extends WorkflowDefinition {
 
-  public MenuDefinition(UseCase useCase) {
-    super(useCase);
-  }
+    public MenuDefinition(UseCase useCase) {
+        super(useCase);
+    }
 
-  @Override
-  public MenuDefinition next() {
-    return this;
-  }
+    @Override
+    public MenuDefinition next() {
+        return this;
+    }
 
-  @Override
-  public MenuScreen create() {
-    return LayoutInitiator.Screen(MenuScreen.class);
-  }
+    @Override
+    public MenuScreen create() {
+        return LayoutInitiator.Screen(MenuScreen.class);
+    }
 }

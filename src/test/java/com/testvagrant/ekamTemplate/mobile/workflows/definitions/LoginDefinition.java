@@ -10,23 +10,22 @@ import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
 
 public class LoginDefinition extends WorkflowDefinition {
 
-  public LoginDefinition(UseCase useCase) {
-    super(useCase);
-  }
+    protected FulfillCondition<LoginDefinition> loginCondition = () -> {
+        create().login(useCase.getData(Credentials.class));
+        return this;
+    };
 
-  protected FulfillCondition<LoginDefinition> loginCondition = () -> {
-      create().login(useCase.getData(Credentials.class));
-      return this;
-  };
+    public LoginDefinition(UseCase useCase) {
+        super(useCase);
+    }
 
+    @Override
+    public ProductsDefinition next() {
+        return proceedToNext(loginCondition, new ProductsDefinition(useCase));
+    }
 
-  @Override
-  public ProductsDefinition next() {
-    return proceedToNext(loginCondition, new ProductsDefinition(useCase));
-  }
-
-  @Override
-  public LoginScreen create() {
-    return Screen(LoginScreen.class);
-  }
+    @Override
+    public LoginScreen create() {
+        return Screen(LoginScreen.class);
+    }
 }

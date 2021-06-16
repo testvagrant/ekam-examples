@@ -13,7 +13,7 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: optimusservices
-  strategy: {}
+  strategy: { }
   template:
     metadata:
       annotations:
@@ -24,20 +24,20 @@ spec:
         io.kompose.service: optimusservices
     spec:
       containers:
-      - env:
-        - name: database
-          value: optimus
-        - name: port
-          value: "8093"
-        - name: uri
-          value: mongodb://mongo:27017
-        image: tvekam/optimus-services
-        imagePullPolicy: ""
-        name: optimusservices
-        ports:
-        - containerPort: 8093
-        resources: {}
+        - env:
+            - name: database
+              value: optimus
+            - name: port
+              value: "8093"
+            - name: uri
+              value: mongodb://mongo:27017
+          image: tvekam/optimus-services
+          imagePullPolicy: ""
+          name: optimusservices
+          ports:
+            - containerPort: 8093
+          resources: { }
       restartPolicy: Always
       serviceAccountName: ""
       volumes: null
-status: {}
+status: { }

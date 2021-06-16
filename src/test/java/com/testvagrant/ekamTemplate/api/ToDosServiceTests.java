@@ -13,8 +13,8 @@ import static com.testvagrant.ekam.commons.LayoutInitiator.Client;
 @Test(groups = "api")
 public class ToDosServiceTests extends APITest {
 
-  public void getToDosShouldReturnAValue() {
-    List<ToDos> toDos = Client(ToDosClient.class).getToDos();
-    Assert.assertTrue(toDos.size() > 1);
-  }
+    public void getToDosShouldReturnAValue() {
+        List<ToDos> toDos = Client(ToDosClient.class).getToDos();
+        Assert.assertTrue(toDos.size() > 1);
+    }
 }

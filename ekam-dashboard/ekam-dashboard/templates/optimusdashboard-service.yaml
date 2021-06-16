@@ -10,10 +10,10 @@ metadata:
   name: optimusdashboard
 spec:
   ports:
-  - name: "9901"
-    port: 9901
-    targetPort: 9900
+    - name: "9901"
+      port: 9901
+      targetPort: 9900
   selector:
     io.kompose.service: optimusdashboard
 status:
-  loadBalancer: {}
+  loadBalancer: { }

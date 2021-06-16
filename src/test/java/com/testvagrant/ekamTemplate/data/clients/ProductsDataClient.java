@@ -8,20 +8,20 @@ import com.testvagrant.ekamTemplate.data.models.Product;
 
 public class ProductsDataClient extends DataSetsClient {
 
-  @Inject
-  public ProductsDataClient(DataSetsCache dataSetsCache) {
-    super(dataSetsCache);
-  }
-
-  public Product backPack() {
-    return getProduct("backPack");
-  }
-
-  public Product getProduct(String key) {
-    try {
-      return getValue(key, Product.class);
-    } catch (NoSuchKeyException e) {
-      return Product.builder().build();
+    @Inject
+    public ProductsDataClient(DataSetsCache dataSetsCache) {
+        super(dataSetsCache);
     }
-  }
+
+    public Product backPack() {
+        return getProduct("backPack");
+    }
+
+    public Product getProduct(String key) {
+        try {
+            return getValue(key, Product.class);
+        } catch (NoSuchKeyException e) {
+            return Product.builder().build();
+        }
+    }
 }

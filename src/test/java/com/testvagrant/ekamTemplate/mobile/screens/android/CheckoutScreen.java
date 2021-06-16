@@ -7,60 +7,60 @@ import com.testvagrant.ekam.commons.annotations.IOSSwitchView;
 import com.testvagrant.ekam.commons.annotations.MobileStep;
 import com.testvagrant.ekamTemplate.data.models.Address;
 import com.testvagrant.ekamTemplate.mobile.functions.ScrollFunctions;
-import com.testvagrant.ekamTemplate.mobile.screens.ios.CartView;
 import com.testvagrant.ekamTemplate.mobile.screens.ios.CheckoutView;
 import org.openqa.selenium.By;
 
 public class CheckoutScreen extends MobileScreen {
 
-  By continueCheckout = queryByContentDesc("test-CONTINUE");
-  By cancel = queryByContentDesc("test-CANCEL");
-  By finish = queryByContentDesc("test-FINISH");
+    By continueCheckout = queryByContentDesc("test-CONTINUE");
+    By cancel = queryByContentDesc("test-CANCEL");
+    By finish = queryByContentDesc("test-FINISH");
 
-  @Inject ScrollFunctions scrollFunctions;
+    @Inject
+    ScrollFunctions scrollFunctions;
 
-  @MobileStep(description = "Checkout")
-  @IOSSwitchView(view = CheckoutView.class)
-  public CheckoutScreen checkout(Address address) {
-    enterAddress(address).continueCheckout().finish();
-    return this;
-  }
+    @MobileStep(description = "Checkout")
+    @IOSSwitchView(view = CheckoutView.class)
+    public CheckoutScreen checkout(Address address) {
+        enterAddress(address).continueCheckout().finish();
+        return this;
+    }
 
-  @MobileStep(description = "Enter Address")
-  @IOSSwitchView(view = CheckoutView.class)
-  public CheckoutScreen enterAddress(Address address) {
-    Information information = new Information();
-    textbox(information.firstName).setText(address.getFirstName());
-    textbox(information.lastName).setText(address.getLastName());
-    textbox(information.zipcode).setText(address.getZipCode());
-    return this;
-  }
+    @MobileStep(description = "Enter Address")
+    @IOSSwitchView(view = CheckoutView.class)
+    public CheckoutScreen enterAddress(Address address) {
+        Information information = new Information();
+        textbox(information.firstName).setText(address.getFirstName());
+        textbox(information.lastName).setText(address.getLastName());
+        textbox(information.zipcode).setText(address.getZipCode());
+        return this;
+    }
 
-  @MobileStep(description = "Continue Checkout")
-  @IOSSwitchView(view = CheckoutView.class)
-  public CheckoutScreen continueCheckout() {
-    element(continueCheckout).click();
-    return this;
-  }
+    @MobileStep(description = "Continue Checkout")
+    @IOSSwitchView(view = CheckoutView.class)
+    public CheckoutScreen continueCheckout() {
+        element(continueCheckout).click();
+        return this;
+    }
 
-  @MobileStep(description = "clikc cancel")
-  @IOSSwitchView(view = CheckoutView.class)
-  public ConfirmationScreen cancel() {
-    element(cancel).click();
-    return LayoutInitiator.Screen(ConfirmationScreen.class);
-  }
+    @MobileStep(description = "clikc cancel")
+    @IOSSwitchView(view = CheckoutView.class)
+    public ConfirmationScreen cancel() {
+        element(cancel).click();
+        return LayoutInitiator.Screen(ConfirmationScreen.class);
+    }
 
-  @MobileStep(description = "Click finish")
-  @IOSSwitchView(view = CheckoutView.class)
-  public CheckoutScreen finish() {
-    scrollFunctions.scrollDownTo("FINISH");
-    element(finish).click();
-    return LayoutInitiator.Screen(CheckoutScreen.class);
-  }
+    @MobileStep(description = "Click finish")
+    @IOSSwitchView(view = CheckoutView.class)
+    public CheckoutScreen finish() {
+        scrollFunctions.scrollDownTo("FINISH");
+        element(finish).click();
+        return LayoutInitiator.Screen(CheckoutScreen.class);
+    }
 
-  private class Information {
-    By firstName = queryByContentDesc("test-First Name");
-    By lastName = queryByContentDesc("test-Last Name");
-    By zipcode = queryByContentDesc("test-Zip/Postal Code");
-  }
+    private class Information {
+        By firstName = queryByContentDesc("test-First Name");
+        By lastName = queryByContentDesc("test-Last Name");
+        By zipcode = queryByContentDesc("test-Zip/Postal Code");
+    }
 }

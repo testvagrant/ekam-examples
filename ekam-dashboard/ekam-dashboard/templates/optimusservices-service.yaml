@@ -10,10 +10,10 @@ metadata:
   name: optimusservices
 spec:
   ports:
-  - name: "8090"
-    port: 8090
-    targetPort: 8093
+    - name: "8090"
+      port: 8090
+      targetPort: 8093
   selector:
     io.kompose.service: optimusservices
 status:
-  loadBalancer: {}
+  loadBalancer: { }

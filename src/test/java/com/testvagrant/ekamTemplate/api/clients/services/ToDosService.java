@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ToDosService {
 
-  @GET("/todos")
-  Call<List<ToDos>> getToDos();
+    @GET("/todos")
+    Call<List<ToDos>> getToDos();
 }

@@ -2,7 +2,6 @@ package com.testvagrant.ekamTemplate.mobile;
 
 import com.google.inject.Inject;
 import com.testvagrant.ekam.testBases.testng.MobileTest;
-import com.testvagrant.ekamTemplate.EkamTest;
 import com.testvagrant.ekamTemplate.data.clients.UseCaseGenerator;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.workflows.definitions.MenuDefinition;
@@ -13,20 +12,21 @@ import org.testng.annotations.Test;
 @Test(groups = "mobile")
 public class PurchaseTests extends MobileTest {
 
-  @Inject private UseCaseGenerator useCaseGenerator;
+    @Inject
+    private UseCaseGenerator useCaseGenerator;
 
-  public void purchaseProductAndValidate() {
-    UseCase happyPathCase = useCaseGenerator.happyPathCase();
-    new BuyAProductDoc(happyPathCase)
-        .confirmation()
-        .create()
-        .getConfirmationDetails()
-        .orderConfirmed()
-        .isTrue();
-  }
+    public void purchaseProductAndValidate() {
+        UseCase happyPathCase = useCaseGenerator.happyPathCase();
+        new BuyAProductDoc(happyPathCase)
+                .confirmation()
+                .create()
+                .getConfirmationDetails()
+                .orderConfirmed()
+                .isTrue();
+    }
 
-  public void productDetailsTest() {
-    UseCase happyPathCase = useCaseGenerator.happyPathCase();
-    MenuDefinition productFromProduct = new MenuDoc(happyPathCase).menu();
-  }
+    public void productDetailsTest() {
+        UseCase happyPathCase = useCaseGenerator.happyPathCase();
+        MenuDefinition productFromProduct = new MenuDoc(happyPathCase).menu();
+    }
 }

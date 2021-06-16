@@ -44,4 +44,16 @@ public class PostsClient extends RetrofitBaseClient {
         Call<JsonObject> call = service.deletePost(postId);
         return httpClient.executeAsResponse(call);
     }
+
+    @APIStep(description = "Update  post")
+    public Posts updatePost(Posts post) {
+      Call<Posts> call = service.updatePost(post.getUserId(), post);
+      return httpClient.execute(call);
+    }
+
+  @APIStep(description = "Update  post")
+  public Posts editPost(Posts post) {
+    Call<Posts> call = service.editPost(post.getUserId(), post);
+    return httpClient.execute(call);
+  }
 }

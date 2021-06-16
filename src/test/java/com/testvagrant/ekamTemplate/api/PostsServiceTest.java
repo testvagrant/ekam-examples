@@ -29,6 +29,22 @@ public class PostsServiceTest extends APITest {
         postToCreate.assertThatPostIsCreated(createdPost);
     }
 
+    public void updatePost() {
+        Posts post = createAPost();
+        post.setTitle("Hello World");
+        post.setBody("My First post");
+        Posts updatePost = Client(PostsClient.class).updatePost(post);
+        assertThat(updatePost.getId()).isEqualTo("1");
+    }
+
+    public void editPost() {
+        Posts post = createAPost();
+        post.setTitle("Hello World");
+        Posts updatedPost = Client(PostsClient.class).editPost(post);
+        post.assertThatPostIsCreated(updatedPost);
+    }
+
+
     public void deletePost() {
         Posts posts = createAPost();
         Response<JsonObject> createdPost = Client(PostsClient.class).deletePost(posts.getId());

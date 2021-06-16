@@ -23,4 +23,9 @@ public interface PostsService {
     @DELETE("/posts/{id}")
     Call<JsonObject> deletePost(@Path("id") String postId);
 
+    @PUT("/posts/{id}")
+    Call<Posts> updatePost(@Path("id") String postId, @Body Posts posts);
+
+    @PATCH("/posts/{id}")
+    Call<Posts> editPost(@Path("id") String postId, @Body Posts posts);
 }

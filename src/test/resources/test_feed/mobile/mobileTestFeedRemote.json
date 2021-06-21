@@ -1,7 +1,7 @@
 {
   "targets": [
     {
-      "app": "bs://76364f2e3457d2fce5647c73987cddf6b91af0e8",
+      "app": "bs://e6c29de6178e59911851df42bf8b5c1062979401",
       "platform": "android",
       "desiredCapabilities": {
         "automationName": "UiAutomator2",
@@ -15,7 +15,7 @@
       }
     },
     {
-      "app": "bs://90a64893834deb67bd912d4c567de5137ec05161",
+      "app": "bs://9148de4a14b1f11b7ad7bee890103e72af09d420",
       "platform": "iOS",
       "desiredCapabilities": {
         "automationName": "XCUITest",

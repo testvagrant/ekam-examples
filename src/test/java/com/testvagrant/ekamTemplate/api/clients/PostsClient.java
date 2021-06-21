@@ -47,13 +47,13 @@ public class PostsClient extends RetrofitBaseClient {
 
     @APIStep(description = "Update  post")
     public Posts updatePost(Posts post) {
-      Call<Posts> call = service.updatePost(post.getUserId(), post);
-      return httpClient.execute(call);
+        Call<Posts> call = service.updatePost(post.getUserId(), post);
+        return httpClient.execute(call);
     }
 
-  @APIStep(description = "Update  post")
-  public Posts editPost(Posts post) {
-    Call<Posts> call = service.editPost(post.getUserId(), post);
-    return httpClient.execute(call);
-  }
+    @APIStep(description = "Update  post")
+    public Posts editPost(Posts post) {
+        Call<Posts> call = service.editPost(post.getUserId(), post);
+        return httpClient.execute(call);
+    }
 }

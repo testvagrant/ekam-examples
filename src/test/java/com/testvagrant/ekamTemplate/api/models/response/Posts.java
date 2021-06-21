@@ -35,7 +35,7 @@ public class Posts {
 
     public Posts createDefaultPost() {
         return builder()
-                .id("1")
+                .id("101")
                 .title("Random Post")
                 .body("Random post body")
                 .userId("1")

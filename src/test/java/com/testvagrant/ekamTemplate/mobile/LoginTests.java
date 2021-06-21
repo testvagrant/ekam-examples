@@ -7,15 +7,21 @@ import com.testvagrant.ekamTemplate.data.models.Credentials;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.workflows.definitions.LoginDefinition;
 import com.testvagrant.ekamTemplate.mobile.workflows.docs.BuyAProductDoc;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @Test(groups = {"mobile"})
+@Epic("Swag Login")
+@Feature("Login As Standard User")
 public class LoginTests extends MobileTest {
 
     @Inject
     private UseCaseGenerator useCaseGenerator;
 
+    @Story("Login With Valid Credentials")
     public void loginWithValidCredentials() {
         UseCase happyPathCase = useCaseGenerator.happyPathCase();
         boolean loginSuccessful = new BuyAProductDoc(happyPathCase)
@@ -25,6 +31,7 @@ public class LoginTests extends MobileTest {
         Assert.assertTrue(loginSuccessful);
     }
 
+    @Story("Login Without username")
     public void usernameRequiredErrorMessageShouldBeDisplayed() {
         UseCase emptyLoginCredentialsCase = useCaseGenerator.invalidLoginCredentialsCase();
         String errorMessage = new LoginDefinition(emptyLoginCredentialsCase)

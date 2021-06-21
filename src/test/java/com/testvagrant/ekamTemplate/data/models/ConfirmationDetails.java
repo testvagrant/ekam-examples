@@ -1,6 +1,5 @@
 package com.testvagrant.ekamTemplate.data.models;
 
-import com.testvagrant.ekam.commons.locale.LocaleFinder;
 import lombok.*;
 import org.assertj.core.api.AbstractBooleanAssert;
 
@@ -17,7 +16,7 @@ public class ConfirmationDetails {
 
     public AbstractBooleanAssert<?> orderConfirmed() {
         ConfirmationDetails confirmation_messages =
-                LocaleFinder.findLocale("confirmation_messages", ConfirmationDetails.class);
+                new ConfirmationDetails();
         boolean equals =
                 confirmation_messages.message.equals(this.message)
                         && confirmation_messages.description.equals(this.description);

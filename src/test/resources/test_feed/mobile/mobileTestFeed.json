@@ -1,29 +1,15 @@
 {
-  "targets": [
-    {
-      "app": "sample_app.apk",
-      "platform": "android",
-      "desiredCapabilities": {
-        "automationName": "UiAutomator2",
-        "newCommandTimeout": 300,
-        "autoGrantPermissions": true,
-        "appWaitActivity": "com.swaglabsmobileapp.MainActivity",
-        "noReset": true,
-        "avdLaunchTimeout": 300,
-        "useKeystore": false
-      }
-    },
-    {
-      "app": "sample_app.app",
-      "platform": "iOS",
-      "desiredCapabilities": {
-        "noReset": true,
-        "autoAcceptAlerts": true,
-        "newCommandTimeout": 300,
-        "maxInstances": 1
-      }
-    }
-  ],
+  "desiredCapabilities": {
+    "app": "sample_app.apk",
+    "platformName": "android",
+    "automationName": "UiAutomator2",
+    "newCommandTimeout": 300,
+    "autoGrantPermissions": true,
+    "appWaitActivity": "com.swaglabsmobileapp.MainActivity",
+    "noReset": true,
+    "avdLaunchTimeout": 300,
+    "useKeystore": false
+  },
   "serverArguments": [
     "--log-level info"
   ],

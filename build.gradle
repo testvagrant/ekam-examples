@@ -80,26 +80,6 @@ task runTest(type: Test) {
 
 task runMobileEmulationTests(type: Test) {
     outputs.upToDateWhen { false }
-    systemProperties = [
-            env                   : System.getProperty('env'),
-            tags                  : System.getProperty('tags', 'web'),
-            logs                  : System.getProperty('logs', 'false'),
-            timeline              : System.getProperty('timeline', 'true'),
-            target                : System.getProperty('target', 'responsive'),
-
-            browser               : System.getProperty('browser', 'chrome'),
-            headless              : System.getProperty('headless', 'false'),
-            webFeed               : System.getProperty('webFeed', 'mobileEmulationTestFeed'),
-
-            //Report
-            ekamServerUrl         : System.getProperty('ekamServerUrl', 'http://35.154.106.80:8090/'),
-            publishToDashboard    : System.getProperty('publishToDashboard', 'true'), // Enable only when Dashboard is up and running
-            slackNotif            : System.getProperty('slackNotif', 'false'), //Global => On Failures
-            slackNotifyMeEverytime: System.getProperty('slackNotifyMeEverytime', 'false'),
-
-            //execution
-            sessions              : System.getProperty("sessions", "1")
-    ]
     useTestNG {
         parallel = "methods"
         threadCount Integer.parseInt(System.getProperty("sessions", "1"))
@@ -124,29 +104,10 @@ task runMobileTests(type: Test) {
 
 
 task runMobileTestsOnCloud(type: Test) {
-    systemProperties = [
-            env                   : System.getProperty('env'),
-
-            tags                  : System.getProperty('tags', 'smoke'),
-            logs                  : System.getProperty('logs', 'false'),
-            timeline              : System.getProperty('timeline', 'true'),
-
-            //mobile
-            mobileFeed            : System.getProperty('mobileFeed', 'mobileTestFeedRemote'),
-            hub                   : System.getProperty('hub', 'browserstack'),
-            target                : System.getProperty('target', 'android'),
-            runMode               : System.getProperty('runMode', 'remote'),
-
-            //Report
-            ekamServerUrl         : System.getProperty('ekamServerUrl', 'http://35.154.106.80:8090/'),
-            publishToDashboard    : System.getProperty('publishToDashboard', 'true'), // Enable only when Dashboard is up and running
-            slackNotif            : System.getProperty('slackNotif', 'false'), //Global => On Failures
-            slackNotifyMeEverytime: System.getProperty('slackNotifyMeEverytime', 'false'),
-
-            //execution
-            sessions              : System.getProperty("sessions", "4")
-    ]
     outputs.upToDateWhen { false }
+    systemProperties = [
+            config         :  System.getProperty("config","mobile.remote")
+    ]
     useTestNG {
         parallel = "methods"
         threadCount Integer.parseInt(System.getProperty("sessions", "4"))

@@ -1,51 +1,28 @@
 {
-  "targets": [
+  "desiredCapabilities": [
     {
       "app": "bs://e6c29de6178e59911851df42bf8b5c1062979401",
-      "platform": "android",
-      "desiredCapabilities": {
-        "automationName": "UiAutomator2",
-        "newCommandTimeout": 300,
-        "autoGrantPermissions": true,
-        "appWaitActivity": "com.swaglabsmobileapp.MainActivity",
-        "noReset": true,
-        "avdLaunchTimeout": 300,
-        "autoAcceptAlerts": true,
-        "useKeystore": false
-      }
+      "platformName": "android",
+      "automationName": "UiAutomator2",
+      "newCommandTimeout": 300,
+      "autoGrantPermissions": true,
+      "appWaitActivity": "com.swaglabsmobileapp.MainActivity",
+      "noReset": true,
+      "avdLaunchTimeout": 300,
+      "autoAcceptAlerts": true,
+      "useKeystore": false,
+      "browserstack.appium_version": "1.20.2"
     },
     {
       "app": "bs://9148de4a14b1f11b7ad7bee890103e72af09d420",
-      "platform": "iOS",
-      "desiredCapabilities": {
-        "automationName": "XCUITest",
-        "newCommandTimeout": 300,
-        "autoGrantPermissions": true,
-        "noReset": true,
-        "avdLaunchTimeout": 300,
-        "autoAcceptAlerts": true,
-        "useKeystore": false
-      }
+      "platformName": "iOS",
+      "automationName": "XCUITest",
+      "newCommandTimeout": 300,
+      "autoGrantPermissions": true,
+      "noReset": true,
+      "avdLaunchTimeout": 300,
+      "autoAcceptAlerts": true,
+      "useKeystore": false
     }
-  ],
-  "executables": {
-    "appiumJSPath": "",
-    "nodePath": ""
-  },
-  "deviceFilters": {
-    "platformVersion": {
-      "include": [
-      ],
-      "operator": "",
-      "exclude": []
-    },
-    "model": {
-      "include": [],
-      "exclude": []
-    },
-    "udid": {
-      "include": [],
-      "exclude": []
-    }
-  }
+  ]
 }

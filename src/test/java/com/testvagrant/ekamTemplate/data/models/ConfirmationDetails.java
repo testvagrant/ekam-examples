@@ -1,5 +1,6 @@
 package com.testvagrant.ekamTemplate.data.models;
 
+import com.testvagrant.ekam.commons.locale.LocaleClient;
 import lombok.*;
 import org.assertj.core.api.AbstractBooleanAssert;
 
@@ -14,12 +15,7 @@ public class ConfirmationDetails {
     private String message;
     private String description;
 
-    public AbstractBooleanAssert<?> orderConfirmed() {
-        ConfirmationDetails confirmation_messages =
-                new ConfirmationDetails();
-        boolean equals =
-                confirmation_messages.message.equals(this.message)
-                        && confirmation_messages.description.equals(this.description);
-        return assertThat(equals);
+    public void orderConfirmed(ConfirmationDetails confirmationMessages) {
+        assertThat(this).usingRecursiveComparison().isEqualTo(confirmationMessages);
     }
 }

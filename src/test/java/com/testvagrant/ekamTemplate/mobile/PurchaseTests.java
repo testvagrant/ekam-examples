@@ -1,8 +1,11 @@
 package com.testvagrant.ekamTemplate.mobile;
 
 import com.google.inject.Inject;
+import com.testvagrant.ekam.commons.cache.LocaleCache;
+import com.testvagrant.ekam.commons.exceptions.NoSuchKeyException;
 import com.testvagrant.ekam.testBases.testng.MobileTest;
 import com.testvagrant.ekamTemplate.data.clients.UseCaseGenerator;
+import com.testvagrant.ekamTemplate.data.models.ConfirmationDetails;
 import com.testvagrant.ekamTemplate.data.models.Product;
 import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.workflows.definitions.MenuDefinition;
@@ -18,14 +21,16 @@ public class PurchaseTests extends MobileTest {
     @Inject
     private UseCaseGenerator useCaseGenerator;
 
-    public void purchaseProductAndValidate() {
+    @Inject
+    LocaleCache localeCache;
+
+    public void purchaseProductAndValidate() throws NoSuchKeyException {
         UseCase happyPathCase = useCaseGenerator.happyPathCase();
         new BuyAProductDoc(happyPathCase)
                 .confirmation()
                 .create()
                 .getConfirmationDetails()
-                .orderConfirmed()
-                .isTrue();
+                .orderConfirmed(localeCache.get("confirmation_messages", ConfirmationDetails.class));
     }
 
     public void navigateToCart() {

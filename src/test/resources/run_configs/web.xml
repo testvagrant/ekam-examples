@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Practice Suite" parallel="methods" thread-count="2">
+    <test name="Test Basics 1">
+        <groups>
+            <run>
+                <include name="web"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.testvagrant.ekamTemplate.*"/>
+        </packages>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

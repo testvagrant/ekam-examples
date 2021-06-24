@@ -13,7 +13,7 @@ import static com.testvagrant.ekam.commons.LayoutInitiator.Page;
 @Test(groups = "web")
 @Epic("Transer Go Rate Calculator")
 @Feature("Check Rates for EU And India")
-public class CheckRatesTest1 extends WebTest {
+public class CheckRatesWebTest1 extends WebTest {
 
     @Story("Rate Calculator for France and India")
     public void shouldCheckRatesAreInRange() {
@@ -32,6 +32,6 @@ public class CheckRatesTest1 extends WebTest {
                         .selectReceivingInCountry(receivingCountry)
                         .getReceivingInAmount();
 
-        Assert.assertEquals(receivingAmount, 8600, 100);
+        Assert.assertEquals(receivingAmount, 8600, 1000);
     }
 }

@@ -1,10 +1,10 @@
 package com.testvagrant.ekamTemplate.mobile.screens.android;
 
 import com.google.inject.Inject;
-import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekam.commons.annotations.IOSSwitchView;
 import com.testvagrant.ekam.commons.annotations.MobileStep;
+import com.testvagrant.ekam.mobile.MobileScreen;
 import com.testvagrant.ekamTemplate.data.models.Address;
 import com.testvagrant.ekamTemplate.mobile.functions.ScrollFunctions;
 import com.testvagrant.ekamTemplate.mobile.screens.ios.CheckoutView;

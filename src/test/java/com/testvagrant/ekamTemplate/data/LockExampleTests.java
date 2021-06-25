@@ -2,13 +2,14 @@ package com.testvagrant.ekamTemplate.data;
 
 import com.google.inject.Inject;
 import com.testvagrant.ekam.commons.modules.DataSetsModule;
+import com.testvagrant.ekam.config.EkamConfigModule;
 import com.testvagrant.ekamTemplate.data.clients.LockUserExampleDataClient;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
 import org.testng.Assert;
 import org.testng.annotations.Guice;
 import org.testng.annotations.Test;
 
-@Guice(modules = DataSetsModule.class)
+@Guice(modules = {EkamConfigModule.class, DataSetsModule.class})
 public class LockExampleTests {
 
     @Inject
@@ -27,6 +28,18 @@ public class LockExampleTests {
 
     @Test
     public void shouldNotLockDataUnlessSpecified() {
+        Credentials standardUser = dataClient.getAuthorizedUser(false);
+        Credentials anotherStandardUser = dataClient.getAuthorizedUser(false);
+
+        dataClient.release(standardUser);
+        dataClient.release(anotherStandardUser);
+
+        Assert.assertEquals(standardUser.getUsername(), anotherStandardUser.getUsername());
+    }
+
+
+    @Test
+    public void shouldGetDataFromEnv() {
         Credentials standardUser = dataClient.getAuthorizedUser(false);
         Credentials anotherStandardUser = dataClient.getAuthorizedUser(false);
 

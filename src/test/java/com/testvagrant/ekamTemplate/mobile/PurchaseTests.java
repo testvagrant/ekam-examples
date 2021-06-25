@@ -38,9 +38,6 @@ public class PurchaseTests extends MobileTest {
                 .cart()
                 .create()
                 .getCartDetails();
-        assertThat(cartDetails.getName()).isEqualTo("Name");
-
-        buyAProductDoc.confirmation();
-
+        assertThat(cartDetails.getName()).isEqualTo("Sauce Labs Backpack");
     }
 }

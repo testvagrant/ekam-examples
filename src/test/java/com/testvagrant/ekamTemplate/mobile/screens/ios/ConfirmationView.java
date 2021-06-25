@@ -1,8 +1,8 @@
 package com.testvagrant.ekamTemplate.mobile.screens.ios;
 
-import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekam.commons.annotations.MobileStep;
+import com.testvagrant.ekam.mobile.MobileScreen;
 import com.testvagrant.ekamTemplate.data.models.ConfirmationDetails;
 import com.testvagrant.ekamTemplate.mobile.screens.android.ProductsScreen;
 import org.openqa.selenium.By;

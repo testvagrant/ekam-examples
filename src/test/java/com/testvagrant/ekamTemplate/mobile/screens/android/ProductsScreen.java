@@ -1,9 +1,9 @@
 package com.testvagrant.ekamTemplate.mobile.screens.android;
 
-import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekam.commons.annotations.IOSSwitchView;
 import com.testvagrant.ekam.commons.annotations.MobileStep;
+import com.testvagrant.ekam.mobile.MobileScreen;
 import com.testvagrant.ekamTemplate.data.models.Product;
 import com.testvagrant.ekamTemplate.mobile.screens.ios.ProductsView;
 import org.openqa.selenium.By;

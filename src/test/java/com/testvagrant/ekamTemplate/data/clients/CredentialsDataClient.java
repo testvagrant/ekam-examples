@@ -34,11 +34,7 @@ public class CredentialsDataClient extends DataSetsClient {
     }
 
     public Credentials getUser(String key) {
-        try {
-            return getValue(key, Credentials.class);
-        } catch (NoSuchKeyException e) {
-            return Credentials.builder().build();
-        }
+        return getValue(key, Credentials.class);
     }
 
     public static final class DataKeys {

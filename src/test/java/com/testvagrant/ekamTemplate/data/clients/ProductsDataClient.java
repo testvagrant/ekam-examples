@@ -18,10 +18,6 @@ public class ProductsDataClient extends DataSetsClient {
     }
 
     public Product getProduct(String key) {
-        try {
-            return getValue(key, Product.class);
-        } catch (NoSuchKeyException e) {
-            return Product.builder().build();
-        }
+        return getValue(key, Product.class);
     }
 }

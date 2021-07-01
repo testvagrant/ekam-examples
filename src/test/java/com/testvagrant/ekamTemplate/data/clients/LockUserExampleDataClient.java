@@ -30,11 +30,7 @@ public class LockUserExampleDataClient extends DataSetsClient {
     }
 
     public Credentials getUser(String key, boolean lockUser) {
-        try {
-            return getValue(key, Credentials.class, lockUser);
-        } catch (NoSuchKeyException e) {
-            return Credentials.builder().build();
-        }
+        return getValue(key, Credentials.class, lockUser);
     }
 
     public void release(Credentials credentials) {

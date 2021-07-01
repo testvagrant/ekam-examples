@@ -18,10 +18,6 @@ public class AddressDataClient extends DataSetsClient {
     }
 
     public Address getAddress(String addressKey) {
-        try {
-            return getValue(addressKey, Address.class);
-        } catch (NoSuchKeyException e) {
-            return Address.builder().build();
-        }
+        return getValue(addressKey, Address.class);
     }
 }

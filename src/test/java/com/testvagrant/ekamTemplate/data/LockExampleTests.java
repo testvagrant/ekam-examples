@@ -1,7 +1,6 @@
 package com.testvagrant.ekamTemplate.data;
 
 import com.google.inject.Inject;
-import com.testvagrant.ekam.commons.modules.DataSetsModule;
 import com.testvagrant.ekam.config.EkamConfigModule;
 import com.testvagrant.ekamTemplate.data.clients.LockUserExampleDataClient;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
@@ -9,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Guice;
 import org.testng.annotations.Test;
 
-@Guice(modules = {EkamConfigModule.class, DataSetsModule.class})
+@Guice(modules = {EkamConfigModule.class})
 public class LockExampleTests {
 
     @Inject

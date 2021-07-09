@@ -10,19 +10,17 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-    mavenLocal()
     jcenter()
     maven { url "http://palantir.bintray.com/releases" }
 }
 
 dependencies {
     // ekam
-    implementation('com.testvagrant.ekam:ekam:0.0.3-beta')
+    implementation('com.testvagrant.ekam:ekam:0.1.4-beta')
     implementation('com.testvagrant.ekam:ekam-api:0.0.2-alpha')
-    implementation('com.testvagrant.ekam:ekam-config:0.0.3-beta')
-    implementation('com.testvagrant.ekam:ekam-commons:0.0.5-beta')
+    implementation('com.testvagrant.ekam:ekam-config:0.0.5-beta')
+    implementation('com.testvagrant.ekam:ekam-commons:0.0.6-beta')
     implementation('com.testvagrant.ekam:ekam-atoms:0.0.2-alpha')
-
 
     // appium
     implementation('io.appium:java-client:7.5.1')

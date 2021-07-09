@@ -1,7 +1,7 @@
 {
   "desiredCapabilities": [
     {
-      "app": "bs://e6c29de6178e59911851df42bf8b5c1062979401",
+      "app": "sample_app.apk",
       "platformName": "android",
       "automationName": "UiAutomator2",
       "newCommandTimeout": 300,
@@ -10,11 +10,10 @@
       "noReset": true,
       "avdLaunchTimeout": 300,
       "autoAcceptAlerts": true,
-      "useKeystore": false,
-      "browserstack.appium_version": "1.20.2"
+      "useKeystore": false
     },
     {
-      "app": "bs://9148de4a14b1f11b7ad7bee890103e72af09d420",
+      "app": "",
       "platformName": "iOS",
       "automationName": "XCUITest",
       "newCommandTimeout": 300,

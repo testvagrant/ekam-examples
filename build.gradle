@@ -17,10 +17,10 @@ repositories {
 
 dependencies {
     // ekam
-    implementation('com.testvagrant.ekam:ekam:0.1.5-beta')
+    implementation('com.testvagrant.ekam:ekam:0.2.0-beta')
     implementation('com.testvagrant.ekam:ekam-api:0.0.3-alpha')
     implementation('com.testvagrant.ekam:ekam-config:0.0.5-beta')
-    implementation('com.testvagrant.ekam:ekam-commons:0.0.6-beta')
+    implementation('com.testvagrant.ekam:ekam-commons:0.0.7-beta')
     implementation('com.testvagrant.ekam:ekam-atoms:0.0.1-beta')
 
     // appium
@@ -188,12 +188,12 @@ clean {
 }
 
 // Execution Rules
-tasks.runWebTests.dependsOn 'clean', 'build', 'createReportDir'
-tasks.runWebTestsOnCloud.dependsOn 'clean', 'build', 'createReportDir'
-tasks.runMobileTestsOnCloud.dependsOn 'clean', 'build', 'createReportDir'
-tasks.runApiTests.dependsOn 'clean', 'build', 'createReportDir'
-tasks.build.mustRunAfter 'clean'
-tasks.runWebTests.finalizedBy('allureReport')
-tasks.runWebTestsOnCloud.finalizedBy('allureReport')
-tasks.runMobileTestsOnCloud.finalizedBy('allureReport')
-tasks.runApiTests.finalizedBy('allureReport')
+//tasks.runWebTests.dependsOn 'clean', 'build', 'createReportDir'
+//tasks.runWebTestsOnCloud.dependsOn 'clean', 'build', 'createReportDir'
+//tasks.runMobileTestsOnCloud.dependsOn 'clean', 'build', 'createReportDir'
+//tasks.runApiTests.dependsOn 'clean', 'build', 'createReportDir'
+//tasks.build.mustRunAfter 'clean'
+//tasks.runWebTests.finalizedBy('allureReport')
+//tasks.runWebTestsOnCloud.finalizedBy('allureReport')
+//tasks.runMobileTestsOnCloud.finalizedBy('allureReport')
+//tasks.runApiTests.finalizedBy('allureReport')

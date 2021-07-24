@@ -1,7 +1,6 @@
 package com.testvagrant.ekamTemplate.mobile;
 
 import com.google.inject.Inject;
-import com.testvagrant.ekam.commons.exceptions.NoSuchKeyException;
 import com.testvagrant.ekam.commons.locale.LocaleClient;
 import com.testvagrant.ekam.testBases.testng.MobileTest;
 import com.testvagrant.ekamTemplate.data.clients.UseCaseGenerator;
@@ -20,7 +19,7 @@ public class PurchaseTests extends MobileTest {
 
   @Inject LocaleClient localeClient;
 
-  public void purchaseProductAndValidate() throws NoSuchKeyException {
+  public void purchaseProductAndValidate() {
     UseCase happyPathCase = useCaseGenerator.happyPathCase();
     new BuyAProductDoc(happyPathCase)
         .confirmation()

@@ -1,8 +1,8 @@
 package com.testvagrant.ekamTemplate.mobile.screens.android;
 
-import com.testvagrant.ekam.commons.annotations.IOSSwitchView;
-import com.testvagrant.ekam.commons.annotations.MobileStep;
 import com.testvagrant.ekam.mobile.MobileScreen;
+import com.testvagrant.ekam.mobile.annotations.IOSSwitchView;
+import com.testvagrant.ekam.reports.annotations.MobileStep;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
 import com.testvagrant.ekamTemplate.mobile.screens.ios.LoginView;
 import org.openqa.selenium.By;

@@ -2,9 +2,9 @@ package com.testvagrant.ekamTemplate.web.pages;
 
 import com.google.common.base.CharMatcher;
 import com.testvagrant.ekam.atoms.web.Element;
-import com.testvagrant.ekam.commons.annotations.WebStep;
-import com.testvagrant.ekam.commons.annotations.WebSwitchView;
+import com.testvagrant.ekam.reports.annotations.WebStep;
 import com.testvagrant.ekam.web.WebPage;
+import com.testvagrant.ekam.web.annotations.WebSwitchView;
 import org.awaitility.Awaitility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

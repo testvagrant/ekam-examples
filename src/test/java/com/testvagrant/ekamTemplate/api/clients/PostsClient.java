@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.testvagrant.ekam.api.retrofit.RetrofitBaseClient;
-import com.testvagrant.ekam.commons.annotations.APIStep;
+import com.testvagrant.ekam.reports.annotations.APIStep;
 import com.testvagrant.ekamTemplate.api.clients.services.PostsService;
 import com.testvagrant.ekamTemplate.api.models.response.Posts;
 import retrofit2.Call;

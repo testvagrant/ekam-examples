@@ -1,7 +1,7 @@
 package com.testvagrant.ekamTemplate.mobile.screens.ios;
 
 import com.testvagrant.ekam.commons.LayoutInitiator;
-import com.testvagrant.ekam.commons.annotations.MobileStep;
+import com.testvagrant.ekam.reports.annotations.MobileStep;
 import com.testvagrant.ekamTemplate.data.models.Product;
 import com.testvagrant.ekamTemplate.mobile.screens.android.CartScreen;
 import com.testvagrant.ekamTemplate.mobile.screens.android.MenuScreen;

@@ -1,5 +1,5 @@
 {
-  "username": "tempuser_q0jAt2",
-  "accessKey": "4diXL5RukisZVVRoqKSW",
+  "username": "${env:USERNAME}",
+  "accessKey": "${env:ACCESSKEY}",
   "hub": "hub-cloud.browserstack.com"
 }

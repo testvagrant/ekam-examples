@@ -1,5 +1,5 @@
 {
-  "username": "<username>",
-  "accessKey": "<accesskey>",
+  "username": "${env:USERNAME}",
+  "accessKey": "${env:ACCESSKEY}",
   "hub": "api.kobiton.com"
 }

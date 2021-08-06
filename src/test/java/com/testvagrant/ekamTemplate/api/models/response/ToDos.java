@@ -8,25 +8,25 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ToDos {
-    private String userId;
-    private String id;
-    private String title;
-    private boolean completed;
+  private String userId;
+  private String id;
+  private String title;
+  private boolean completed;
 
-    @Override
-    public String toString() {
-        return "ToDos{"
-                + "userId='"
-                + userId
-                + '\''
-                + ", id='"
-                + id
-                + '\''
-                + ", title='"
-                + title
-                + '\''
-                + ", completed="
-                + completed
-                + '}';
-    }
+  @Override
+  public String toString() {
+    return "ToDos{"
+        + "userId='"
+        + userId
+        + '\''
+        + ", id='"
+        + id
+        + '\''
+        + ", title='"
+        + title
+        + '\''
+        + ", completed="
+        + completed
+        + '}';
+  }
 }

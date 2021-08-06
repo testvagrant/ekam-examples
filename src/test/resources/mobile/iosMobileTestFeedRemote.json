@@ -1,6 +1,5 @@
 {
   "desiredCapabilities": {
-
   },
   "executables": {
     "appiumJSPath": "",

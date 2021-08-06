@@ -56,7 +56,7 @@ dependencies {
 
 tasks.withType(Test) {
     systemProperties = [
-        config         :  System.getProperty("config")
+            config: System.getProperty("config")
     ]
 }
 

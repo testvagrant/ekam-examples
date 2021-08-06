@@ -10,14 +10,14 @@ import org.openqa.selenium.By;
 
 public class CartView extends MobileScreen {
 
-  By checkout = queryByName("test-CHECKOUT");
-  By continueShopping = queryByName("test-CONTINUE SHOPPING");
   private final By productName =
       query("//XCUIElementTypeOther[@name=\"test-Description\"]/XCUIElementTypeStaticText[1]");
   private final By productDescription =
       query("//XCUIElementTypeOther[@name=\"test-Description\"]/XCUIElementTypeStaticText[2]");
   private final By productPrice =
       query("//XCUIElementTypeOther[@name=\"test-Price\"]/XCUIElementTypeStaticText[1]");
+  By checkout = queryByName("test-CHECKOUT");
+  By continueShopping = queryByName("test-CONTINUE SHOPPING");
 
   @MobileStep(description = "Get Cart Details")
   public Product getCartDetails() {

@@ -1,12 +1,16 @@
 {
   "platformVersion": {
-    "include": ["9.0"],
+    "include": [
+      "9.0"
+    ],
     "operator": ">",
     "exclude": []
   },
   "model": {
     "include": [],
-    "exclude": ["ipad"]
+    "exclude": [
+      "ipad"
+    ]
   },
   "udid": {
     "include": [],

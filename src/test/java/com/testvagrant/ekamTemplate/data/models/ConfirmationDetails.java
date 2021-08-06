@@ -1,7 +1,6 @@
 package com.testvagrant.ekamTemplate.data.models;
 
 import lombok.*;
-import org.assertj.core.api.AbstractBooleanAssert;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,10 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ConfirmationDetails {
-    private String message;
-    private String description;
+  private String message;
+  private String description;
 
-    public void orderConfirmed(ConfirmationDetails confirmationDetails) {
-        assertThat(this).usingRecursiveComparison().isEqualTo(confirmationDetails);
-    }
+  public void orderConfirmed(ConfirmationDetails confirmationDetails) {
+    assertThat(this).usingRecursiveComparison().isEqualTo(confirmationDetails);
+  }
 }

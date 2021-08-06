@@ -10,93 +10,93 @@ import org.openqa.selenium.Keys;
 import java.time.Duration;
 
 public class TransferGoMobileView extends TransferGoPage {
-    private final By sendingFromCountrySelector =
-            query("(//*[contains(@class, 'country-input')])[1]");
-    private final By receivingInCountrySelector =
-            query("(//*[contains(@class, 'country-input')])[2]");
-    private final By sendingFromTextboxSelector = query("(//input[@autocomplete='amount-input'])[1]");
-    private final By receivingInTextboxSelector = query("(//input[@autocomplete='amount-input'])[2]");
-    private final By countrySearchTextBoxSelector = query("input[placeholder='Type country']");
+  private final By sendingFromCountrySelector =
+      query("(//*[contains(@class, 'country-input')])[1]");
+  private final By receivingInCountrySelector =
+      query("(//*[contains(@class, 'country-input')])[2]");
+  private final By sendingFromTextboxSelector = query("(//input[@autocomplete='amount-input'])[1]");
+  private final By receivingInTextboxSelector = query("(//input[@autocomplete='amount-input'])[2]");
+  private final By countrySearchTextBoxSelector = query("input[placeholder='Type country']");
 
-    @WebStep(keyword = "And", description = "selects sending from country")
-    public TransferGoMobileView selectSendingFromCountry(String country) {
-        String sendingFromValue = getSendingFromValue();
-        Textbox sendingIn = textbox(sendingFromCountrySelector);
-        sendingIn.waitUntilDisplayed();
-        sendingIn.click();
-        selectCountry(country);
-        waitUntilSendingFromInValueNotToBe(sendingFromValue);
-        return this;
+  @WebStep(keyword = "And", description = "selects sending from country")
+  public TransferGoMobileView selectSendingFromCountry(String country) {
+    String sendingFromValue = getSendingFromValue();
+    Textbox sendingIn = textbox(sendingFromCountrySelector);
+    sendingIn.waitUntilDisplayed();
+    sendingIn.click();
+    selectCountry(country);
+    waitUntilSendingFromInValueNotToBe(sendingFromValue);
+    return this;
+  }
+
+  @WebStep(keyword = "And", description = "select sending from amount")
+  public TransferGoMobileView setSendingFromAmount(String amount) {
+    String receivingInValue = getReceivingInValue();
+    Textbox textBox = textbox(sendingFromTextboxSelector);
+    textBox.waitUntilDisplayed();
+
+    Awaitility.waitAtMost(Duration.ofSeconds(10))
+        .until(
+            () -> {
+              textBox.click();
+              textBox.setText(Keys.chord(Keys.COMMAND, "A", Keys.DELETE));
+              textBox.setText(amount);
+              return textBox.getAttributeValue("value").contains(amount);
+            });
+
+    waitUntilReceivingInValueNotToBe(receivingInValue);
+
+    return this;
+  }
+
+  @WebStep(keyword = "And", description = "enters receiving amount")
+  public Double getReceivingInAmount() {
+    String rate = getReceivingInValue();
+    if (!rate.isEmpty()) {
+      return Double.parseDouble(rate);
     }
 
-    @WebStep(keyword = "And", description = "select sending from amount")
-    public TransferGoMobileView setSendingFromAmount(String amount) {
-        String receivingInValue = getReceivingInValue();
-        Textbox textBox = textbox(sendingFromTextboxSelector);
-        textBox.waitUntilDisplayed();
+    return 0.00;
+  }
 
-        Awaitility.waitAtMost(Duration.ofSeconds(10))
-                .until(
-                        () -> {
-                            textBox.click();
-                            textBox.setText(Keys.chord(Keys.COMMAND, "A", Keys.DELETE));
-                            textBox.setText(amount);
-                            return textBox.getAttributeValue("value").contains(amount);
-                        });
+  @WebStep(keyword = "When", description = "selects receiving country")
+  public TransferGoMobileView selectReceivingInCountry(String country) {
+    String receivingInValue = getReceivingInValue();
+    textbox(receivingInCountrySelector).click();
+    selectCountry(country);
+    waitUntilReceivingInValueNotToBe(receivingInValue);
+    return this;
+  }
 
-        waitUntilReceivingInValueNotToBe(receivingInValue);
+  private void selectCountry(String country) {
+    Textbox searchTextBox = textbox(countrySearchTextBoxSelector);
+    searchTextBox.waitUntilDisplayed();
+    searchTextBox.setText(country);
 
-        return this;
-    }
+    String countrySelector =
+        String.format("//span[@class='country-name' and text() = '%s']", country);
+    element(query(countrySelector)).click();
+  }
 
-    @WebStep(keyword = "And", description = "enters receiving amount")
-    public Double getReceivingInAmount() {
-        String rate = getReceivingInValue();
-        if (!rate.isEmpty()) {
-            return Double.parseDouble(rate);
-        }
+  private String getReceivingInValue() {
+    Textbox textBox = textbox(receivingInTextboxSelector);
+    textBox.waitUntilDisplayed();
+    String value = textBox.getAttributeValue("value");
+    CharMatcher matcher = CharMatcher.inRange('0', '9').or(CharMatcher.is('.')).precomputed();
+    return matcher.retainFrom(value).trim();
+  }
 
-        return 0.00;
-    }
+  private String getSendingFromValue() {
+    return textbox(sendingFromTextboxSelector).getAttributeValue("value");
+  }
 
-    @WebStep(keyword = "When", description = "selects receiving country")
-    public TransferGoMobileView selectReceivingInCountry(String country) {
-        String receivingInValue = getReceivingInValue();
-        textbox(receivingInCountrySelector).click();
-        selectCountry(country);
-        waitUntilReceivingInValueNotToBe(receivingInValue);
-        return this;
-    }
+  private void waitUntilReceivingInValueNotToBe(String value) {
+    Awaitility.waitAtMost(Duration.ofSeconds(10))
+        .until(() -> !getReceivingInValue().contains(value));
+  }
 
-    private void selectCountry(String country) {
-        Textbox searchTextBox = textbox(countrySearchTextBoxSelector);
-        searchTextBox.waitUntilDisplayed();
-        searchTextBox.setText(country);
-
-        String countrySelector =
-                String.format("//span[@class='country-name' and text() = '%s']", country);
-        element(query(countrySelector)).click();
-    }
-
-    private String getReceivingInValue() {
-        Textbox textBox = textbox(receivingInTextboxSelector);
-        textBox.waitUntilDisplayed();
-        String value = textBox.getAttributeValue("value");
-        CharMatcher matcher = CharMatcher.inRange('0', '9').or(CharMatcher.is('.')).precomputed();
-        return matcher.retainFrom(value).trim();
-    }
-
-    private String getSendingFromValue() {
-        return textbox(sendingFromTextboxSelector).getAttributeValue("value");
-    }
-
-    private void waitUntilReceivingInValueNotToBe(String value) {
-        Awaitility.waitAtMost(Duration.ofSeconds(10))
-                .until(() -> !getReceivingInValue().contains(value));
-    }
-
-    private void waitUntilSendingFromInValueNotToBe(String value) {
-        Awaitility.waitAtMost(Duration.ofSeconds(10))
-                .until(() -> !getSendingFromValue().contains(value));
-    }
+  private void waitUntilSendingFromInValueNotToBe(String value) {
+    Awaitility.waitAtMost(Duration.ofSeconds(10))
+        .until(() -> !getSendingFromValue().contains(value));
+  }
 }

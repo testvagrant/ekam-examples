@@ -15,23 +15,23 @@ import static com.testvagrant.ekam.commons.LayoutInitiator.Page;
 @Feature("Check Rates for EU And India")
 public class CheckRatesTest extends WebTest {
 
-    @Story("Rate Calculator for France and India")
-    public void shouldCheckRatesAreInRange() {
-        TransferGoPage transferGoPage = Page(TransferGoPage.class);
+  @Story("Rate Calculator for France and India")
+  public void shouldCheckRatesAreInRange() {
+    TransferGoPage transferGoPage = Page(TransferGoPage.class);
 
-        String sendingInCountry = "France";
-        String sendInAmount = "100";
-        String receivingCountry = "India";
+    String sendingInCountry = "France";
+    String sendInAmount = "100";
+    String receivingCountry = "India";
 
-        Double receivingAmount =
-                transferGoPage
-                        //
-                        .acceptCookies()
-                        .selectSendingFromCountry(sendingInCountry)
-                        .setSendingFromAmount(sendInAmount)
-                        .selectReceivingInCountry(receivingCountry)
-                        .getReceivingInAmount();
+    Double receivingAmount =
+        transferGoPage
+            //
+            .acceptCookies()
+            .selectSendingFromCountry(sendingInCountry)
+            .setSendingFromAmount(sendInAmount)
+            .selectReceivingInCountry(receivingCountry)
+            .getReceivingInAmount();
 
-        Assert.assertEquals(receivingAmount, 8600, 100);
-    }
+    Assert.assertEquals(receivingAmount, 8600, 100);
+  }
 }

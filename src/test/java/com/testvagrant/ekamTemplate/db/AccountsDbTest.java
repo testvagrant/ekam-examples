@@ -12,11 +12,10 @@ import org.testng.annotations.Test;
 @Guice(modules = {EkamConfigModule.class, GrpcModule.class})
 public class AccountsDbTest {
 
-    @Inject
-    AccountsClient accountsDBClient;
+  @Inject AccountsClient accountsDBClient;
 
-    public void accountsTest() {
-        String userName = accountsDBClient.getUserName(1001);
-        Assert.assertEquals(userName, "ekam_user");
-    }
+  public void accountsTest() {
+    String userName = accountsDBClient.getUserName(1001);
+    Assert.assertEquals(userName, "ekam_user");
+  }
 }

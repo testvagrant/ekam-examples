@@ -1,6 +1,6 @@
-package com.testvagrant.ekamexamples.workflows;
+package com.testvagrant.ekamexamples.workflow;
 
-import com.testvagrant.ekamexamples.workflows.models.UseCase;
+import com.testvagrant.ekamexamples.workflow.models.UseCase;
 
 public abstract class WorkflowDefinition implements Workflow {
 

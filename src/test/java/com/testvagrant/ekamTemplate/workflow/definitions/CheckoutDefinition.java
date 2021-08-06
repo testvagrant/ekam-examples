@@ -1,10 +1,10 @@
-package com.testvagrant.ekamexamples.workflows.definitions;
+package com.testvagrant.ekamTemplate.workflow.definitions;
 
 import com.testvagrant.ekamTemplate.data.models.Address;
-import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.screens.android.CheckoutScreen;
-import com.testvagrant.ekamexamples.workflows.FulfillCondition;
-import com.testvagrant.ekamexamples.workflows.WorkflowDefinition;
+import com.testvagrant.ekamexamples.workflow.FulfillCondition;
+import com.testvagrant.ekamexamples.workflow.WorkflowDefinition;
+import com.testvagrant.ekamexamples.workflow.models.UseCase;
 
 import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
 

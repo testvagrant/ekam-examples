@@ -1,12 +1,12 @@
-package com.testvagrant.ekamTemplate.mobile;
+package com.testvagrant.ekamTemplate.workflow.tests;
 
 import com.google.inject.Inject;
 import com.testvagrant.ekam.testBases.testng.MobileTest;
 import com.testvagrant.ekamTemplate.data.clients.UseCaseGenerator;
 import com.testvagrant.ekamTemplate.data.models.Credentials;
-import com.testvagrant.ekamTemplate.workflows.definitions.LoginDefinition;
-import com.testvagrant.ekamTemplate.workflows.docs.BuyAProductDoc;
-import com.testvagrant.ekamexamples.workflows.models.UseCase;
+import com.testvagrant.ekamTemplate.workflow.definitions.LoginDefinition;
+import com.testvagrant.ekamTemplate.workflow.docs.BuyAProductDoc;
+import com.testvagrant.ekamexamples.workflow.models.UseCase;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;

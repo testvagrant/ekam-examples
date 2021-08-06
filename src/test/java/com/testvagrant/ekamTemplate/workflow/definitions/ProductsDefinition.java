@@ -1,11 +1,11 @@
-package com.testvagrant.ekamexamples.workflows.definitions;
+package com.testvagrant.ekamTemplate.workflow.definitions;
 
 import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekamTemplate.data.models.Product;
-import com.testvagrant.ekamTemplate.data.models.UseCase;
 import com.testvagrant.ekamTemplate.mobile.screens.android.ProductsScreen;
-import com.testvagrant.ekamexamples.workflows.FulfillCondition;
-import com.testvagrant.ekamexamples.workflows.WorkflowDefinition;
+import com.testvagrant.ekamexamples.workflow.FulfillCondition;
+import com.testvagrant.ekamexamples.workflow.WorkflowDefinition;
+import com.testvagrant.ekamexamples.workflow.models.UseCase;
 
 public class ProductsDefinition extends WorkflowDefinition {
 

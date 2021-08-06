@@ -1,7 +1,7 @@
 package com.testvagrant.ekamTemplate.data.clients;
 
 import com.google.inject.Inject;
-import com.testvagrant.ekamexamples.workflows.models.UseCase;
+import com.testvagrant.ekamexamples.workflow.models.UseCase;
 
 public class UseCaseGenerator {
   @Inject private CredentialsDataClient credentialsDataClient;

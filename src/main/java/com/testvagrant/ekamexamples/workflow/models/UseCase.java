@@ -1,6 +1,6 @@
-package com.testvagrant.ekamexamples.workflows.models;
+package com.testvagrant.ekamexamples.workflow.models;
 
-import com.testvagrant.ekamexamples.workflows.WorkflowDefinition;
+import com.testvagrant.ekamexamples.workflow.WorkflowDefinition;
 import lombok.*;
 
 import java.util.Map;

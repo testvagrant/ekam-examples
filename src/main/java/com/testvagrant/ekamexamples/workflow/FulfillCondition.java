@@ -1,4 +1,4 @@
-package com.testvagrant.ekamexamples.workflows;
+package com.testvagrant.ekamexamples.workflow;
 
 public interface FulfillCondition<T> {
   T apply();

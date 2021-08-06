@@ -36,7 +36,6 @@ public class LockExampleTests {
         Assert.assertEquals(standardUser.getUsername(), anotherStandardUser.getUsername());
     }
 
-
     @Test
     public void shouldGetDataFromEnv() {
         Credentials standardUser = dataClient.getAuthorizedUser(false);

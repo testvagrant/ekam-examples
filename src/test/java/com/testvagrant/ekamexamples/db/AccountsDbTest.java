@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 
 @Test(groups = "db")
 @Guice(modules = {EkamConfigModule.class, GrpcModule.class})
+/* Set "${env:DBUsername}" and "${env:DBPassword}" environment properties */
 public class AccountsDbTest {
 
-  @Inject AccountsClient accountsDBClient;
+  @Inject private AccountsClient accountsDBClient;
 
   public void accountsTest() {
     String userName = accountsDBClient.getUserName(1001);

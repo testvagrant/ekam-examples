@@ -17,7 +17,6 @@
       "app": "swaglabs.app",
       "platformName": "iOS",
       "automationName": "XCUITest",
-      "udid": "B6318649-CFFC-4E45-B7B8-38721FA79172",
       "newCommandTimeout": 300,
       "autoGrantPermissions": true,
       "noReset": true,

@@ -1,7 +1,7 @@
 {
   "desiredCapabilities": [
     {
-      "app": "sample_app.apk",
+      "app": "swaglabs.apk",
       "platformName": "android",
       "automationName": "UiAutomator2",
       "newCommandTimeout": 300,
@@ -14,9 +14,10 @@
       "browserstack.appium_version": "1.20.2"
     },
     {
-      "app": "sample_app.ipa",
+      "app": "swaglabs.app",
       "platformName": "iOS",
       "automationName": "XCUITest",
+      "udid": "B6318649-CFFC-4E45-B7B8-38721FA79172",
       "newCommandTimeout": 300,
       "autoGrantPermissions": true,
       "noReset": true,

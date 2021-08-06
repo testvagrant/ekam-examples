@@ -128,6 +128,40 @@ task runDbTests(type: Test) {
     }
 }
 
+task runCucumberWebTests(type: JavaExec) {
+    main = "io.cucumber.core.cli.Main"
+    List<String> args = this.getArgs();
+    args.addAll(["--glue", "com.testvagrant.ekamExamples.web.steps"])
+    classpath = sourceSets.test.runtimeClasspath
+    systemProperties = [
+            config: System.getProperty("config", "default"),
+            tags  : System.getProperty("tags", "")
+    ]
+    ignoreExitValue = true
+}
+
+task runCucumberMobileTests(type: JavaExec) {
+    main = "io.cucumber.core.cli.Main"
+    List<String> args = this.getArgs();
+    args.addAll(["--glue", "com.testvagrant.ekamExamples.mobile.steps"])
+    classpath = sourceSets.test.runtimeClasspath
+    systemProperties = [
+            config: System.getProperty("config", "default"),
+            tags  : System.getProperty("tags", "")
+    ]
+    ignoreExitValue = true
+}
+
+def getArgs() {
+    List<String> args = ["-p", "pretty",
+                         "-p", ("json:${project.buildDir}/cucumber/cucumber-report.json"),
+                         "-p", "timeline:${project.buildDir}/cucumber/timeline/",
+                         "-t", System.getProperty("tags", ""),
+                         "-p", "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm",
+                         "--threads", System.getProperty("sessions", "1")]
+    return args
+}
+
 allure {
     version = '2.13.2'
     autoconfigure = true
@@ -166,8 +200,13 @@ tasks.runWebTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runWebTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runMobileTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.runApiTests.dependsOn 'clean', 'build', 'createReportDir'
+tasks.runCucumberWebTests.dependsOn 'clean', 'build', 'createReportDir'
+tasks.runCucumberMobileTests.dependsOn 'clean', 'build', 'createReportDir'
 tasks.build.mustRunAfter 'clean'
 tasks.runWebTests.finalizedBy('allureReport')
 tasks.runWebTests.finalizedBy('allureReport')
 tasks.runMobileTests.finalizedBy('allureReport')
 tasks.runApiTests.finalizedBy('allureReport')
+tasks.runCucumberWebTests.finalizedBy('allureReport')
+tasks.runCucumberMobileTests.finalizedBy('allureReport')
+

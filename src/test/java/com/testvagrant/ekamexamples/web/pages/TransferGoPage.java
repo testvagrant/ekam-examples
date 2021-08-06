@@ -1,7 +1,6 @@
 package com.testvagrant.ekamexamples.web.pages;
 
 import com.google.common.base.CharMatcher;
-import com.testvagrant.ekam.atoms.web.Element;
 import com.testvagrant.ekam.reports.annotations.WebStep;
 import com.testvagrant.ekam.web.WebPage;
 import com.testvagrant.ekam.web.annotations.WebSwitchView;
@@ -10,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import java.time.Duration;
-import java.util.function.Function;
 import java.util.regex.Pattern;
 
 public class TransferGoPage extends WebPage {
@@ -34,11 +32,8 @@ public class TransferGoPage extends WebPage {
   @WebStep(keyword = "And", description = "selects sending from country")
   public TransferGoPage selectSendingFromCountry(String country) {
     String initialSendingFromValue = getSendingFromValue();
-    Function<Element, Boolean> attributeNotToBe =
-        element -> element.getAttributeValue("value").contains(getAmount(initialSendingFromValue));
     textbox(sendingFromCountrySelector).setText(country);
     selectCountry(country);
-    textbox(sendingFromTextboxSelector).waitUntil(attributeNotToBe);
     return this;
   }
 

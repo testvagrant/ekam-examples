@@ -1,4 +1,4 @@
-package com.testvagrant.ekamexamples.web.pages;
+package com.testvagrant.ekamexamples.web.transferGo.pages;
 
 import com.google.common.base.CharMatcher;
 import com.google.inject.Inject;

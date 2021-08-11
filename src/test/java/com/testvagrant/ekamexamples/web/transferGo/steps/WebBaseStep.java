@@ -1,4 +1,4 @@
-package com.testvagrant.ekamexamples.web.steps;
+package com.testvagrant.ekamexamples.web.transferGo.steps;
 
 import com.testvagrant.ekam.testBases.cucumber.web.WebScenarioDefinition;
 import io.cucumber.java.After;

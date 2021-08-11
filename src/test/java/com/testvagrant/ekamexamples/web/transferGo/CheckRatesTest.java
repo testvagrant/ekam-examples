@@ -1,7 +1,7 @@
-package com.testvagrant.ekamexamples.web;
+package com.testvagrant.ekamexamples.web.transferGo;
 
 import com.testvagrant.ekam.testBases.testng.WebTest;
-import com.testvagrant.ekamexamples.web.pages.TransferGoPage;
+import com.testvagrant.ekamexamples.web.transferGo.pages.TransferGoPage;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;

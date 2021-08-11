@@ -22,7 +22,7 @@ public class CredentialsDataClient extends DataSetsClient {
   }
 
   public Credentials getInvalidPasswordUser() {
-    return getUser("empty").toBuilder().username("invalid").password("invalid").build();
+    return Credentials.builder().username("invalid").password("invalid").build();
   }
 
   public Credentials getUser(String key) {

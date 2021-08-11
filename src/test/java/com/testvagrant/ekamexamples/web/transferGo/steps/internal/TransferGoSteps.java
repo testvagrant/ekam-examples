@@ -1,6 +1,6 @@
-package com.testvagrant.ekamexamples.web.steps.internal;
+package com.testvagrant.ekamexamples.web.transferGo.steps.internal;
 
-import com.testvagrant.ekamexamples.web.pages.TransferGoPage;
+import com.testvagrant.ekamexamples.web.transferGo.pages.TransferGoPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

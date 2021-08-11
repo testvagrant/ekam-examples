@@ -15,6 +15,8 @@ import java.util.regex.Pattern;
 
 public class TransferGoPage extends WebPage {
 
+  @Inject private Logger logger;
+
   private final By sendingFromCountrySelector =
       query("(//*[contains(@class, 'country-input')])[1]");
   private final By receivingInCountrySelector =
@@ -22,7 +24,6 @@ public class TransferGoPage extends WebPage {
   private final By sendingFromTextboxSelector = query("(//input[@autocomplete='amount-input'])[1]");
   private final By receivingInTextboxSelector = query("(//input[@autocomplete='amount-input'])[2]");
   private final By acceptCookiesSelector = query("//a[contains(text(), 'Accept')]");
-  @Inject Logger logger;
 
   @WebStep(description = "Accept Cookies")
   public TransferGoPage acceptCookies() {

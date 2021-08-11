@@ -1,11 +1,15 @@
 package com.testvagrant.ekamexamples.mobile.screens.android;
 
+import com.google.inject.Inject;
 import com.testvagrant.ekam.atoms.MultiPlatformFinder;
 import com.testvagrant.ekam.mobile.MobileScreen;
 import com.testvagrant.ekam.reports.annotations.MobileStep;
 import com.testvagrant.ekamexamples.data.models.Credentials;
+import org.apache.log4j.Logger;
 
 public class LoginScreen extends MobileScreen {
+
+  @Inject private Logger logger;
 
   MultiPlatformFinder usernameTextBox =
       finder(queryByContentDesc("test-Username"), queryByName("test-Username"));
@@ -21,6 +25,7 @@ public class LoginScreen extends MobileScreen {
 
   @MobileStep(description = "Login")
   public <T extends MobileScreen> T login(Credentials credentials, Class<T> tClass) {
+    logger.info(String.format("Logging in with Credentials: %s", credentials));
     setUsername(credentials.getUsername());
     setPassword(credentials.getPassword());
     clickLogin();
@@ -47,6 +52,8 @@ public class LoginScreen extends MobileScreen {
 
   @MobileStep(keyword = "And", description = "Get Error Message")
   public String getErrorMessage() {
-    return element(errorMessageContainer).getTextValue();
+    String message = element(errorMessageContainer).getTextValue();
+    logger.info(String.format("Error Message: '%s'", message));
+    return message;
   }
 }

@@ -1,14 +1,18 @@
 package com.testvagrant.ekamexamples.mobile.screens.android;
 
+import com.google.inject.Inject;
 import com.testvagrant.ekam.commons.LayoutInitiator;
 import com.testvagrant.ekam.mobile.MobileScreen;
 import com.testvagrant.ekam.mobile.annotations.IOSSwitchView;
 import com.testvagrant.ekam.reports.annotations.MobileStep;
 import com.testvagrant.ekamexamples.data.models.Product;
 import com.testvagrant.ekamexamples.mobile.screens.ios.ProductsView;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 
 public class ProductsScreen extends MobileScreen {
+
+  @Inject private Logger logger;
 
   private final By menu = queryByContentDesc("test-Menu");
   private final By cart = queryByContentDesc("test-Cart");
@@ -16,7 +20,9 @@ public class ProductsScreen extends MobileScreen {
   @IOSSwitchView(view = ProductsView.class)
   @MobileStep(description = "Menu is displayed")
   public boolean isMenuDisplayed() {
-    return element(menu).isDisplayed();
+    boolean menuDisplayed = element(menu).isDisplayed();
+    logger.info("Menu Displayed: " + menuDisplayed);
+    return menuDisplayed;
   }
 
   @MobileStep(description = "Selects product")

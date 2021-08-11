@@ -5,8 +5,6 @@ plugins {
 
 group 'ekam.examples'
 
-sourceCompatibility = 1.8
-
 repositories {
     mavenCentral()
     jcenter()
@@ -15,11 +13,11 @@ repositories {
 
 dependencies {
     // ekam
-    implementation('com.testvagrant.ekam:ekam:0.2.3-beta')
+    implementation('com.testvagrant.ekam:ekam:0.2.4-beta')
     implementation('com.testvagrant.ekam:ekam-api:0.0.3-alpha')
-    implementation('com.testvagrant.ekam:ekam-config:1.0.1')
+    implementation('com.testvagrant.ekam:ekam-config:1.0.2')
     implementation('com.testvagrant.ekam:ekam-commons:0.1.1-beta')
-    implementation('com.testvagrant.ekam:ekam-atoms:0.0.4-beta')
+    implementation('com.testvagrant.ekam:ekam-atoms:0.0.5-beta')
 
     // appium
     implementation('io.appium:java-client:7.5.1')
@@ -32,6 +30,8 @@ dependencies {
     testImplementation('org.testng:testng:7.4.0')
     testImplementation('io.cucumber:cucumber-java:6.10.4')
     testImplementation('io.cucumber:cucumber-testng:6.10.4')
+
+    implementation('log4j:log4j:1.2.17')
 
     // square
     implementation('com.squareup.retrofit2:retrofit:2.9.0')
@@ -69,7 +69,7 @@ task runWebTests(type: Test) {
     outputs.upToDateWhen { false }
     useTestNG {
         parallel = "methods"
-        threadCount Integer.parseInt(System.getProperty("sessions", "1"))
+        threadCount Integer.parseInt(System.getProperty("sessions", "2"))
         includeGroups System.getProperty("tags", "web")
         testLogging.showStandardStreams = true
         useDefaultListeners true
@@ -130,7 +130,7 @@ task runDbTests(type: Test) {
 
 task runCucumberWebTests(type: JavaExec) {
     main = "io.cucumber.core.cli.Main"
-    List<String> args = this.getArgs();
+    List<String> args = this.getArgs()
     args.addAll(["--glue", "com.testvagrant.ekamExamples.web.steps"])
     classpath = sourceSets.test.runtimeClasspath
     systemProperties = [
@@ -142,7 +142,7 @@ task runCucumberWebTests(type: JavaExec) {
 
 task runCucumberMobileTests(type: JavaExec) {
     main = "io.cucumber.core.cli.Main"
-    List<String> args = this.getArgs();
+    List<String> args = this.getArgs()
     args.addAll(["--glue", "com.testvagrant.ekamExamples.mobile.steps"])
     classpath = sourceSets.test.runtimeClasspath
     systemProperties = [

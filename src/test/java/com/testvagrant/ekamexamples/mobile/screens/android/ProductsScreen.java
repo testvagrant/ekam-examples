@@ -12,10 +12,9 @@ import org.openqa.selenium.By;
 
 public class ProductsScreen extends MobileScreen {
 
-  @Inject private Logger logger;
-
   private final By menu = queryByContentDesc("test-Menu");
   private final By cart = queryByContentDesc("test-Cart");
+  @Inject private Logger logger;
 
   @IOSSwitchView(view = ProductsView.class)
   @MobileStep(description = "Menu is displayed")

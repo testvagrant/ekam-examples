@@ -1,9 +1,9 @@
 package com.testvagrant.ekamexamples.workflow.docs;
 
+import com.testvagrant.ekamexamples.workflow.WorkflowDoc;
 import com.testvagrant.ekamexamples.workflow.definitions.LoginDefinition;
 import com.testvagrant.ekamexamples.workflow.definitions.MenuDefinition;
 import com.testvagrant.ekamexamples.workflow.definitions.ProductsDefinition;
-import com.testvagrant.ekamexamples.workflow.WorkflowDoc;
 import com.testvagrant.ekamexamples.workflow.models.UseCase;
 
 public class MenuDoc extends WorkflowDoc {

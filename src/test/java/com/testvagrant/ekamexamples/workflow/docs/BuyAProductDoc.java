@@ -1,7 +1,7 @@
 package com.testvagrant.ekamexamples.workflow.docs;
 
-import com.testvagrant.ekamexamples.workflow.definitions.*;
 import com.testvagrant.ekamexamples.workflow.WorkflowDoc;
+import com.testvagrant.ekamexamples.workflow.definitions.*;
 import com.testvagrant.ekamexamples.workflow.models.UseCase;
 
 public class BuyAProductDoc extends WorkflowDoc {

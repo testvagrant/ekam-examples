@@ -9,6 +9,8 @@ import org.apache.log4j.Logger;
 
 public class LoginScreen extends MobileScreen {
 
+  @Inject private Logger logger;
+
   MultiPlatformFinder usernameTextBox =
       finder(queryByContentDesc("test-Username"), queryByName("test-Username"));
   MultiPlatformFinder passwordTextBox =
@@ -17,7 +19,6 @@ public class LoginScreen extends MobileScreen {
       finder(queryByContentDesc("test-LOGIN"), queryByName("test-LOGIN"));
   MultiPlatformFinder errorMessageContainer =
       finder(queryByContentDesc("test-Error message"), queryByName("test-Error message"));
-  @Inject private Logger logger;
 
   @MobileStep(description = "Login")
   public <T extends MobileScreen> T login(Credentials credentials, Class<T> tClass) {

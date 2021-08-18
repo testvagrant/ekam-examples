@@ -1,17 +1,14 @@
 package com.testvagrant.ekamexamples.db;
 
 import com.google.inject.Inject;
-import com.testvagrant.ekam.api.modules.GrpcModule;
-import com.testvagrant.ekam.config.EkamConfigModule;
+import com.testvagrant.ekam.testBases.testng.DbTest;
 import com.testvagrant.ekamexamples.db.clients.AccountsClient;
 import org.testng.Assert;
-import org.testng.annotations.Guice;
 import org.testng.annotations.Test;
 
 @Test(groups = "db")
-@Guice(modules = {EkamConfigModule.class, GrpcModule.class})
 /* Set "${env:DBUsername}" and "${env:DBPassword}" environment properties */
-public class AccountsDbTest {
+public class AccountsDbTest extends DbTest {
 
   @Inject private AccountsClient accountsDBClient;
 

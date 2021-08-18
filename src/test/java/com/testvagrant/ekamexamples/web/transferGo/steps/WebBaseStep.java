@@ -1,6 +1,6 @@
 package com.testvagrant.ekamexamples.web.transferGo.steps;
 
-import com.testvagrant.ekam.testBases.cucumber.web.WebScenarioDefinition;
+import com.testvagrant.ekam.testBases.cucumber.WebScenarioDefinition;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;

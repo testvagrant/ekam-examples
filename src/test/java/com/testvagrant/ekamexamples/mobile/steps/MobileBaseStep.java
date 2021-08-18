@@ -1,6 +1,6 @@
 package com.testvagrant.ekamexamples.mobile.steps;
 
-import com.testvagrant.ekam.testBases.cucumber.mobile.MobileScenarioDefinition;
+import com.testvagrant.ekam.testBases.cucumber.MobileScenarioDefinition;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;

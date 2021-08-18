@@ -11,11 +11,12 @@ import static com.testvagrant.ekam.commons.LayoutInitiator.Page;
 
 public class LoginPage extends WebPage {
 
+  @Inject private Logger logger;
+
   private final By userNameTextBox = queryById("user-name");
   private final By passwordTextBox = queryById("password");
   private final By loginButton = queryById("login-button");
   private final By errorMessageContainer = queryByAttribute("data-test", "error");
-  @Inject private Logger logger;
 
   @WebStep(description = "Login")
   public <T extends WebPage> T login(Credentials credentials, Class<T> tClass) {

@@ -1,7 +1,7 @@
 package com.testvagrant.ekamexamples.data;
 
 import com.google.inject.Inject;
-import com.testvagrant.ekam.config.EkamConfigModule;
+import com.testvagrant.ekam.internal.modules.EkamConfigModule;
 import com.testvagrant.ekamexamples.data.clients.LockUserExampleDataClient;
 import com.testvagrant.ekamexamples.data.models.Credentials;
 import org.testng.Assert;

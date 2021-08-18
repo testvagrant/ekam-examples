@@ -9,8 +9,9 @@ import java.util.logging.Logger;
 
 public class ProductsPage extends WebPage {
 
-  private final By menu = queryByClass("bm-burger-button");
   @Inject private Logger logger;
+
+  private final By menu = queryByClass("bm-burger-button");
 
   @WebStep(description = "Menu is displayed")
   public boolean isMenuDisplayed() {

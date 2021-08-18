@@ -2,10 +2,12 @@ package com.testvagrant.ekamexamples.mobile.screens.android;
 
 import com.google.inject.Inject;
 import com.testvagrant.ekam.atoms.MultiPlatformFinder;
-import com.testvagrant.ekam.mobile.MobileScreen;
+import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.reports.annotations.MobileStep;
 import com.testvagrant.ekamexamples.data.models.Credentials;
 import org.apache.log4j.Logger;
+
+import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
 
 public class LoginScreen extends MobileScreen {
 
@@ -26,7 +28,7 @@ public class LoginScreen extends MobileScreen {
     setUsername(credentials.getUsername());
     setPassword(credentials.getPassword());
     clickLogin();
-    return createInstance(tClass);
+    return Screen(tClass);
   }
 
   @MobileStep(description = "Click Login")

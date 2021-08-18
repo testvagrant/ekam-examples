@@ -2,8 +2,8 @@ package com.testvagrant.ekamexamples.web.transferGo.pages;
 
 import com.google.common.base.CharMatcher;
 import com.google.inject.Inject;
+import com.testvagrant.ekam.atoms.web.WebPage;
 import com.testvagrant.ekam.reports.annotations.WebStep;
-import com.testvagrant.ekam.web.WebPage;
 import com.testvagrant.ekam.web.annotations.WebSwitchView;
 import org.apache.log4j.Logger;
 import org.awaitility.Awaitility;

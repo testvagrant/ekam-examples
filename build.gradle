@@ -7,7 +7,6 @@ group 'ekam.examples'
 
 repositories {
     mavenCentral()
-    mavenLocal()
     jcenter()
     maven { url "http://palantir.bintray.com/releases" }
 }
@@ -15,9 +14,8 @@ repositories {
 dependencies {
     // ekam
     implementation('com.testvagrant.ekam:ekam:0.3.0-beta')
-    implementation('com.testvagrant.ekam:ekam-api:0.0.3-alpha')
-    implementation('com.testvagrant.ekam:ekam-atoms:0.0.4-beta')
-    implementation('com.testvagrant.ekam:ekam-commons:0.1.0')
+    implementation('com.testvagrant.ekam:ekam-api:0.1.0')
+    implementation('com.testvagrant.ekam:ekam-atoms:0.1.0')
 
     // appium
     implementation('io.appium:java-client:7.5.1')

@@ -1,7 +1,7 @@
 package com.testvagrant.ekamexamples.mobile.screens.android;
 
+import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.LayoutInitiator;
-import com.testvagrant.ekam.mobile.MobileScreen;
 import com.testvagrant.ekam.mobile.annotations.IOSSwitchView;
 import com.testvagrant.ekam.reports.annotations.MobileStep;
 import com.testvagrant.ekamexamples.data.models.ConfirmationDetails;

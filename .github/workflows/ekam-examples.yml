@@ -31,3 +31,23 @@ jobs:
       with:
         name: api_tests
         path: allure-report/ui
+
+  api_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: gradle
+      - name: Run API Tests
+        run: ./gradlew runApiTests
+      - name: Upload API Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: api_tests
+          path:
+            allure-report/ui:
+

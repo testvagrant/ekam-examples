@@ -26,3 +26,8 @@ jobs:
       run: ./gradlew build
     - name: Run API Tests
       run: ./gradlew runApiTests
+    - name: Upload API Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: api_tests
+        path: allure-report/ui

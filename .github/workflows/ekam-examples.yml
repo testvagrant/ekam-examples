@@ -79,12 +79,17 @@ jobs:
         run: chmod +x gradlew
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
-      - run: npm install -g appium
+          node-version: '12'
+      - run: |
+          npm install -g appium@v1.20.2
+          appium -v
+          appium &>/dev/null &
       - name: setup android
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
+          arch: x86_64
+          profile: Nexus 6
           script: |
             adb devices
             ./gradlew runMobileTests --stacktrace

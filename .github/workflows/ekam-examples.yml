@@ -46,7 +46,7 @@ jobs:
 
   web_test:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node14.17.0-chrome91-ff89
+    container: krishnanandb/chromeheadless
     needs: build
     steps:
       - uses: actions/checkout@v2

@@ -45,7 +45,8 @@ jobs:
         path: allure-report/ui
 
   web_test:
-    runs-on: cypress/browsers:node14.17.0-chrome91-ff89
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node14.17.0-chrome91-ff89
     needs: build
     steps:
       - uses: actions/checkout@v2

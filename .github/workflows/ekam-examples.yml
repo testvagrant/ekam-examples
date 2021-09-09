@@ -75,11 +75,13 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: gradle
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
       - name: setup android
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: adb devices
+          script: ./gradlew runMobileTests --stacktrace
       - name: Upload API Artifacts
         uses: actions/upload-artifact@v2
         if: ${{ always() }}

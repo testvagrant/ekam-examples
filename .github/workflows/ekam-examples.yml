@@ -55,8 +55,9 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: gradle
+      - name: setup chrome
+      - uses: browser-actions/setup-chrome@latest
       - name: Run Web Tests
-        uses: browser-actions/setup-chrome@latest
         run: ./gradlew runWebTests -Dweb.headless=true --stacktrace
       - name: Upload API Artifacts
         uses: actions/upload-artifact@v2

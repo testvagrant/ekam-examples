@@ -57,7 +57,7 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - name: Run Web Tests
-        run: ./gradlew runWebTests -Dweb.headless=true
+        run: ./gradlew runWebTests -Dweb.headless=true --stacktrace
       - name: Upload API Artifacts
         uses: actions/upload-artifact@v2
         with:

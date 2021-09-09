@@ -79,7 +79,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: ./gradlew runMobileTests
+          script: adb devices
       - name: Upload API Artifacts
         uses: actions/upload-artifact@v2
         if: ${{ always() }}

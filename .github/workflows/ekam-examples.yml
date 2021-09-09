@@ -8,9 +8,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: set up JDK 11
@@ -58,9 +56,10 @@ jobs:
       - name: setup chrome
         uses: browser-actions/setup-chrome@latest
       - name: Run Web Tests
-        run: ./gradlew runWebTests -Dweb.headless=true --stacktrace
+        run: ./gradlew runWebTests -Dweb.headless=true
       - name: Upload API Artifacts
         uses: actions/upload-artifact@v2
+        if: ${{ always() }}
         with:
           name: web_test
           path: allure-report/ui

@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 
 import static com.testvagrant.ekam.commons.LayoutInitiator.Page;
 
-@Test(groups = "web")
 @Epic("Transer Go Rate Calculator")
 @Feature("Check Rates for EU And India")
 public class CheckRatesTest extends WebTest {

@@ -1,3 +1,4 @@
+@web
 Feature: TransferGo rate check
 
   Scenario: Validate Receiving Amount is in range

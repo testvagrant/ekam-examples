@@ -7,13 +7,14 @@ group 'ekam.examples'
 
 repositories {
     mavenCentral()
+    mavenLocal()
     jcenter()
     maven { url "http://palantir.bintray.com/releases" }
 }
 
 dependencies {
     // ekam
-    implementation('com.testvagrant.ekam:ekam:0.3.1-beta')
+    implementation('com.testvagrant.ekam:ekam:1.0.0')
     implementation('com.testvagrant.ekam:ekam-api:0.1.0')
     implementation('com.testvagrant.ekam:ekam-atoms:0.1.0')
 
@@ -43,6 +44,9 @@ dependencies {
     testImplementation('org.projectlombok:lombok:1.18.20')
     testAnnotationProcessor('org.projectlombok:lombok:1.18.20')
 
+    //allure
+    implementation 'io.qameta.allure:allure-cucumber6-jvm:2.14.0'
+
     // jdbi
     implementation('org.jdbi:jdbi:2.78')
 
@@ -54,9 +58,7 @@ dependencies {
 }
 
 tasks.withType(Test) {
-    systemProperties = [
-            config: System.getProperty("config")
-    ]
+    systemProperties System.properties
 }
 
 task runWebTests(type: Test) {
@@ -129,20 +131,30 @@ task runDbTests(type: Test) {
 
 task runCucumberWebTests(type: JavaExec) {
     main = "io.cucumber.core.cli.Main"
-    List<String> args = this.getArgs()
-    args.addAll(["--glue", "com.testvagrant.ekamExamples.web.steps"])
     classpath = sourceSets.test.runtimeClasspath
+    args = ["-p", "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm",
+            "-p", "pretty",
+            "-p", ("json:${project.buildDir}/cucumber/cucumber-report.json"),
+            "-p", "timeline:${project.buildDir}/cucumber/timeline/",
+            "-t", System.getProperty("tags", "@web"),
+            "--threads", System.getProperty("sessions", "1"),
+            "--glue", "com.testvagrant.ekamexamples.web.transferGo.steps"]
     systemProperties = [
-            config: System.getProperty("config", "default"),
-            tags  : System.getProperty("tags", "")
+            config: System.getProperty("config", "transfergo"),
+            tags  : System.getProperty("tags", "@web")
     ]
     ignoreExitValue = true
 }
 
 task runCucumberMobileTests(type: JavaExec) {
     main = "io.cucumber.core.cli.Main"
-    List<String> args = this.getArgs()
-    args.addAll(["--glue", "com.testvagrant.ekamExamples.mobile.steps"])
+    args = ["-p", "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm",
+            "-p", "pretty",
+            "-p", ("json:${project.buildDir}/cucumber/cucumber-report.json"),
+            "-p", "timeline:${project.buildDir}/cucumber/timeline/",
+            "-t", System.getProperty("tags", "@mobile"),
+            "--threads", System.getProperty("sessions", "1"),
+            "--glue", "com.testvagrant.ekamexamples.mobile.steps"]
     classpath = sourceSets.test.runtimeClasspath
     systemProperties = [
             config: System.getProperty("config", "default"),
@@ -152,11 +164,11 @@ task runCucumberMobileTests(type: JavaExec) {
 }
 
 def getArgs() {
-    List<String> args = ["-p", "pretty",
+    List<String> args = ["-p", "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm",
+                         "-p", "pretty",
                          "-p", ("json:${project.buildDir}/cucumber/cucumber-report.json"),
                          "-p", "timeline:${project.buildDir}/cucumber/timeline/",
                          "-t", System.getProperty("tags", ""),
-                         "-p", "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm",
                          "--threads", System.getProperty("sessions", "1")]
     return args
 }

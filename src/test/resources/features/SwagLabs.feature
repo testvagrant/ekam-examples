@@ -1,3 +1,4 @@
+@mobile
 Feature: SwagLabs
 
   Scenario: Validate login

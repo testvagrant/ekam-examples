@@ -1,0 +1,15 @@
+{
+  "desiredCapabilities": [
+    {
+      "app": "swaglabs.app",
+      "platformName": "${env:platformName}",
+      "automationName": "XCUITest",
+      "newCommandTimeout": "${env:newCommandTimeout}",
+      "autoGrantPermissions": true,
+      "noReset": true,
+      "avdLaunchTimeout": 300,
+      "autoAcceptAlerts": true,
+      "useKeystore": false
+    }
+  ]
+}

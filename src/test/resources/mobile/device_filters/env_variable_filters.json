@@ -1,0 +1,15 @@
+{
+  "platformVersion": {
+    "include": [],
+    "operator": "",
+    "exclude": []
+  },
+  "model": {
+    "include": [],
+    "exclude": []
+  },
+  "udid": {
+    "include": ["559A0D3D-F412-4737-89DD-A69A1311318E"],
+    "exclude": []
+  }
+}

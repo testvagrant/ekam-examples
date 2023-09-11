@@ -30,7 +30,7 @@ public class CheckoutView extends MobileScreen {
 
   @MobileStep(description = "Continue Checkout")
   public CheckoutView continueCheckout() {
-    iosDeviceDriver.hideKeyboard();
+    iosDeviceDriver.hideKeyBoard();
     element(continueCheckout).click();
     return this;
   }

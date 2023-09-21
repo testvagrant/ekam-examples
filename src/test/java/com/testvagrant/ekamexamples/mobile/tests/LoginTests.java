@@ -19,30 +19,31 @@ import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
 @Feature("Login As Standard User")
 public class LoginTests extends MobileTest {
 
-  @Inject private CredentialsDataClient credentialsDataClient;
+    @Inject
+    private CredentialsDataClient credentialsDataClient;
 
-  @Story("Login With Valid Credentials")
-  public void loginWithValidCredentials() {
-    Credentials credentials = credentialsDataClient.getStandardUser();
-    boolean loginSuccessful =
-        Screen(LoginScreen.class)
-            //
-            .login(credentials, ProductsScreen.class)
-            .isMenuDisplayed();
+    @Story("Login With Valid Credentials")
+    public void loginWithValidCredentials() {
+        Credentials credentials = credentialsDataClient.getStandardUser();
+        boolean loginSuccessful =
+                Screen(LoginScreen.class)
+                        //
+                        .login(credentials, ProductsScreen.class)
+                        .isMenuDisplayed();
 
-    Assert.assertTrue(loginSuccessful);
-  }
+        Assert.assertTrue(loginSuccessful);
+    }
 
-  @Story("Login With Invalid Credentials")
-  public void loginWithInvalidCredentials() {
-    Credentials credentials = credentialsDataClient.getInvalidPasswordUser();
-    String errorMessage =
-        Screen(LoginScreen.class)
-            //
-            .login(credentials, LoginScreen.class)
-            .getErrorMessage();
+    @Story("Login With Invalid Credentials")
+    public void loginWithInvalidCredentials() {
+        Credentials credentials = credentialsDataClient.getInvalidPasswordUser();
+        String errorMessage =
+                Screen(LoginScreen.class)
+                        //
+                        .login(credentials, LoginScreen.class)
+                        .getErrorMessage();
 
-    Assert.assertEquals(
-        errorMessage, "Username and password do not match any user in this service.");
-  }
+        Assert.assertEquals(
+                errorMessage, "Username and password do not match any user in this service.");
+    }
 }

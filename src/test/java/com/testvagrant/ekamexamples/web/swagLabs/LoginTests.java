@@ -9,6 +9,7 @@ import com.testvagrant.ekamexamples.web.swagLabs.pages.ProductsPage;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import okhttp3.ConnectionPool;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

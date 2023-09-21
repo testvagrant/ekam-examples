@@ -1,0 +1,21 @@
+{
+  "platformVersion": {
+    "include": [
+      "14"
+    ],
+    "operator": "<",
+    "exclude": []
+  },
+  "model": {
+    "include": [
+      "iphone SE",
+      "iphone 8",
+      "iphone X"
+    ],
+    "exclude": [
+      "ipad",
+      "iphone 11",
+      "iphone 12"
+    ]
+  }
+}

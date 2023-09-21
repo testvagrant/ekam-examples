@@ -1,0 +1,5 @@
+{
+  "username": "${env:USERNAME}",
+  "accessKey": "${env:ACCESSKEY}",
+  "hub": "hub-cloud.browserstack.com"
+}

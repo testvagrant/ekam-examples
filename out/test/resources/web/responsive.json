@@ -1,0 +1,16 @@
+{
+  "desiredCapabilities": {
+    "pageLoadStrategy": "eager"
+  },
+  "arguments": [
+  ],
+  "preferences": {
+  },
+  "extensions": [
+  ],
+  "experimentalOptions": {
+    "mobileEmulation": {
+      "deviceName": "Pixel 2 XL"
+    }
+  }
+}

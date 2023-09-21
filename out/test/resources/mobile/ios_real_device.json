@@ -1,0 +1,15 @@
+{
+  "desiredCapabilities": [
+    {
+      "app": "swaglabs.ipa",
+      "platformName": "iOS",
+      "automationName": "XCUITest",
+      "newCommandTimeout": 300,
+      "autoGrantPermissions": true,
+      "noReset": true,
+      "avdLaunchTimeout": 300,
+      "autoAcceptAlerts": true,
+      "useKeystore": false
+    }
+  ]
+}

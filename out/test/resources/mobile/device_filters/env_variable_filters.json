@@ -1,0 +1,15 @@
+{
+  "platformVersion": {
+    "include": [],
+    "operator": "",
+    "exclude": []
+  },
+  "model": {
+    "include": [],
+    "exclude": []
+  },
+  "udid": {
+    "include": ["2AC27AB5-186D-4F3A-B147-D26AC8185D44"],
+    "exclude": []
+  }
+}

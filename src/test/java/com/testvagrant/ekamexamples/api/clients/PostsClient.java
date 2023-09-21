@@ -6,6 +6,7 @@ import com.google.inject.name.Named;
 import com.testvagrant.ekam.reports.annotations.APIStep;
 import com.testvagrant.ekamexamples.api.clients.services.PostsService;
 import com.testvagrant.ekamexamples.api.models.response.Posts;
+import io.qameta.allure.Step;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -20,7 +21,8 @@ public class PostsClient extends LogClient {
         service = httpClient.getService(PostsService.class);
     }
 
-    @APIStep(description = "Get Posts")
+//    @APIStep(description = "Get Posts")
+    @Step("dnndjde")
     public List<Posts> getPosts() {
         Call<List<Posts>> call = service.getPosts();
         return httpClient.execute(call);

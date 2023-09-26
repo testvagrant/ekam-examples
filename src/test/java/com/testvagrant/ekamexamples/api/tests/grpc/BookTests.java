@@ -7,7 +7,7 @@ import com.testvagrant.ekamexamples.api.exception.BookNotFoundException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@Test(groups = "grpc")
+@Test(groups = "api")
 public class BookTests extends BaseTests {
     private BookClient bookClient;
 
@@ -16,13 +16,13 @@ public class BookTests extends BaseTests {
     }
 
 
-    @Test(groups = "grpc")
+    @Test
     public void getBookTests() throws BookNotFoundException {
         BookResponse bookResponse = bookClient.getBookByISBN(1);
         Assert.assertEquals(bookResponse.getResponseCode(), "200");
     }
 
-    @Test(groups = "grpc")
+    @Test
     public void getBookViaAuthor() throws AuthorNotFoundException {
         BookResponse bookResponse = bookClient.getBookByAuthor("Bob");
         Assert.assertEquals(bookResponse.getResponseCode(), "200");

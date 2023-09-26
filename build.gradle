@@ -140,24 +140,6 @@ task runApiTests(type: Test) {
     }
 }
 
-task runGrpcTests(type: Test) {
-    filter {
-        excludeTestsMatching "*.web.*"
-        excludeTestsMatching "*.mobile.*"
-        excludeTestsMatching "*.db.*"
-        excludeTestsMatching "*.api.*"
-    }
-    outputs.upToDateWhen { false }
-    useTestNG {
-        parallel = "methods"
-        threadCount Integer.parseInt(System.getProperty("sessions", "4"))
-        includeGroups System.getProperty("groups", "grpc")
-        testLogging.showStandardStreams = true
-        useDefaultListeners true
-        outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
-    }
-}
-
 task runDbTests(type: Test) {
     filter {
         excludeTestsMatching "*.web.*"

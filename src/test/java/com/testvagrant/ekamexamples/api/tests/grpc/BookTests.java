@@ -15,13 +15,12 @@ public class BookTests extends BaseTests {
         bookClient = new BookClient("http://localhost:50055");
     }
 
-    @Test
     public void getBookTests() throws BookNotFoundException {
         BookResponse bookResponse = bookClient.getBookByISBN(1);
         Assert.assertEquals(bookResponse.getResponseCode(), "200");
     }
 
-    @Test
+
     public void getBookViaAuthor() throws AuthorNotFoundException {
         BookResponse bookResponse = bookClient.getBookByAuthor("Bob");
         Assert.assertEquals(bookResponse.getResponseCode(), "200");

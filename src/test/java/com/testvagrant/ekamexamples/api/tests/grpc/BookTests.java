@@ -16,12 +16,13 @@ public class BookTests extends BaseTests {
     }
 
 
+    @Test(groups = "grpc")
     public void getBookTests() throws BookNotFoundException {
         BookResponse bookResponse = bookClient.getBookByISBN(1);
         Assert.assertEquals(bookResponse.getResponseCode(), "200");
     }
 
-
+    @Test(groups = "grpc")
     public void getBookViaAuthor() throws AuthorNotFoundException {
         BookResponse bookResponse = bookClient.getBookByAuthor("Bob");
         Assert.assertEquals(bookResponse.getResponseCode(), "200");

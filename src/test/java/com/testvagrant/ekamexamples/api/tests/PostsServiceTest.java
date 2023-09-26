@@ -1,4 +1,4 @@
-package com.testvagrant.ekamexamples.api;
+package com.testvagrant.ekamexamples.api.tests;
 
 import com.google.gson.JsonObject;
 import com.testvagrant.ekam.testBases.testng.APITest;

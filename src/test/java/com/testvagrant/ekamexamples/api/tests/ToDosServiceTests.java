@@ -1,4 +1,4 @@
-package com.testvagrant.ekamexamples.api;
+package com.testvagrant.ekamexamples.api.tests;
 
 import com.testvagrant.ekam.testBases.testng.APITest;
 import com.testvagrant.ekamexamples.api.clients.ToDosClient;

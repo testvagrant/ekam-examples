@@ -16,5 +16,6 @@ allure-results/
 logs/
 *.log
 *.DS_Store
+out/
 
 test-output/

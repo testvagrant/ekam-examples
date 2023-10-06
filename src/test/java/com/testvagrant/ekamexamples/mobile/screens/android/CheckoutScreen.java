@@ -38,7 +38,7 @@ public class CheckoutScreen extends MobileScreen {
     return this;
   }
 
-  @MobileStep(description = "clikc cancel")
+  @MobileStep(description = "click cancel")
   @IOSSwitchView(view = CheckoutView.class)
   public ConfirmationScreen cancel() {
     element(cancel).click();

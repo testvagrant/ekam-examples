@@ -1,4 +1,4 @@
-package com.testvagrant.ekamexamples.web.swagLabs;
+package com.testvagrant.ekamexamples.web.swagLabs.tests;
 
 import com.google.inject.Inject;
 import com.testvagrant.ekam.testBases.testng.WebTest;

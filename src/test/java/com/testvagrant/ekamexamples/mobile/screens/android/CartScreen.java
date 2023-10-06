@@ -23,6 +23,8 @@ public class CartScreen extends MobileScreen {
   private final By productPrice =
       query("//android.view.ViewGroup[@content-desc=\"test-Price\"]/android.widget.TextView");
 
+  private final By removeProduct = queryByContentDesc("test-REMOVE");
+
   @MobileStep(description = "Get Cart Details")
   @IOSSwitchView(view = CartView.class)
   public Product getCartDetails() {
@@ -55,5 +57,11 @@ public class CartScreen extends MobileScreen {
   public ProductsScreen continueShopping() {
     element(continueShopping).click();
     return Screen(ProductsScreen.class);
+  }
+
+  @MobileStep(description = "remove product from cart")
+  @IOSSwitchView(view = CartView.class)
+  public void removeProductFromCart() {
+    element(removeProduct).click();
   }
 }

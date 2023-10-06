@@ -18,7 +18,6 @@ import static com.testvagrant.ekam.commons.LayoutInitiator.Screen;
 @Epic("Swag Login")
 @Feature("Login As Standard User")
 public class LoginTests extends MobileTest {
-
   @Inject private CredentialsDataClient credentialsDataClient;
 
   @Story("Login With Valid Credentials")

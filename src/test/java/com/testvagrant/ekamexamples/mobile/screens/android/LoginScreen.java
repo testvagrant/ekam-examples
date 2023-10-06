@@ -20,7 +20,7 @@ public class LoginScreen extends MobileScreen {
   MultiPlatformFinder loginButton =
       finder(queryByContentDesc("test-LOGIN"), queryByName("test-LOGIN"));
   MultiPlatformFinder errorMessageContainer =
-      finder(queryByContentDesc("test-Error message"), queryByName("test-Error message"));
+      finder(query("//android.view.ViewGroup[@content-desc=\"test-Error message\"]/android.widget.TextView"), queryByName("test-Error message"));
 
   @MobileStep(description = "Login")
   public <T extends MobileScreen> T login(Credentials credentials, Class<T> tClass) {

@@ -2,6 +2,7 @@ package com.testvagrant.ekamexamples.mobile.screens.ios;
 
 import com.testvagrant.ekam.atoms.mobile.MobileScreen;
 import com.testvagrant.ekam.commons.LayoutInitiator;
+import com.testvagrant.ekam.mobile.annotations.IOSSwitchView;
 import com.testvagrant.ekam.reports.annotations.MobileStep;
 import com.testvagrant.ekamexamples.data.models.Product;
 import com.testvagrant.ekamexamples.mobile.screens.android.CheckoutScreen;
@@ -16,8 +17,9 @@ public class CartView extends MobileScreen {
       query("//XCUIElementTypeOther[@name=\"test-Description\"]/XCUIElementTypeStaticText[2]");
   private final By productPrice =
       query("//XCUIElementTypeOther[@name=\"test-Price\"]/XCUIElementTypeStaticText[1]");
-  By checkout = queryByName("test-CHECKOUT");
-  By continueShopping = queryByName("test-CONTINUE SHOPPING");
+  private final By checkout = queryByName("test-CHECKOUT");
+  private  final By continueShopping = queryByName("test-CONTINUE SHOPPING");
+  private final By removeProduct = queryByName("test-REMOVE");
 
   @MobileStep(description = "Get Cart Details")
   public Product getCartDetails() {
@@ -47,5 +49,10 @@ public class CartView extends MobileScreen {
   public ProductsScreen continueShopping() {
     element(continueShopping).click();
     return LayoutInitiator.Screen(ProductsScreen.class);
+  }
+
+  @MobileStep(description = "remove product from cart")
+  public void removeProductFromCart() {
+    element(removeProduct).click();
   }
 }
